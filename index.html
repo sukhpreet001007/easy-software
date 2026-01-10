@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self' https:;
+  script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline' 'unsafe-eval';
+
+  style-src 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com 'unsafe-inline';
+  style-src-elem 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com;
+  font-src 'self' https://fonts.gstatic.com data:;
+  img-src 'self' data: blob: https:;
+  connect-src 'self' https:;
+">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/navbar.css">
+    <link rel="stylesheet" href="style/hero-section.css">
+    <link rel="stylesheet" href="style/mediaqueries.css">
+</head>
+
+<body>
+
+    <nav class="navbar-container navbar-expand-lg">
+        <div class="container-fluid navbar-wrapper">
+            <a class="navbar-brand-link" href="#">
+                <img src="assets/logo.svg" alt="Easy Software Logo" class="navbar-logo-img">
+            </a>
+
+            <button class="navbar-mobile-toggle d-lg-none" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#navbarSidebar" aria-controls="navbarSidebar">
+                <span class="navbar-menu-text">Menu</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarNav">
+                <ul class="navbar-nav-list ms-auto align-items-center">
+                    <li class="navbar-nav-item navbar-dropdown">
+                        <a class="navbar-nav-link" href="#">Features <svg class="navbar-arrow" width="10" height="6"
+                                viewBox="0 0 10 6" fill="none">
+                                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg></a>
+                        <!-- Desktop Mega Menu -->
+                        <div class="navbar-megamenu">
+                            <div class="navbar-megamenu-inner">
+                                <div class="row g-4">
+                                    <div class="col-lg-4">
+                                        <a href="#" class="navbar-megamenu-item">
+                                            <div class="navbar-megamenu-icon icon-blue">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                                    <circle cx="9" cy="7" r="4" />
+                                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                                </svg>
+                                            </div>
+                                            <div class="navbar-megamenu-content">
+                                                <h6>Client Management</h6>
+                                                <p>Transfer staff, products and analyse performance at one dashboard</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <a href="#" class="navbar-megamenu-item">
+                                            <div class="navbar-megamenu-icon icon-yellow">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                                    <path d="M12 18.5v-2.5" />
+                                                </svg>
+                                            </div>
+                                            <div class="navbar-megamenu-content">
+                                                <h6>Marketing</h6>
+                                                <p>Boost your sales & bring more cash flow with marketing tools that
+                                                    convert.</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <a href="#" class="navbar-megamenu-item">
+                                            <div class="navbar-megamenu-icon icon-red">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                                </svg>
+                                            </div>
+                                            <div class="navbar-megamenu-content">
+                                                <h6>Class Booking</h6>
+                                                <p>Convert your insta followers into your clients with free web portal
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <a href="#" class="navbar-megamenu-item">
+                                            <div class="navbar-megamenu-icon icon-purple">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                                    <circle cx="9" cy="7" r="4" />
+                                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                                </svg>
+                                            </div>
+                                            <div class="navbar-megamenu-content">
+                                                <h6>Employee Management</h6>
+                                                <p>Make your employees more efficient and productive with smart
+                                                    management</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <a href="#" class="navbar-megamenu-item">
+                                            <div class="navbar-megamenu-icon icon-green">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <line x1="12" y1="1" x2="12" y2="23" />
+                                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                                                </svg>
+                                            </div>
+                                            <div class="navbar-megamenu-content">
+                                                <h6>Billing</h6>
+                                                <p>Fast, reliable billing with secure payments and automated invoicing.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <a href="#" class="navbar-megamenu-item">
+                                            <div class="navbar-megamenu-icon icon-cyan">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
+                                                    <path d="M22 12A10 10 0 0 0 12 2v10z" />
+                                                </svg>
+                                            </div>
+                                            <div class="navbar-megamenu-content">
+                                                <h6>Reporting</h6>
+                                                <p>Analysing your business performance & sales made easy</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <a href="#" class="navbar-megamenu-item">
+                                            <div class="navbar-megamenu-icon icon-teal">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                                </svg>
+                                            </div>
+                                            <div class="navbar-megamenu-content">
+                                                <h6>Biometric</h6>
+                                                <p>Reduce wastage of products & stay ahead in Inventory & Stock
+                                                    Management</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="navbar-nav-item navbar-dropdown">
+                        <a class="navbar-nav-link" href="#">Software category <svg class="navbar-arrow" width="10"
+                                height="6" viewBox="0 0 10 6" fill="none">
+                                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg></a>
+                    </li>
+                    <li class="navbar-nav-item">
+                        <a class="navbar-nav-link" href="#">FAQs</a>
+                    </li>
+                    <li class="navbar-nav-item">
+                        <a class="navbar-nav-link" href="#">Blogs</a>
+                    </li>
+                    <li class="navbar-nav-item navbar-dropdown ms-3">
+                        <a class="navbar-nav-link navbar-lang-toggle" href="#">
+                            <svg class="navbar-globe" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg>
+                            Eng <svg class="navbar-arrow" width="8" height="5" viewBox="0 0 10 6" fill="none">
+                                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="navbar-nav-item ms-4">
+                        <a href="#" class="navbar-btn navbar-btn-primary">
+                            Book Free Demo
+                            <svg class="navbar-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="navbar-nav-item">
+                        <a href="#" class="navbar-btn navbar-btn-outline">
+                            Contact us
+                            <svg class="navbar-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-start navbar-sidebar" tabindex="-1" id="navbarSidebar"
+        aria-labelledby="navbarSidebarLabel">
+        <div class="offcanvas-header navbar-sidebar-header">
+            <img class="navbar-mobile-logo" src="assets/logo.svg" alt="">
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body navbar-sidebar-body">
+            <ul class="navbar-sidebar-list">
+                <li class="navbar-sidebar-item">
+                    <a class="navbar-sidebar-link d-flex justify-content-between align-items-center"
+                        data-bs-toggle="collapse" href="#featuresCollapse" role="button" aria-expanded="false"
+                        aria-controls="featuresCollapse">
+                        Features
+                        <svg class="navbar-arrow" width="12" height="8" viewBox="0 0 10 6" fill="none">
+                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <div class="collapse" id="featuresCollapse">
+                        <ul class="navbar-sidebar-sublist">
+                            <li class="navbar-sidebar-subitem">
+                                <a href="#clientMgmtDesc"
+                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="collapse">
+                                    Client Management
+                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                                <div class="collapse" id="clientMgmtDesc">
+                                    <p class="navbar-sidebar-desc">Transfer staff, products and analyse performance at
+                                        one dashboard</p>
+                                </div>
+                            </li>
+                            <li class="navbar-sidebar-subitem">
+                                <a href="#marketingDesc"
+                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="collapse">
+                                    Marketing
+                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                                <div class="collapse" id="marketingDesc">
+                                    <p class="navbar-sidebar-desc">Boost your sales & bring more cash flow with
+                                        marketing tools that convert.</p>
+                                </div>
+                            </li>
+                            <li class="navbar-sidebar-subitem">
+                                <a href="#classBookingDesc"
+                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="collapse">
+                                    Class Booking
+                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                                <div class="collapse" id="classBookingDesc">
+                                    <p class="navbar-sidebar-desc">Convert your insta followers into your clients with
+                                        free web portal</p>
+                                </div>
+                            </li>
+                            <li class="navbar-sidebar-subitem">
+                                <a href="#employeeMgmtDesc"
+                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="collapse">
+                                    Employee Management
+                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                                <div class="collapse" id="employeeMgmtDesc">
+                                    <p class="navbar-sidebar-desc">Make your employees more efficient and productive
+                                        with smart management</p>
+                                </div>
+                            </li>
+                            <li class="navbar-sidebar-subitem">
+                                <a href="#billingDesc"
+                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="collapse">
+                                    Billing
+                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                                <div class="collapse" id="billingDesc">
+                                    <p class="navbar-sidebar-desc">Fast, reliable billing with secure payments and
+                                        automated invoicing.</p>
+                                </div>
+                            </li>
+                            <li class="navbar-sidebar-subitem">
+                                <a href="#reportingDesc"
+                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="collapse">
+                                    Reporting
+                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                                <div class="collapse" id="reportingDesc">
+                                    <p class="navbar-sidebar-desc">Analysing your business performance & sales made easy
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="navbar-sidebar-subitem">
+                                <a href="#biometricDesc"
+                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="collapse">
+                                    Biometric
+                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                                <div class="collapse" id="biometricDesc">
+                                    <p class="navbar-sidebar-desc">Reduce wastage of products & stay ahead in Inventory
+                                        & Stock Management</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="navbar-sidebar-item"><a href="#" class="navbar-sidebar-link">Software category</a></li>
+                <li class="navbar-sidebar-item"><a href="#" class="navbar-sidebar-link">FAQs</a></li>
+                <li class="navbar-sidebar-item"><a href="#" class="navbar-sidebar-link">Blogs</a></li>
+                <li class="navbar-sidebar-item">
+                    <a class="navbar-sidebar-link d-flex justify-content-between align-items-center"
+                        data-bs-toggle="collapse" href="#langCollapse" role="button" aria-expanded="false"
+                        aria-controls="langCollapse">
+                        Language (Eng)
+                        <svg class="navbar-arrow" width="12" height="8" viewBox="0 0 10 6" fill="none">
+                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <div class="collapse" id="langCollapse">
+                        <ul class="navbar-sidebar-sublist">
+                            <li><a href="#" class="navbar-sidebar-sublink">English</a></li>
+                            <li><a href="#" class="navbar-sidebar-sublink">Hindi</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <section class="hero-section-wrapper">
+        <div class="container text-center">
+            <div class="hero-section-award-container">
+                <div class="hero-section-award-badge">
+                    <span class="hero-section-award-icon"><img src="assets/award.svg" alt=""></span>
+                    <span class="hero-section-award-text">— "CTX Growth Champion Year 2025" awarded by WhatsApp</span>
+                    <!-- Border animation elements -->
+                    <div class="border-animation-circle"></div>
+                    <div class="border-animation-circle delay-1"></div>
+                    <div class="border-animation-circle delay-2"></div>
+                </div>
+            </div>
+
+            <div class="hero-section-trust-row">
+                <div class="hero-section-trust-item"><img class="award-img" src="assets/six.svg" alt="Award 5"></div>
+                <div class="hero-section-trust-item"><img class="award-img" src="assets/two.svg" alt="Award 1"></div>
+                <div class="hero-section-trust-item"><img class="award-img" src="assets/three.svg" alt="Award 2"></div>
+                <div class="hero-section-trust-item"><img class="award-img" src="assets/four.svg" alt="Award 3"></div>
+                <div class="hero-section-trust-item"><img class="award-img" src="assets/five.svg" alt="Award 4"></div>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="hero-section-main-title">
+                <span class="hero-section-text-green">5X Your Revenue</span><br>
+                with the Power of WhatsApp
+            </h1>
+
+            <!-- Description -->
+            <p class="hero-section-sub-desc">
+                Broadcast, Automate, Engage, Sell - do everything with the Ai-powered<br class="d-none d-md-block">
+                WhatsApp Marketing & Engagement Platform. Powered by Official WhatsApp APIs⚡
+            </p>
+
+            <!-- Buttons -->
+            <div class="hero-section-btn-group">
+                <a href="#" class="hero-section-action-btn hero-section-btn-fill">
+                    Try Easy Software
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+                <a href="#" class="hero-section-action-btn hero-section-btn-outline">
+                    Get Live Demo
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-section-dashboard">
+            <div class="hero-section-dashboard-image">
+                <div class="hero-section-dashboard-head">
+                    <img src="assets/hero-head.svg" alt="hero-head">
+                </div>
+                <div class="hero-section-dashboard-money-boxes">
+                    <div class="hero-section-box1 hero-section-sales-box">
+                        <div class="hero-section-box-header">TODAY SALES</div>
+                        <div class="hero-section-box-body">
+                            <div class="hero-section-currency-ticker">
+                                <div class="hero-section-ticker-item">₹ 30,000</div>
+                                <div class="hero-section-ticker-item">$ 360</div>
+                                <div class="hero-section-ticker-item">AED 1,320</div>
+                                <div class="hero-section-ticker-item">KWD 111</div>
+                                <div class="hero-section-ticker-item">QAR 1,320</div>
+                                <!-- Duplicate first for seamless loop -->
+                                <div class="hero-section-ticker-item">₹ 30,000</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-section-box1">
+                        <div class="hero-section-box-header">TODAY APPOINTMENTS</div>
+                        <div class="hero-section-box-body">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                <line x1="16" y1="2" x2="16" y2="6" />
+                                <line x1="8" y1="2" x2="8" y2="6" />
+                                <line x1="3" y1="10" x2="21" y2="10" />
+                                <path d="M9 16l2 2 4-4" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="hero-section-box1">
+                        <div class="hero-section-box-header">TODAY ENQUIRY</div>
+                        <div class="hero-section-box-body">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="12" y1="16" x2="12" y2="12" />
+                                <line x1="12" y1="8" x2="12.01" y2="8" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="hero-section-box1">
+                        <div class="hero-section-box-header">CLIENTS VISIT</div>
+                        <div class="hero-section-box-body">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-section-dashboard-clients">
+                    <img src="assets/hero-clients.svg" alt="">
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

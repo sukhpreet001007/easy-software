@@ -1,0 +1,167 @@
+/* Large screens (min-width: 992px) */
+@media (min-width: 992px) {
+    /* Desktop styles are already in navbar.css */
+}
+
+/* Medium & Small screens (max-width: 991.98px) */
+@media (max-width: 991.98px) {
+    .navbar-container {
+        padding: 12px 0;
+    }
+
+    .navbar-wrapper {
+        padding: 0 15px;
+    }
+
+    .navbar-logo-img {
+        width: 130px;
+    }
+
+    .navbar-mobile-toggle {
+        padding: 10px 16px;
+    }
+
+    .navbar-menu-text {
+        font-size: 13px;
+        letter-spacing: 0.8px;
+    }
+}
+
+/* Extra small devices (max-width: 575.98px) */
+@media (max-width: 575.98px) {
+    .navbar-container {
+        padding: 10px 0;
+    }
+
+    .navbar-logo-img {
+        width: 110px;
+    }
+
+    .navbar-mobile-toggle {
+        padding: 8px 12px;
+        gap: 8px;
+    }
+
+    .navbar-sidebar {
+        width: 85% !important;
+    }
+
+    .navbar-mobile-logo {
+        width: 100px;
+    }
+
+    .navbar-menu-text {
+        font-size: 12px;
+    }
+
+    .navbar-sidebar-link {
+        font-size: 20px;
+        text-decoration: none;
+
+    }
+}
+
+/* Landscape orientation for mobile */
+@media (max-height: 450px) and (orientation: landscape) {
+    .navbar-sidebar-list {
+        gap: 10px;
+    }
+
+    .navbar-sidebar-item {
+        padding: 0;
+    }
+}
+
+/* Hero Section Media Queries */
+@media (max-width: 991.98px) {
+    .hero-section-main-title {
+        font-size: 52px;
+    }
+
+    .hero-section-trust-row {
+        gap: 20px;
+    }
+
+    .hero-section-trust-item img {
+        height: 32px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .hero-section-wrapper {
+        padding: 50px 0;
+    }
+
+    .hero-section-award-badge {
+        padding: 8px 16px;
+    }
+
+    .hero-section-award-text {
+        font-size: 13px;
+    }
+
+    .hero-section-main-title {
+        font-size: 38px;
+    }
+
+    .hero-section-sub-desc {
+        font-size: 15px;
+        margin-bottom: 30px;
+    }
+
+    .hero-section-btn-group {
+        flex-direction: column;
+        gap: 15px;
+        padding: 0 20px;
+    }
+
+    .hero-section-action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-section-trust-row {
+        gap: 15px 25px;
+    }
+
+    .hero-section-trust-item {
+        flex: 0 0 calc(50% - 15px);
+        display: flex;
+        justify-content: center;
+    }
+
+    .hero-section-dashboard {
+        margin-top: 40px;
+        padding: 0 10px;
+    }
+
+    .hero-section-dashboard-image {
+        transform: scale(0.9);
+        transform-origin: top center;
+        width: 110%;
+        margin-left: -5%;
+    }
+
+    .hero-section-box-header {
+        font-size: 8px;
+        top: -18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section-dashboard-image {
+        transform: scale(0.65);
+        margin-bottom: -200px;
+        border-radius: 12px;
+    }
+
+    .hero-section-box1 {
+        height: 80px;
+        border-top-width: 20px;
+    }
+
+    .hero-section-box-header {
+        font-size: 7px;
+        top: -16px;
+    }
+}
