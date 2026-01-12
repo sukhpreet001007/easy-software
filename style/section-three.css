@@ -1,0 +1,54 @@
+/* Section Three Hero Styles */
+.section-three-hero {
+    padding: 100px 0;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.section-three-main-title {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 750;
+    color: #111827;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+
+.section-three-main-subtitle {
+    font-size: clamp(15px, 2.5vw, 18px);
+    color: #696969;
+    margin-bottom: 80px;
+}
+
+.section-three-row {
+    margin-bottom: 100px;
+}
+
+.section-three-row:last-child {
+    margin-bottom: 0;
+}
+
+.section-three-text h3 {
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 20px;
+}
+
+.section-three-text p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #4B5563;
+    margin: 0;
+}
+
+.section-three-image img {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.section-three-row:hover .section-three-image img {
+    transform: scale(1.02);
+}

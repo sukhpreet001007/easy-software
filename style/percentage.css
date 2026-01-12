@@ -1,0 +1,71 @@
+.section-percentage {
+    padding: 100px 0;
+    background-color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+.section-percentage-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-percentage-header h2 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+.section-percentage-header p {
+    font-size: 18px;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-percentage-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+.box-per {
+    flex: 1 1 calc(25% - 25px);
+    min-width: 250px;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    padding: 20px 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.box-per:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.box-per h5 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    font-family: 'Inter', sans-serif;
+}
+
+.box-per p {
+    font-size: 14px;
+    color: #888;
+    margin: 0;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Intersection Observer animation base state */
+.counter-percentage {
+    display: inline-block;
+    min-width: 50px;
+}

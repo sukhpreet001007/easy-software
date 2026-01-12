@@ -1,0 +1,204 @@
+/* Section Promo Styles */
+.section-promo {
+    padding: 100px 0;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.section-promo-title {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 600;
+    line-height: 1.1;
+    color: #111827;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+}
+
+.section-promo-subtitle {
+    font-size: clamp(15px, 2.5vw, 18px);
+    color: #696969;
+    margin-bottom: 48px;
+    font-weight: 400;
+}
+
+.section-promo-features {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    margin-bottom: 56px;
+}
+
+.section-promo-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.section-promo-icon-box {
+    width: 54px;
+    height: 54px;
+    background: #F2FBF7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.section-promo-icon {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+}
+
+.section-promo-text h6 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.section-promo-text p {
+    font-size: 15px;
+    color: #696969;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.section-promo-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 40px;
+    background-color: #03CF65;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 17px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 16px rgba(3, 207, 101, 0.2);
+}
+
+.section-promo-btn:hover {
+    background-color: #02b35a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(3, 207, 101, 0.3);
+}
+
+.section-promo-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.section-promo-btn:hover svg {
+    transform: translateX(5px);
+}
+
+.section-promo-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    height: 550px;
+    /* Desktop height */
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Base Background */
+.promo-img-bg-1 {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    opacity: 0.7;
+}
+
+/* Central Girl Figure (No animation) */
+.promo-img-upper-3 {
+    position: absolute;
+    width: 85%;
+    bottom: 0;
+    left: 45%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+/* Floating Elements */
+.promo-img-bg-2 {
+    position: absolute;
+    width: 20%;
+    right: 4%;
+    top: 10%;
+    z-index: 2;
+    /* filter: drop-shadow(1px 1px 2px #666); */
+
+}
+
+.promo-img-upper-4 {
+    position: absolute;
+    width: 30%;
+    left: 5%;
+    bottom: 8%;
+    z-index: 6;
+}
+
+.promo-img-upper-2 {
+    position: absolute;
+    width: 30%;
+    left: 5%;
+    bottom: 25%;
+    z-index: 7;
+}
+
+.promo-img-upper-1 {
+    position: absolute;
+    width: 20%;
+    right: 2%;
+    bottom: 8%;
+    z-index: 8;
+}
+
+/* Animations Core */
+@keyframes floatUpDown {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes floatUpDownAlt {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.float-anim {
+    animation: floatUpDown 7s ease-in-out infinite;
+}
+
+.float-anim-delay {
+    animation: floatUpDownAlt 5s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+.section-promo-image-wrapper img {
+    height: auto;
+    pointer-events: none;
+}

@@ -19,7 +19,7 @@
 
 .navbar-logo-img {
     height: auto;
-    width: 153px;
+    width: 211px;
     transition: transform 0.3s ease;
 }
 
@@ -37,7 +37,7 @@
 .navbar-nav-link {
     color: var(--navbar-dark);
     font-weight: 500;
-    font-size: 16px;
+    font-size: 18px;
     display: flex;
     align-items: center;
     gap: 6px;

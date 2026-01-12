@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="
   default-src 'self' https:;
-  script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline' 'unsafe-eval';
-
+  script-src 'self' https://cdn.jsdelivr.net https://www.youtube.com https://s.ytimg.com 'unsafe-inline' 'unsafe-eval';
+  script-src-elem 'self' https://cdn.jsdelivr.net https://www.youtube.com https://s.ytimg.com 'unsafe-inline';
   style-src 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com 'unsafe-inline';
   style-src-elem 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com;
   font-src 'self' https://fonts.gstatic.com data:;
   img-src 'self' data: blob: https:;
   connect-src 'self' https:;
+  frame-src 'self' https://www.youtube.com https://youtube.com;
 ">
 
 
@@ -22,12 +23,20 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/navbar.css">
     <link rel="stylesheet" href="style/hero-section.css">
+    <link rel="stylesheet" href="style/brands-section.css">
+    <link rel="stylesheet" href="style/section-promo.css">
+    <link rel="stylesheet" href="style/section-three.css">
     <link rel="stylesheet" href="style/mediaqueries.css">
+    <link rel="stylesheet" href="style/shorts.css">
+    <link rel="stylesheet" href="style/percentage.css">
+    <link rel="stylesheet" href="style/footer.css">
+
+
 </head>
 
 <body>
 
-    <nav class="navbar-container navbar-expand-lg">
+    <nav class="container-fl uid navbar-container navbar-expand-lg">
         <div class="container-fluid navbar-wrapper">
             <a class="navbar-brand-link" href="#">
                 <img src="assets/logo.svg" alt="Easy Software Logo" class="navbar-logo-img">
@@ -205,7 +214,7 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="navbar-nav-item ms-4">
+                    <li class="navbar-nav-item ms-4 navbar-desktop-btns">
                         <a href="#" class="navbar-btn navbar-btn-primary">
                             Book Free Demo
                             <svg class="navbar-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -215,7 +224,7 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="navbar-nav-item">
+                    <li class="navbar-nav-item navbar-desktop-btns">
                         <a href="#" class="navbar-btn navbar-btn-outline">
                             Contact us
                             <svg class="navbar-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -224,6 +233,36 @@
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
                         </a>
+                    </li>
+
+                    <!-- Dropdown for Tablet Landscape -->
+                    <li class="navbar-nav-item navbar-drop-container d-none">
+                        <div class="dropdown">
+                            <button class="navbar-btn navbar-btn-primary dropdown-toggle no-caret" type="button"
+                                id="navbarDrop" data-bs-toggle="dropdown" aria-expanded="false"
+                                style="padding: 10px 20px;">
+                                Drop
+                                <svg class="ms-2" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                    <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end p-2 border-0 shadow-lg"
+                                aria-labelledby="navbarDrop" style="border-radius: 12px; min-width: 220px;">
+                                <li class="mb-2">
+                                    <a href="#" class="navbar-btn navbar-btn-primary w-100"
+                                        style="font-size: 14px; padding: 10px;">
+                                        Book Free Demo
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="navbar-btn navbar-btn-outline w-100"
+                                        style="font-size: 14px; padding: 10px;">
+                                        Contact us
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -379,6 +418,26 @@
                     </div>
                 </li>
             </ul>
+
+            <!-- Sidebar Bottom Buttons -->
+            <div class="navbar-sidebar-footer mt-5">
+                <a href="#" class="navbar-btn navbar-btn-primary w-100 mb-3">
+                    Book Free Demo
+                    <svg class="navbar-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+                <a href="#" class="navbar-btn navbar-btn-outline w-100">
+                    Contact us
+                    <svg class="navbar-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -396,16 +455,24 @@
             </div>
 
             <div class="hero-section-trust-row">
-                <div class="hero-section-trust-item"><img class="award-img" src="assets/six.svg" alt="Award 5"></div>
-                <div class="hero-section-trust-item"><img class="award-img" src="assets/two.svg" alt="Award 1"></div>
-                <div class="hero-section-trust-item"><img class="award-img" src="assets/three.svg" alt="Award 2"></div>
-                <div class="hero-section-trust-item"><img class="award-img" src="assets/four.svg" alt="Award 3"></div>
-                <div class="hero-section-trust-item"><img class="award-img" src="assets/five.svg" alt="Award 4"></div>
+                <div class="hero-section-trust-item"><img class="award-img" src="assets/six.svg" loading="lazy"
+                        alt="Award 5"></div>
+                <div class="hero-section-trust-item"><img class="award-img" src="assets/two.svg" loading="lazy"
+                        alt="Award 1"></div>
+                <div class="hero-section-trust-item"><img class="award-img" src="assets/three.svg" loading="lazy"
+                        alt="Award 2"></div>
+                <div class="hero-section-trust-item"><img class="award-img" src="assets/four.svg" loading="lazy"
+                        alt="Award 3"></div>
+                <div class="hero-section-trust-item"><img class="award-img" src="assets/five.svg" loading="lazy"
+                        alt="Award 4"></div>
             </div>
 
             <!-- Main Heading -->
-            <h1 class="hero-section-main-title">
-                <span class="hero-section-text-green">5X Your Revenue</span><br>
+            <h1 class="hero-section-main-title ">
+                <span class="hero-section-text-green counter-wrapper">
+                    <span class="counter" data-target="5">1</span>X
+                </span>
+                <span class="hero-section-text-green">Your Revenue</span><br>
                 with the Power of WhatsApp
             </h1>
 
@@ -445,62 +512,444 @@
                     <div class="hero-section-box1 hero-section-sales-box">
                         <div class="hero-section-box-header">TODAY SALES</div>
                         <div class="hero-section-box-body">
-                            <div class="hero-section-currency-ticker">
-                                <div class="hero-section-ticker-item">₹ 30,000</div>
-                                <div class="hero-section-ticker-item">$ 360</div>
-                                <div class="hero-section-ticker-item">AED 1,320</div>
-                                <div class="hero-section-ticker-item">KWD 111</div>
-                                <div class="hero-section-ticker-item">QAR 1,320</div>
-                                <!-- Duplicate first for seamless loop -->
-                                <div class="hero-section-ticker-item">₹ 30,000</div>
+                            <div class="hero-section-box-content-wrapper">
+                                <img src="assets/box1.svg" alt="Sales Icon" class="hero-section-box-icon">
+                                <div class="hero-section-currency-ticker">
+                                    <div class="hero-section-ticker-item">INR 30,000</div>
+                                    <div class="hero-section-ticker-item">USD 360</div>
+                                    <div class="hero-section-ticker-item">AED 1,320</div>
+                                    <div class="hero-section-ticker-item">KWD 111</div>
+                                    <div class="hero-section-ticker-item">QAR 1,320</div>
+                                    <!-- Duplicate first for seamless loop -->
+                                    <div class="hero-section-ticker-item">INR 30,000</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="hero-section-box1">
                         <div class="hero-section-box-header">TODAY APPOINTMENTS</div>
                         <div class="hero-section-box-body">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                <line x1="16" y1="2" x2="16" y2="6" />
-                                <line x1="8" y1="2" x2="8" y2="6" />
-                                <line x1="3" y1="10" x2="21" y2="10" />
-                                <path d="M9 16l2 2 4-4" />
-                            </svg>
+                            <div class="hero-section-box-content-wrapper">
+                                <img src="assets/box2.svg" alt="Appointments Icon" class="hero-section-box-icon">
+                                <div class="hero-section-count" data-target="8">0</div>
+                            </div>
                         </div>
                     </div>
                     <div class="hero-section-box1">
                         <div class="hero-section-box-header">TODAY ENQUIRY</div>
                         <div class="hero-section-box-body">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <circle cx="12" cy="12" r="10" />
-                                <line x1="12" y1="16" x2="12" y2="12" />
-                                <line x1="12" y1="8" x2="12.01" y2="8" />
-                            </svg>
+                            <div class="hero-section-box-content-wrapper">
+                                <img src="assets/box3.svg" alt="Enquiry Icon" class="hero-section-box-icon">
+                                <div class="hero-section-count" data-target="10">0</div>
+                            </div>
                         </div>
                     </div>
                     <div class="hero-section-box1">
                         <div class="hero-section-box-header">CLIENTS VISIT</div>
                         <div class="hero-section-box-body">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                                <circle cx="9" cy="7" r="4" />
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                            </svg>
+                            <div class="hero-section-box-content-wrapper">
+                                <img src="assets/box4.svg" alt="Clients Icon" class="hero-section-box-icon">
+                                <div class="hero-section-count" data-target="8">0</div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="hero-section-dashboard-clients">
-                    <img src="assets/hero-clients.svg" alt="">
+                    <img src="assets/hero-clients.svg" loading="lazy" alt="">
                 </div>
             </div>
 
 
         </div>
     </section>
+
+
+    <section class="brands-section">
+        <div class="brands-section-container">
+            <h2 class="brands-section-title">Business Owners Love Us</h2>
+            <p class="brands-section-p">Trusted by 50,000+ Businesses across 10+ Countries</p>
+            <div class="brands-section-brands">
+                <div class="brands-section-box">
+                    <div class="brands-section-box1">
+                        <div class="brands-section-brand-img"><img src="assets/Group 1249.svg" loading="lazy" alt="">
+                        </div>
+                        <div class="brands-section-flag"><img src="assets/flag-b1.svg" loading="lazy" alt="">Kenya</div>
+                    </div>
+                </div>
+                <div class="brands-section-box">
+                    <div class="brands-section-box2">
+                        <div class="brands-section-brand-img"><img src="assets/Group 1250.svg" loading="lazy" alt="">
+                        </div>
+                        <div class="brands-section-flag"><img src="assets/flag-b2.svg" loading="lazy" alt=""> Tanzania
+                        </div>
+                    </div>
+                </div>
+                <div class="brands-section-box">
+                    <div class="brands-section-box3">
+                        <div class="brands-section-brand-img"><img src="assets/Group 1251.svg" loading="lazy" alt="">
+                        </div>
+                        <div class="brands-section-flag"><img src="assets/flag-b3.svg" loading="lazy" alt="">Mauritius
+                        </div>
+                    </div>
+                </div>
+                <div class="brands-section-box">
+                    <div class="brands-section-box4">
+                        <div class="brands-section-brand-img"><img src="assets/Group 1252.svg" loading="lazy" alt="">
+                        </div>
+                        <div class="brands-section-flag"><img src="assets/flag-b4.svg" loading="lazy" alt="">Muscat
+                        </div>
+                    </div>
+                </div>
+                <div class="brands-section-box">
+                    <div id="brand-5" class="brands-section-box5">
+                        <div class="brands-section-brand-img"><img src="assets/Group 1253.svg" loading="lazy"
+                                alt="Kuwait Brand"></div>
+                        <div class="brands-section-flag"><img src="assets/flag-b5.svg" loading="lazy" alt="">Kuwait
+                        </div>
+                    </div>
+                </div>
+                <div class="brands-section-box">
+                    <div class="brands-section-box6">
+                        <div class="brands-section-brand-img"><img src="assets/Group 1254.svg" loading="lazy"
+                                alt="UAE Brand"></div>
+                        <div class="brands-section-flag"><img src="assets/flag-b6.svg" loading="lazy" alt="">UAE</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section-promo">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-2 order-lg-1">
+                    <div class="section-promo-content">
+                        <h3 class="section-promo-title">Promotional Messages<br>on WhatsApp(Officially)</h3>
+                        <p class="section-promo-subtitle">Enjoy a Limitless Broadcasting experience on WhatsApp</p>
+
+                        <div class="section-promo-features">
+                            <div class="section-promo-feature-item">
+                                <div class="section-promo-icon-box">
+                                    <img src="assets/promo-1.png" alt="" class="section-promo-icon">
+                                </div>
+                                <div class="section-promo-text">
+                                    <h6>8+ Powerful Messaging Categories</h6>
+                                    <p>Send Promotions, Offers, Coupon codes, Carousels and More- Risk-Free!</p>
+                                </div>
+                            </div>
+
+                            <div class="section-promo-feature-item">
+                                <div class="section-promo-icon-box">
+                                    <img src="assets/promo-2.png" alt="" class="section-promo-icon">
+                                </div>
+                                <div class="section-promo-text">
+                                    <h6>Add CTAs. Drive 3x Conversions</h6>
+                                    <p>Turn conversations into conversions with eye-catching CTA and Quick Reply buttons
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="section-promo-feature-item">
+                                <div class="section-promo-icon-box">
+                                    <img src="assets/promo-3.png" alt="" class="section-promo-icon">
+                                </div>
+                                <div class="section-promo-text">
+                                    <h6>Schedule your WhatsApp messages</h6>
+                                    <p>Streamline your work, Schedule Broadcasts 2 months ahead of time</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="section-promo-btn">
+                            Book Demo
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2">
+                    <div class="section-promo-image-wrapper">
+                        <!-- <img src="assets/section-promo.png" alt="Promo Billboard" class="section-promo-img"> -->
+                        <img src="assets/bg-1.svg" class="promo-img-bg-1" loading="lazy" alt="background of all">
+                        <img src="assets/bg-2.svg" class="promo-img-bg-2 float-anim" loading="lazy"
+                            alt="background of upper-3 right top">
+                        <img src="assets/upper-4.svg" class="promo-img-upper-4 float-anim-delay" loading="lazy"
+                            alt="chat interface">
+                        <img src="assets/upper-3.svg" class="promo-img-upper-3" loading="lazy"
+                            alt="this is girl holding laptop">
+                        <img src="assets/upper-2.svg" class="promo-img-upper-2 float-anim" loading="lazy"
+                            alt="laptop display content">
+                        <img src="assets/upper-1.svg" class="promo-img-upper-1 float-anim-delay" loading="lazy"
+                            alt="profile card">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-three-hero">
+        <div class="container">
+            <div class="section-three-header text-center">
+                <h2 class="section-three-main-title">What Makes Get Easy Software the Best Choice</h2>
+                <p class="section-three-main-subtitle">AiSensy launches latest WhatsApp and AI Features at Blazing fast
+                    speed⚡</p>
+            </div>
+
+            <div class="section-three-content">
+                <!-- Row 1 -->
+                <div class="row align-items-center section-three-row">
+                    <div class="col-lg-6 order-2 order-lg-1">
+                        <div class="section-three-text">
+                            <h3>QR check-in for reception</h3>
+                            <p>Our QR portal simplifies booking so much that your clients might just high-five you
+                                through
+                                the screen! Level up your business with our innovative booking software—it’s like having
+                                a personal assistant who never takes long breaks.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-1 order-lg-2 text-center">
+                        <div class="section-three-image">
+                            <img src="assets/first-three.png" loading="lazy" alt="QR check-in">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="row align-items-center section-three-row">
+                    <div class="col-lg-6 order-2 order-lg-2">
+                        <div class="section-three-text ps-lg-5">
+                            <h3>Empower your Business</h3>
+                            <p>Give your academy a boost! Manage schedule, students, and admin tasks. Make enrollment a
+                                breeze, streamline course management, and effortlessly track student progress for an
+                                optimized learning experience with our management software.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-1 order-lg-1 text-center">
+                        <div class="section-three-image">
+                            <img src="assets/second-three.png" loading="lazy" alt="Empower Business">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="row align-items-center section-three-row">
+                    <div class="col-lg-6 order-2 order-lg-1">
+                        <div class="section-three-text">
+                            <h3>Client Management</h3>
+                            <p>Turn client chaos into client charm! Now you can effortlessly manage client data, track
+                                every interaction, and nurture long-lasting relationships with our client management
+                                software - designed to fuel your business growth and success!</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-1 order-lg-2 text-center">
+                        <div class="section-three-image">
+                            <img src="assets/third-three.png" loading="lazy" alt="Client Management">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="shorts-section">
+        <div class="container-fluid text-center">
+            <h2 class="shorts-title">Our Highlights</h2>
+        </div>
+        <div class="shorts-carousel-container">
+            <div class="shorts-track" id="shortsTrack">
+                <!-- Group 1 -->
+                <div class="short-item">
+                    <div id="p0" data-video-id="Mn6BJgi-L-o"></div>
+                </div>
+                <div class="short-item">
+                    <div id="p1" data-video-id="egK37yP_bAk"></div>
+                </div>
+                <div class="short-item">
+                    <div id="p2" data-video-id="U6bf4mguYWU"></div>
+                </div>
+                <div class="short-item">
+                    <div id="p3" data-video-id="ZppBmAy9l8A"></div>
+                </div>
+                <div class="short-item">
+                    <div id="p4" data-video-id="pQ-DGpW85Ns"></div>
+                </div>
+                <div class="short-item">
+                    <div id="p5" data-video-id="VXjPeQQf26M"></div>
+                </div>
+                <div class="short-item">
+                    <div id="p6" data-video-id="qzyNfZwBVkU"></div>
+                </div>
+                <div class="short-item">
+                    <div id="p7" data-video-id="aB6gReqIb9Y"></div>
+                </div>
+                <!-- Group 2 (Clones for Loop) -->
+                <div class="short-item">
+                    <div id="p8" data-video-id="Mn6BJgi-L-o"></div>
+                </div>
+                <div class="short-item">
+                    <div id="p9" data-video-id="egK37yP_bAk"></div>
+                </div>
+                <div class="short-item">
+                    <div id="p10" data-video-id="U6bf4mguYWU"></div>
+                </div>
+                <div class="short-item">
+                    <div id="p11" data-video-id="ZppBmAy9l8A"></div>
+                </div>
+                <div class="short-item">
+                    <div id="p12" data-video-id="pQ-DGpW85Ns"></div>
+                </div>
+                <div class="short-item">
+                    <div id="p13" data-video-id="VXjPeQQf26M"></div>
+                </div>
+                <div class="short-item">
+                    <div id="p14" data-video-id="qzyNfZwBVkU"></div>
+                </div>
+                <div class="short-item">
+                    <div id="p15" data-video-id="aB6gReqIb9Y"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-percentage">
+        <div class="container">
+            <div class="section-percentage-header">
+                <h2>Why Easy Software?</h2>
+                <p>WhatsApp is the One Platform that brings together Actionable Notifications & Customer Support!</p>
+            </div>
+            <div class="section-percentage-grid">
+                <div class="box-per">
+                    <h5 class="counter-percentage" data-target="98" data-suffix="%">0%</h5>
+                    <p>Open Rates</p>
+                </div>
+                <div class="box-per">
+                    <h5 class="counter-percentage" data-start="45" data-target="60" data-prefix="45-" data-suffix="%">
+                        45-0%</h5>
+                    <p>Click Rates</p>
+                </div>
+                <div class="box-per">
+                    <h5 class="counter-percentage" data-target="50" data-suffix="k+">0k+</h5>
+                    <p>Active Users</p>
+                </div>
+                <div class="box-per">
+                    <h5 class="counter-percentage" data-target="70" data-suffix="%">0%</h5>
+                    <p>Engagement Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-row">
+                <div class="footer-logo-col">
+                    <img src="assets/logo.svg" alt="Easy Software Logo" class="footer-logo-img">
+                    <div class="footer-social-links">
+                        <a href="#" class="footer-social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="footer-social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M4 4l11.733 16h4.267l-11.733 -16z M4 20l6.768 -6.768 M13.232 10.768l6.768 -6.768">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" class="footer-social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.11 1 12 1 12s0 3.89.46 5.58a2.78 2.78 0 0 0 1.94 2c1.72.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.89 23 12 23 12s0-3.89-.46-5.58z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                        <a href="#" class="footer-social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="#" class="footer-social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links-col">
+                    <div class="footer-links-grid">
+                        <div class="footer-col">
+                            <h6 class="footer-col-title">Features</h6>
+                            <ul class="footer-list">
+                                <li class="footer-list-item"><a href="#" class="footer-link">Client management</a></li>
+                                <li class="footer-list-item"><a href="#" class="footer-link">GST & Non-GST billing</a>
+                                </li>
+                                <li class="footer-list-item"><a href="#" class="footer-link">Biometric integration</a>
+                                </li>
+                                <li class="footer-list-item"><a href="#" class="footer-link">POS billing</a></li>
+                                <li class="footer-list-item"><a href="#" class="footer-link">Group class booking</a>
+                                </li>
+                                <li class="footer-list-item"><a href="#" class="footer-link">Employee Management</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h6 class="footer-col-title">Navigation</h6>
+                            <ul class="footer-list">
+                                <li class="footer-list-item"><a href="#" class="footer-link">Help Center</a></li>
+                                <li class="footer-list-item"><a href="#" class="footer-link">Blog</a></li>
+                                <li class="footer-list-item"><a href="#" class="footer-link">About us</a></li>
+                                <li class="footer-list-item"><a href="#" class="footer-link">Contact Us</a></li>
+                                <li class="footer-list-item"><a href="#" class="footer-link">Careers</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h6 class="footer-col-title">Countries we serve in</h6>
+                            <ul class="footer-list">
+                                <li class="footer-list-item"><a href="#" class="footer-link">USA</a></li>
+                                <li class="footer-list-item"><a href="#" class="footer-link">Canada</a></li>
+                                <li class="footer-list-item"><a href="#" class="footer-link">Qatar</a></li>
+                                <li class="footer-list-item"><a href="#" class="footer-link">India</a></li>
+                                <li class="footer-list-item"><a href="#" class="footer-link">Malaysia</a></li>
+                                <li class="footer-list-item"><a href="#" class="footer-link">Singapore</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h6 class="footer-col-title">Legal</h6>
+                            <ul class="footer-list">
+                                <li class="footer-list-item"><a href="#" class="footer-link">Privacy Policy</a></li>
+                                <li class="footer-list-item"><a href="#" class="footer-link">Refund Policy</a></li>
+                                <li class="footer-list-item"><a href="#" class="footer-link">Terms & Conditions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright © 2026 Get Easy Software. Made with ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script/shorts.js"></script>
+    <script src="script/script.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>

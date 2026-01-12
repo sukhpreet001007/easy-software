@@ -213,12 +213,132 @@
     color: var(--navbar-primary-green);
 }
 
+.counter-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.counter {
+    display: inline-block;
+    position: relative;
+    min-width: 30px;
+    text-align: center;
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Optional: Add a subtle digital effect */
+.counter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(0, 255, 0, 0.1) 50%,
+            transparent 100%);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Smash effect animations */
+@keyframes smashEffect {
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.3);
+    }
+
+    50% {
+        transform: scale(0.9);
+    }
+
+    75% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes smashGlow {
+
+    0%,
+    100% {
+        text-shadow: 0 0 5px rgba(16, 185, 129, 0.5);
+    }
+
+    50% {
+        text-shadow: 0 0 20px rgba(16, 185, 129, 0.8),
+            0 0 30px rgba(16, 185, 129, 0.6);
+    }
+}
+
+@keyframes shakeEffect {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-2px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(2px);
+    }
+}
+
+.smash-animation {
+    animation: smashEffect 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both,
+        smashGlow 0.5s ease-in-out;
+}
+
+.shake-animation {
+    animation: shakeEffect 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+/* Particle effect for smash */
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--navbar-primary-green);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+}
+
+@keyframes particleFly {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--tx, 0), var(--ty, 0)) scale(0);
+        opacity: 0;
+    }
+}
+
 /* Description */
 .hero-section-sub-desc {
     font-size: 18px;
     color: #696969;
     line-height: 1.6;
-    margin-bottom: 48px;
+    margin-bottom: 30px;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -277,6 +397,40 @@
     transform: translateX(4px);
 }
 
+/* Simple fade in with slight upward movement */
+@keyframes gentleFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply gentle animations */
+.hero-section-award-container {
+    animation: gentleFadeIn 0.6s ease-out 0.2s both;
+}
+
+.hero-section-trust-row {
+    animation: gentleFadeIn 0.6s ease-out 0.4s both;
+}
+
+.hero-section-main-title {
+    animation: gentleFadeIn 0.8s ease-out 0.6s both;
+}
+
+.hero-section-sub-desc {
+    animation: gentleFadeIn 0.6s ease-out 0.8s both;
+}
+
+.hero-section-btn-group {
+    animation: gentleFadeIn 0.6s ease-out 1s both;
+}
+
 /* Dashboard Section */
 .hero-section-dashboard {
     margin-top: 80px;
@@ -319,10 +473,10 @@
 
 .hero-section-box1 {
     background: #ffffff;
-    border-top: 25px solid #E6FFFA;
+    border-top: 35px solid #D6F0E5;
     /* Light green header */
-    border-radius: 12px;
-    height: 100px;
+    border-radius: 25px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -332,51 +486,86 @@
     border-right: 1px solid #E2E8F0;
     border-bottom: 1px solid #E2E8F0;
 }
-
+.hero-section-box1:hover{
+    transform: scale(.97);
+    transition: all .4s ease-in-out;
+}
 .hero-section-box-header {
     position: absolute;
-    top: -20px;
-    left: 10px;
-    font-size: 10px;
-    font-weight: 600;
-    color: #4A5568;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+    font-weight: 500;
+    color: #434343;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    width: 100%;
+    text-align: center;
 }
 
 .hero-section-box-body {
     color: #A0AEC0;
     width: 100%;
-    height: 75px;
+    --ticker-height: 75px;
+    height: var(--ticker-height);
     /* Exact match to ticker-item height */
     display: flex;
-    align-items: flex-start;
-    /* Alignment handled by translateY */
+    align-items: center;
     justify-content: center;
     overflow: hidden;
     padding-top: 0;
+    background-color: #F2FBF7;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.hero-section-box-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 65%;
+    margin: 0 auto;
+}
+
+.hero-section-box-icon {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.hero-section-count {
+    font-size: 28px;
+    font-weight: 750;
+    color: #434343;
+    text-align: right;
+    flex-grow: 1;
 }
 
 .hero-section-currency-ticker {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-    animation: currencySlide 10s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    align-items: flex-end;
+    /* Align to the right side center */
+    height: var(--ticker-height);
+    /* Set height to match viewing window for perfect centering */
+    animation: currencySlide 15s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
 
 .hero-section-ticker-item {
-    height: 75px;
+    height: var(--ticker-height);
     /* Match viewing window */
-    min-height: 75px;
+    min-height: var(--ticker-height);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+    /* Right side center */
     font-size: 20px;
     font-weight: 750;
-    color: #616264;
+    color: #434343;
     width: 100%;
-    text-align: center;
+    text-align: right;
 }
 
 @keyframes currencySlide {
@@ -386,28 +575,33 @@
         transform: translateY(0);
     }
 
-    20%,
-    35% {
-        transform: translateY(-75px);
+    16.6%,
+    31.6% {
+        transform: translateY(calc(var(--ticker-height) * -1));
     }
 
-    40%,
-    55% {
-        transform: translateY(-150px);
+    33.3%,
+    48.3% {
+        transform: translateY(calc(var(--ticker-height) * -2));
     }
 
-    60%,
-    75% {
-        transform: translateY(-225px);
+    50%,
+    65% {
+        transform: translateY(calc(var(--ticker-height) * -3));
     }
 
-    80%,
-    95% {
-        transform: translateY(-300px);
+    66.6%,
+    81.6% {
+        transform: translateY(calc(var(--ticker-height) * -4));
+    }
+
+    83.3%,
+    98.3% {
+        transform: translateY(calc(var(--ticker-height) * -5));
     }
 
     100% {
-        transform: translateY(-375px);
+        transform: translateY(calc(var(--ticker-height) * -5));
     }
 }
 

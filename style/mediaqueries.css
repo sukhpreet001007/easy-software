@@ -25,6 +25,11 @@
         font-size: 13px;
         letter-spacing: 0.8px;
     }
+
+    /* Hide desktop buttons when menu button is visible */
+    .navbar-desktop-btns {
+        display: none !important;
+    }
 }
 
 /* Extra small devices (max-width: 575.98px) */
@@ -70,6 +75,30 @@
     .navbar-sidebar-item {
         padding: 0;
     }
+
+    .navbar-sidebar-footer {
+        margin-top: 20px !important;
+    }
+}
+
+/* Tablet Landscape specific */
+@media (min-width: 992px) and (max-width: 1300px) {
+    .navbar-desktop-btns {
+        display: none !important;
+    }
+
+    .navbar-drop-container {
+        display: block !important;
+    }
+}
+
+.no-caret::after {
+    display: none !important;
+}
+
+.navbar-sidebar-footer {
+    padding-top: 20px;
+    border-top: 1px solid #eee;
 }
 
 /* Hero Section Media Queries */
@@ -158,10 +187,176 @@
     .hero-section-box1 {
         height: 80px;
         border-top-width: 20px;
+        border-radius: 10px;
     }
 
     .hero-section-box-header {
-        font-size: 7px;
+        font-size: 6px;
         top: -16px;
+    }
+
+    .hero-section-box-body {
+        --ticker-height: 60px;
+    }
+
+    .hero-section-box-content-wrapper {
+        width: 90% !important;
+    }
+
+    .hero-section-box-icon {
+        width: 16px !important;
+        height: 16px !important;
+    }
+
+    .hero-section-count {
+        font-size: 16px !important;
+    }
+
+    .hero-section-ticker-item {
+        font-size: 12px !important;
+    }
+}
+
+/* Brands Section Media Queries */
+@media (max-width: 991.98px) {
+    .brands-section {
+        padding: 60px 0;
+    }
+
+
+
+    .brands-section-box {
+        flex: 0 0 calc(33.33% - 24px);
+        max-width: calc(33.33% - 24px);
+    }
+}
+
+@media (max-width: 575.98px) {
+
+
+    .brands-section-p {
+        margin-bottom: 40px;
+    }
+
+    .brands-section-box {
+        flex: 0 0 calc(50% - 12px);
+        max-width: calc(50% - 12px);
+    }
+
+    .brands-section-box1,
+    .brands-section-box2,
+    .brands-section-box3,
+    .brands-section-box4,
+    .brands-section-box5,
+    .brands-section-box6 {
+        height: 100px;
+        padding: 15px;
+    }
+}
+
+/* Section Promo Media Queries */
+@media (max-width: 991.98px) {
+    .section-promo {
+        padding: 60px 0;
+        text-align: center;
+    }
+
+    .section-promo-content {
+        padding-right: 0;
+        margin-top: 40px;
+    }
+
+
+
+    .section-promo-feature-item {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .section-promo-text h6 {
+        font-size: 16px;
+    }
+
+    .section-promo-text p {
+        font-size: 13px;
+    }
+
+    .section-promo-image-wrapper {
+        margin-bottom: 40px;
+        height: 450px;
+        max-width: 500px;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 575.98px) {
+
+
+
+
+    .section-promo-subtitle {
+        margin-bottom: 32px;
+    }
+
+    .section-promo-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .section-promo-image-wrapper {
+        height: 320px;
+        max-width: 350px;
+    }
+}
+
+/* Section Three Hero Media Queries */
+@media (max-width: 991.98px) {
+    .section-three-hero {
+        padding: 60px 0;
+    }
+
+    .section-three-header {
+        margin-bottom: 40px;
+    }
+
+    .section-three-main-subtitle {
+        margin-bottom: 40px;
+    }
+
+    .section-three-row {
+        margin-bottom: 60px;
+        text-align: center;
+    }
+
+    .section-three-text {
+        padding: 0 !important;
+        margin-top: 30px;
+    }
+
+    .section-three-image {
+        margin-bottom: 0;
+    }
+}
+
+/* Percentage Section Media Queries */
+@media (max-width: 991.98px) {
+    .box-per {
+        flex: 1 1 calc(50% - 25px);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .section-percentage {
+        padding: 60px 0;
+    }
+
+    .box-per {
+        flex: 1 1 100%;
+        min-width: 100%;
+    }
+
+    .box-per {
+        padding: 30px 15px;
     }
 }
