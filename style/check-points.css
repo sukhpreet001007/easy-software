@@ -1,0 +1,94 @@
+.check-point-sections {
+    padding: 30px 0;
+    overflow: hidden;
+    background-color: #fff;
+    position: relative;
+    width: 100%;
+}
+
+.check-point-wrapper {
+    display: flex;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+}
+
+/* Fading effect on left and right */
+.check-point-sections::before,
+.check-point-sections::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.check-point-sections::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 20%, rgba(255, 255, 255, 0) 100%);
+}
+
+.check-point-sections::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 20%, rgba(255, 255, 255, 0) 100%);
+}
+
+.check-point-track {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    /* Space between items */
+    animation: marquee-scroll 40s linear infinite;
+    /* Slower, smoother scroll */
+    padding: 0 30px;
+    width: max-content;
+}
+
+.check-point-item {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 19px;
+    font-weight: 500;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.check-point-item i {
+    color: #00D285;
+    font-size: 18px;
+}
+
+/* Stop animation on hover */
+.check-point-sections:hover .check-point-track {
+    animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .check-point-item {
+        font-size: 16px;
+    }
+
+    .check-point-track {
+        gap: 40px;
+    }
+
+    .check-point-sections::before,
+    .check-point-sections::after {
+        width: 80px;
+    }
+}

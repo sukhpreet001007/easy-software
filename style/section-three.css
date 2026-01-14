@@ -43,7 +43,7 @@
 
 .section-three-image img {
     width: 100%;
-    max-width: 550px;
+    max-width: 610px;
     height: auto;
     object-fit: contain;
     transition: transform 0.5s ease;
