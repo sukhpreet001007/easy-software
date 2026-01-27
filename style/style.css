@@ -7,6 +7,18 @@
     --navbar-font: 'Outfit', sans-serif;
 }
 
+/* Scroll Progress Bar */
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: var(--navbar-primary-green);
+    z-index: 9999;
+    transition: width 0.1s ease-out;
+}
+
 body {
     font-family: "Inter", sans-serif;
     margin: 0;
@@ -29,4 +41,25 @@ ul {
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+/* Global scrollbar */
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+/* Scrollbar track */
+::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+/* Scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    background: #10b981;
+    border-radius: 10px;
+}
+
+/* Hover effect */
+::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
 }
