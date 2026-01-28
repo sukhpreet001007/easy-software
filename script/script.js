@@ -387,6 +387,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function () {
         const revealElements = document.querySelectorAll('.reveal');
 
+        // Detect if mobile viewport
+        const isMobile = window.innerWidth <= 768;
+
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -399,8 +402,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         }, {
-            threshold: 0.15, // Trigger when 15% of the element is visible
-            rootMargin: '0px 0px -50px 0px' // Slightly earlier trigger than standard
+            threshold: isMobile ? 0.05 : 0.15, // Lower threshold on mobile for earlier trigger
+            rootMargin: isMobile ? '0px 0px -20px 0px' : '0px 0px -50px 0px' // Earlier trigger on mobile
         });
 
         revealElements.forEach(el => revealObserver.observe(el));

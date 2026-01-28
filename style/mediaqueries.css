@@ -138,6 +138,42 @@
         margin-bottom: 30px;
     }
 
+    /* Dashboard full width on mobile - Force edge-to-edge */
+    .hero-section-dashboard {
+        margin-top: 40px;
+        padding: 0 !important;
+        /* Force remove all padding */
+        margin-left: 0;
+        margin-right: 0;
+        width: 100vw;
+        /* Full viewport width */
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+    }
+
+    .hero-section-dashboard-image {
+        max-width: 100% !important;
+        /* Force full width */
+        width: 100% !important;
+        border-radius: 0 !important;
+        /* Remove border radius */
+        border-left: none !important;
+        /* Remove side borders */
+        border-right: none !important;
+        box-shadow: none;
+        /* Remove shadow on mobile */
+    }
+
+    .hero-section-dashboard-head,
+    .hero-section-dashboard-money-boxes,
+    .hero-section-dashboard-clients {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
     .hero-section-btn-group {
         flex-direction: column;
         gap: 15px;
@@ -190,16 +226,27 @@
         display: flex !important;
     }
 
+    /* Full-width dashboard for mobile - matching tablet behavior */
     .hero-section-dashboard {
         margin-top: 40px;
-        padding: 0 10px;
+        padding: 0 !important;
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
     }
 
     .hero-section-dashboard-image {
-        transform: scale(0.9);
-        transform-origin: top center;
-        width: 110%;
-        margin-left: -5%;
+        width: 100% !important;
+        max-width: 100% !important;
+        transform: none !important;
+        /* Remove scaling */
+        margin-left: 0 !important;
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
     }
 
     .hero-section-box-header {
@@ -211,9 +258,10 @@
 @media (max-width: 480px) {
 
     .hero-section-dashboard-image {
-        transform: scale(0.65);
-        margin-bottom: -200px;
-        border-radius: 12px;
+        transform: none !important;
+        /* Remove scaling on very small screens too */
+        margin-bottom: 0;
+        border-radius: 0 !important;
     }
 
     .hero-section-box1 {

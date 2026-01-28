@@ -144,8 +144,8 @@
     display: none !important;
 }
 
-/* Responsive adjustments */
-@media (max-width: 991px) {
+/* Responsive adjustments - Only show duplicates on mobile phones, not tablets */
+@media (max-width: 575px) {
     .mobile-marquee-item {
         display: flex !important;
     }

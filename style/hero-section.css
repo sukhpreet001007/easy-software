@@ -442,7 +442,7 @@
 
 .hero-section-dashboard-image {
     background: var(--color-white);
-    border: 1.5px solid var(--color-gray-slate);
+    border: 1.5px solid var(--color-border-gray-medium);
     border-radius: 24px;
     width: 100%;
     max-width: 1100px;
@@ -473,7 +473,7 @@
 
 .hero-section-box1 {
     background: var(--color-white);
-    border-top: 35px solid var(--color-bg-green-header);
+    border-top: 35px solid var(--navbar-primary-green);
     /* Light purple header */
     border-radius: 25px;
     height: 100%;
@@ -496,7 +496,7 @@
     transform: translateX(-50%);
     font-size: 13px;
     font-weight: 500;
-    color: var(--color-gray-dark-2);
+    color: var(--color-white);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     width: 100%;

@@ -79,13 +79,16 @@
 .navbar-megamenu::before {
     content: '';
     position: absolute;
-    top: -20px;
+    top: -30px;
+    /* Increased from 20px to 30px for easier cursor movement */
     left: 0;
     right: 0;
-    height: 20px;
+    height: 30px;
+    /* Increased bridge height */
 }
 
-.navbar-nav-item:hover .navbar-megamenu {
+.navbar-nav-item:hover .navbar-megamenu,
+.navbar-megamenu:hover {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
