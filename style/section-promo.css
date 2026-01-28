@@ -171,7 +171,7 @@
 /* Base Background */
 .promo-img-bg-1 {
     position: absolute;
-    width: 100%;
+    width: 50%;
     left: 0;
     top: 50%;
     transform: translateY(-50%);

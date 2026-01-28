@@ -176,3 +176,111 @@
         max-height: 60px;
     }
 }
+
+/* Badges Section Styles */
+.badges-section {
+    padding: 60px 0;
+    background-color: var(--color-white);
+    overflow: hidden;
+}
+
+.badges-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    perspective: 1000px;
+    /* For 3D tilt depth */
+}
+
+.badge-item {
+    position: relative;
+    width: 140px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+    transform-style: preserve-3d;
+}
+
+.badge-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.08));
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Advanced Hover Effects */
+.badge-item:hover {
+    transform: scale(1.15) translateY(-15px) rotateY(10deg) rotateX(5deg);
+    z-index: 10;
+}
+
+.badge-item:hover img {
+    filter: drop-shadow(0 20px 30px rgba(102, 51, 152, 0.25));
+}
+
+/* Shine Effect Overlay */
+.badge-item::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,
+            transparent 45%,
+            rgba(255, 255, 255, 0.3) 50%,
+            transparent 55%);
+    transform: rotate(45deg) translate(-100%, -100%);
+    transition: all 0.6s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.badge-item:hover::after {
+    transform: rotate(45deg) translate(100%, 100%);
+}
+
+/* Ambient Glow */
+.badge-item::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    background: radial-gradient(circle, rgba(102, 51, 152, 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+    border-radius: 50%;
+}
+
+.badge-item:hover::before {
+    opacity: 1;
+}
+
+/* Mobile Adjustments for Badges */
+@media (max-width: 991px) {
+    .badge-item {
+        width: 110px;
+        height: 140px;
+    }
+}
+
+@media (max-width: 576px) {
+    .badges-container {
+        gap: 15px;
+        padding: 0 20px;
+    }
+
+    .badge-item {
+        width: 90px;
+        height: 120px;
+    }
+}

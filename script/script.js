@@ -382,4 +382,27 @@ document.addEventListener('DOMContentLoaded', function () {
             marqueeInner.innerHTML = items + items;
         }
     })();
+
+    // Scroll Reveal Animation Logic
+    (function () {
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Once animated, we can unobserve if we only want it to happen once
+                    // revealObserver.unobserve(entry.target);
+                } else {
+                    // Optional: remove 'active' to re-animate when scrolling back up
+                    // entry.target.classList.remove('active');
+                }
+            });
+        }, {
+            threshold: 0.15, // Trigger when 15% of the element is visible
+            rootMargin: '0px 0px -50px 0px' // Slightly earlier trigger than standard
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    })();
 });
