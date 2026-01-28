@@ -1,7 +1,7 @@
 /* Brands Section Styles */
 .brands-section {
     padding: 100px 0;
-    background-color: #fff;
+    background-color: var(--color-white);
 }
 
 .brands-section-container {
@@ -14,83 +14,165 @@
 .brands-section-title {
     font-size: clamp(28px, 5vw, 48px);
     font-weight: 500;
-    color: #000000;
+    color: var(--color-black);
     margin-bottom: 12px;
 }
 
 .brands-section-p {
     font-size: clamp(15px, 2.5vw, 18px);
-    color: #696969;
+    color: var(--color-gray-warm);
     margin-bottom: 60px;
 }
 
 .brands-section-brands {
     display: flex;
     justify-content: center;
-    gap: 24px;
+    gap: 40px;
     flex-wrap: wrap;
+    /* Fallback for no-js or initial state */
+}
+
+/* Marquee Specific Styles */
+.brands-marquee-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+/* Blur/Shade effect on sides */
+.brands-marquee-container::before,
+.brands-marquee-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.brands-marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-white) 20%, transparent 100%);
+}
+
+.brands-marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-white) 20%, transparent 100%);
+}
+
+.brands-marquee-inner {
+    display: flex;
+    width: max-content;
+    animation: marqueeFlow 30s linear infinite;
+    padding: 20px 0;
+}
+
+.brands-marquee-inner:hover {
+    animation-play-state: paused;
 }
 
 .brands-section-box {
-    flex: 0 0 calc(16.66% - 20px);
-    max-width: calc(16.66% - 20px);
+    flex: 0 0 auto;
+    width: 240px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .brands-section-box:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.05);
+    cursor: pointer;
 }
 
-
 .brands-section-brand-img {
+    height: 100px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 15px;
 }
 
 .brands-section-brand-img img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 200px;
+    max-height: 80px;
     object-fit: contain;
+    transition: all 0.3s ease;
 }
 
 
-/* Flag and text container OUTSIDE the logo box */
+/* Flag container */
 .brands-section-flag {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    font-size: 13px;
+    gap: 8px;
+    font-size: 15px;
     font-weight: 500;
-    color: #374151;
+    color: var(--color-gray-500);
     width: 100%;
+    transition: color 0.3s ease;
+}
+
+.brands-section-box:hover .brands-section-flag {
+    color: var(--navbar-primary-green);
 }
 
 .brands-section-flag img {
-    width: 16px;
-    height: 12px;
+    width: 20px;
+    height: 15px;
     object-fit: cover;
-    border-radius: 2px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    box-shadow: 0 1px 3px var(--shadow-black-10);
 }
 
-/* Marquee Animation for Hero Section Trust Row (Mobile) */
-@keyframes marqueeScroll {
+@keyframes marqueeFlow {
     0% {
         transform: translateX(0);
     }
 
     100% {
         transform: translateX(-50%);
-        /* Moves by half the total width (since items are duplicated once) */
     }
 }
 
-/* Hide duplicated items on desktop/tablet by default */
+/* Fix for side effects on Hero Section duplicates */
 .mobile-marquee-item {
     display: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .mobile-marquee-item {
+        display: flex !important;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .brands-marquee-container::before,
+    .brands-marquee-container::after {
+        width: 100px;
+    }
+
+    .brands-marquee-inner {
+        gap: 40px;
+        animation-duration: 25s;
+    }
+
+    .brands-section-box {
+        width: 180px;
+    }
+
+    .brands-section-brand-img {
+        height: 80px;
+    }
+
+    .brands-section-brand-img img {
+        max-width: 150px;
+        max-height: 60px;
+    }
 }

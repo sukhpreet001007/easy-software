@@ -27,11 +27,13 @@
     border-radius: 50%;
     pointer-events: none;
 }
-.points-section-container{
-   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+
+.points-section-container {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     padding: 45px 35px;
 }
+
 .points-hero-content {
     padding-right: 30px;
     position: relative;
@@ -75,18 +77,18 @@
     flex-shrink: 0;
     width: 40px;
     height: 40px;
-    background: #03CF65;
+    background: #663398;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    box-shadow: 0 4px 12px rgba(102, 51, 152, 0.25);
     transition: all 0.3s ease;
 }
 
 .points-hero-feature-item:hover .points-hero-icon {
     transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+    box-shadow: 0 6px 20px rgba(102, 51, 152, 0.35);
 }
 
 .points-hero-icon svg {
@@ -114,14 +116,14 @@
     align-items: center;
     gap: 10px;
     padding: 14px 32px;
-    background: #03CF65;
+    background: #663398;
     color: white;
     font-size: 16px;
     font-weight: 600;
     border-radius: 12px;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 4px 16px rgba(102, 51, 152, 0.3);
     position: relative;
     overflow: hidden;
 }
@@ -143,7 +145,7 @@
 
 .points-hero-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 6px 24px rgba(102, 51, 152, 0.4);
     color: white;
 }
 

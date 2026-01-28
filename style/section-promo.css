@@ -1,7 +1,7 @@
 /* Section Promo Styles */
 .section-promo {
     padding: 100px 0;
-    background-color: #fff;
+    background-color: var(--color-white);
     overflow: hidden;
 }
 
@@ -9,14 +9,14 @@
     font-size: clamp(28px, 5vw, 48px);
     font-weight: 600;
     line-height: 1.1;
-    color: #111827;
+    color: var(--color-gray-900);
     margin-bottom: 24px;
     letter-spacing: -1px;
 }
 
 .section-promo-subtitle {
     font-size: clamp(15px, 2.5vw, 18px);
-    color: #696969;
+    color: var(--color-gray-warm);
     margin-bottom: 48px;
     font-weight: 400;
 }
@@ -32,38 +32,98 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    padding: 15px;
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+    /* Prepare for hover border */
+    /* Entry animation default state */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Staggered animation delay based on child index (assuming only 3 items typically) */
+.section-promo-feature-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.section-promo-feature-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.section-promo-feature-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.section-promo-feature-item:hover,
+.section-promo-feature-item.feature-item-active {
+    background-color: var(--color-bg-mint-light);
+    border-color: var(--color-border-light);
+    transform: translateX(10px);
+    box-shadow: 0 10px 30px var(--shadow-black-04);
 }
 
 .section-promo-icon-box {
-    width: 54px;
-    height: 54px;
-    background: #F2FBF7;
+    width: 60px;
+    /* Slight size increase for better presence */
+    height: 60px;
+    background: var(--color-white);
     border-radius: 50%;
+    /* Circle */
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 15px var(--shadow-primary-green-20);
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border: 2px solid var(--color-bg-mint-light);
+}
+
+.section-promo-feature-item:hover .section-promo-icon-box,
+.section-promo-feature-item.feature-item-active .section-promo-icon-box {
+    transform: scale(1.1) rotate(5deg);
+    background: var(--color-white);
+    border-color: var(--navbar-primary-green);
 }
 
 .section-promo-icon {
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
     object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.section-promo-feature-item:hover .section-promo-icon,
+.section-promo-feature-item.feature-item-active .section-promo-icon {
+    transform: scale(1.1);
 }
 
 .section-promo-text h6 {
     font-size: 19px;
     font-weight: 700;
-    color: #111827;
-    margin-bottom: 4px;
+    color: var(--color-gray-900);
+    margin-bottom: 6px;
+    transition: color 0.3s ease;
+}
+
+.section-promo-feature-item:hover .section-promo-text h6,
+.section-promo-feature-item.feature-item-active .section-promo-text h6 {
+    color: var(--navbar-primary-green);
 }
 
 .section-promo-text p {
     font-size: 15px;
-    color: #696969;
+    color: var(--color-gray-warm);
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.5;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .section-promo-btn {
@@ -71,21 +131,21 @@
     align-items: center;
     gap: 12px;
     padding: 18px 40px;
-    background-color: #03CF65;
-    color: #fff;
+    background-color: var(--navbar-primary-green);
+    color: var(--color-white);
     border: none;
     border-radius: 12px;
     font-weight: 700;
     font-size: 17px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 6px 16px rgba(3, 207, 101, 0.2);
+    box-shadow: 0 6px 16px var(--shadow-primary-green-20);
 }
 
 .section-promo-btn:hover {
-    background-color: #02b35a;
+    background-color: var(--navbar-primary-green-hover);
     transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(3, 207, 101, 0.3);
+    box-shadow: 0 10px 24px var(--shadow-primary-30);
 }
 
 .section-promo-btn svg {

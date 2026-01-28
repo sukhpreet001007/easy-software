@@ -326,4 +326,60 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }, 500);
     })();
+
+
+    // Auto-hover sequential effect for promo section
+    (function () {
+        const promoSection = document.querySelector('.section-promo');
+        const promoItems = document.querySelectorAll('.section-promo-feature-item');
+        if (!promoSection || promoItems.length === 0) return;
+
+        const observerOptions = {
+            threshold: 0.3 // Trigger when 30% of section is visible
+        };
+
+        const promoObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Start sequence
+                    runPulseSequence();
+                    // Stop observing after triggering once
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        promoObserver.observe(promoSection);
+
+        function runPulseSequence() {
+            // Initial delay to let entry animations finish (approx 0.8s)
+            setTimeout(() => {
+                let delay = 0;
+                promoItems.forEach((item, index) => {
+                    // Add active class
+                    setTimeout(() => {
+                        item.classList.add('feature-item-active');
+
+                        // Remove active class after a duration
+                        setTimeout(() => {
+                            item.classList.remove('feature-item-active');
+                        }, 1200); // Keep active for 1.2s
+
+                    }, delay);
+
+                    delay += 800; // Overlap slightly: next starts 0.8s after previous
+                });
+            }, 800);
+        }
+    })();
+
+    // Brands Marquee Cloning Logic
+    (function () {
+        const marqueeInner = document.querySelector('.brands-marquee-inner');
+        if (marqueeInner) {
+            const items = marqueeInner.innerHTML;
+            // Duplicate items once to ensure the marquee container loops perfectly with -50% translation
+            marqueeInner.innerHTML = items + items;
+        }
+    })();
 });

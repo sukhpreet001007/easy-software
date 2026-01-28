@@ -1,8 +1,8 @@
 /* Navbar Styles */
 .navbar-container {
     padding: 15px 0;
-    background-color: #fff;
-    border-bottom: 3px solid #f0f0f0;
+    background-color: var(--color-white);
+    border-bottom: 3px solid var(--color-border-light);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -64,14 +64,14 @@
     left: 0;
     right: 0;
     width: 100%;
-    background: #fff;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    background: var(--color-white);
+    box-shadow: 0 15px 30px var(--shadow-black-08);
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1001;
-    border-top: 1px solid #f0f0f0;
+    border-top: 1px solid var(--color-border-light);
     pointer-events: none;
 }
 
@@ -106,12 +106,12 @@
     transition: all 0.3s ease;
     text-decoration: none;
     height: 100%;
-    border: 1px solid transparent;
+    border: 1px solid var(--color-transparent);
 }
 
 .navbar-megamenu-item:hover {
-    background: #f8f9fa;
-    border-color: #f0f0f0;
+    background: var(--color-bg-light);
+    border-color: var(--color-border-light);
     transform: translateY(-3px);
 }
 
@@ -146,38 +146,38 @@
 
 /* Icon Colors */
 .icon-blue {
-    background: #eef7ff;
-    color: #0080ff;
+    background: var(--icon-blue-bg);
+    color: var(--icon-blue);
 }
 
 .icon-yellow {
-    background: #fffcf0;
-    color: #f59e0b;
+    background: var(--icon-yellow-bg);
+    color: var(--icon-yellow);
 }
 
 .icon-red {
-    background: #fff1f2;
-    color: #e11d48;
+    background: var(--icon-red-bg);
+    color: var(--icon-red);
 }
 
 .icon-purple {
-    background: #faf5ff;
-    color: #8b5cf6;
+    background: var(--icon-purple-bg);
+    color: var(--icon-purple);
 }
 
 .icon-green {
-    background: #f0fdf4;
-    color: #16a34a;
+    background: var(--icon-green-bg);
+    color: var(--icon-green);
 }
 
 .icon-cyan {
-    background: #ecfeff;
-    color: #0891b2;
+    background: var(--icon-cyan-bg);
+    color: var(--icon-cyan);
 }
 
 .icon-teal {
-    background: #f0fdfa;
-    color: #0d9488;
+    background: var(--icon-teal-bg);
+    color: var(--icon-teal);
 }
 
 .navbar-lang-toggle {
@@ -205,15 +205,15 @@
 
 .navbar-btn-primary {
     background-color: var(--navbar-primary-green);
-    color: #fff;
+    color: var(--color-white);
     border: 1px solid var(--navbar-primary-green);
 }
 
 .navbar-btn-primary:hover {
-    background-color: #00b964;
-    color: #fff;
+    background-color: var(--color-green-hover-nav);
+    color: var(--color-white);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 208, 113, 0.2);
+    box-shadow: 0 4px 12px var(--shadow-primary-20);
 }
 
 .navbar-btn-outline {
@@ -224,7 +224,7 @@
 
 .navbar-btn-outline:hover {
     background-color: var(--navbar-dark);
-    color: #fff;
+    color: var(--color-white);
     transform: translateY(-2px);
 }
 
@@ -247,7 +247,7 @@
     border-radius: 12px;
     font-weight: 600;
     color: var(--navbar-dark);
-    background: #f1f3f5;
+    background: var(--color-gray-100);
     transition: all 0.3s ease;
     text-decoration: none;
     position: relative;
@@ -255,7 +255,7 @@
 }
 
 .navbar-mobile-toggle:hover {
-    background: #e9ecef;
+    background: var(--color-gray-200);
 }
 
 .navbar-menu-text {
@@ -320,7 +320,7 @@
 }
 
 .navbar-sidebar-header {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--color-gray-eee);
     padding: 24px;
 }
 
@@ -344,4 +344,29 @@
 
 .navbar-sidebar-link:hover {
     color: var(--navbar-primary-green);
+}
+
+/* Sidebar split toggle styles */
+.navbar-sidebar-toggle-btn {
+    cursor: pointer;
+    padding: 10px 0 10px 10px;
+    /* Left padding for separation */
+    display: flex;
+    align-items: center;
+    color: var(--navbar-gray);
+    background: transparent;
+    border: none;
+}
+
+.navbar-sidebar-toggle-btn:hover {
+    color: var(--navbar-primary-green);
+}
+
+.navbar-sidebar-toggle-btn:not(.collapsed) .sublist-arrow {
+    transform: rotate(180deg);
+}
+
+.navbar-sidebar-sublink {
+    flex-grow: 1;
+    /* Allow text to take remaining width */
 }

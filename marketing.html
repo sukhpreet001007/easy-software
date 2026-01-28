@@ -39,7 +39,6 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
     <link rel="stylesheet" href="style/clients-review.css">
     <link rel="stylesheet" href="style/points-hero.css">
     <link rel="stylesheet" href="style/faq-section.css">
-    <link rel="stylesheet" href="style/button-effects.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 </head>
@@ -94,7 +93,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                                         </a>
                                     </div>
                                     <div class="col-lg-4">
-                                        <a href="marketing.html" class="navbar-megamenu-item">
+                                        <a href="#" class="navbar-megamenu-item">
                                             <div class="navbar-megamenu-icon icon-yellow">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                     stroke="currentColor" stroke-width="2">
@@ -226,7 +225,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                         </a>
                     </li>
                     <li class="navbar-nav-item ms-4 navbar-desktop-btns">
-                        <a href="#" class="navbar-btn navbar-btn-primary enhanced-btn enhanced-btn-fill">
+                        <a href="#" class="navbar-btn navbar-btn-primary">
                             Book Free Demo
                             <svg class="navbar-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -236,7 +235,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                         </a>
                     </li>
                     <li class="navbar-nav-item navbar-desktop-btns">
-                        <a href="#" class="navbar-btn navbar-btn-outline enhanced-btn enhanced-btn-outline">
+                        <a href="#" class="navbar-btn navbar-btn-outline">
                             Contact us
                             <svg class="navbar-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -301,112 +300,105 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                     <div class="collapse" id="featuresCollapse">
                         <ul class="navbar-sidebar-sublist">
                             <li class="navbar-sidebar-subitem">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <a href="#" class="navbar-sidebar-sublink">Client Management</a>
-                                    <button class="navbar-sidebar-toggle-btn collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#clientMgmtDesc">
-                                        <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </button>
-                                </div>
+                                <a href="#clientMgmtDesc"
+                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="collapse">
+                                    Client Management
+                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
                                 <div class="collapse" id="clientMgmtDesc">
                                     <p class="navbar-sidebar-desc">Transfer staff, products and analyse performance at
                                         one dashboard</p>
                                 </div>
                             </li>
                             <li class="navbar-sidebar-subitem">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <a href="marketing.html" class="navbar-sidebar-sublink">Marketing</a>
-                                    <button class="navbar-sidebar-toggle-btn collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#marketingDesc">
-                                        <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </button>
-                                </div>
+                                <a href="#marketingDesc"
+                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="collapse">
+                                    Marketing
+                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
                                 <div class="collapse" id="marketingDesc">
                                     <p class="navbar-sidebar-desc">Boost your sales & bring more cash flow with
                                         marketing tools that convert.</p>
                                 </div>
                             </li>
                             <li class="navbar-sidebar-subitem">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <a href="#" class="navbar-sidebar-sublink">Class Booking</a>
-                                    <button class="navbar-sidebar-toggle-btn collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#classBookingDesc">
-                                        <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </button>
-                                </div>
+                                <a href="#classBookingDesc"
+                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="collapse">
+                                    Class Booking
+                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
                                 <div class="collapse" id="classBookingDesc">
                                     <p class="navbar-sidebar-desc">Convert your insta followers into your clients with
                                         free web portal</p>
                                 </div>
                             </li>
                             <li class="navbar-sidebar-subitem">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <a href="#" class="navbar-sidebar-sublink">Employee Management</a>
-                                    <button class="navbar-sidebar-toggle-btn collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#employeeMgmtDesc">
-                                        <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </button>
-                                </div>
+                                <a href="#employeeMgmtDesc"
+                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="collapse">
+                                    Employee Management
+                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
                                 <div class="collapse" id="employeeMgmtDesc">
                                     <p class="navbar-sidebar-desc">Make your employees more efficient and productive
                                         with smart management</p>
                                 </div>
                             </li>
                             <li class="navbar-sidebar-subitem">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <a href="#" class="navbar-sidebar-sublink">Billing</a>
-                                    <button class="navbar-sidebar-toggle-btn collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#billingDesc">
-                                        <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </button>
-                                </div>
+                                <a href="#billingDesc"
+                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="collapse">
+                                    Billing
+                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
                                 <div class="collapse" id="billingDesc">
                                     <p class="navbar-sidebar-desc">Fast, reliable billing with secure payments and
                                         automated invoicing.</p>
                                 </div>
                             </li>
                             <li class="navbar-sidebar-subitem">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <a href="#" class="navbar-sidebar-sublink">Reporting</a>
-                                    <button class="navbar-sidebar-toggle-btn collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#reportingDesc">
-                                        <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </button>
-                                </div>
+                                <a href="#reportingDesc"
+                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="collapse">
+                                    Reporting
+                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
                                 <div class="collapse" id="reportingDesc">
                                     <p class="navbar-sidebar-desc">Analysing your business performance & sales made easy
                                     </p>
                                 </div>
                             </li>
                             <li class="navbar-sidebar-subitem">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <a href="#" class="navbar-sidebar-sublink">Biometric</a>
-                                    <button class="navbar-sidebar-toggle-btn collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#biometricDesc">
-                                        <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </button>
-                                </div>
+                                <a href="#biometricDesc"
+                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="collapse">
+                                    Biometric
+                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
                                 <div class="collapse" id="biometricDesc">
                                     <p class="navbar-sidebar-desc">Reduce wastage of products & stay ahead in Inventory
                                         & Stock Management</p>
@@ -439,7 +431,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
 
             <!-- Sidebar Bottom Buttons -->
             <div class="navbar-sidebar-footer mt-5">
-                <a href="#" class="navbar-btn navbar-btn-primary w-100 mb-3 enhanced-btn enhanced-btn-fill">
+                <a href="#" class="navbar-btn navbar-btn-primary w-100 mb-3">
                     Book Free Demo
                     <svg class="navbar-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -447,7 +439,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                         <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                 </a>
-                <a href="#" class="navbar-btn navbar-btn-outline w-100 enhanced-btn enhanced-btn-outline">
+                <a href="#" class="navbar-btn navbar-btn-outline w-100">
                     Contact us
                     <svg class="navbar-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -459,138 +451,48 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
         </div>
     </div>
 
-    <section class="hero-section-wrapper">
-        <div class="container text-center">
-            <div class="hero-section-award-container">
-                <div class="hero-section-award-badge">
-                    <span class="hero-section-award-icon"><img src="assets/award.svg" alt=""></span>
-                    <span class="hero-section-award-text">— "CTX Growth Champion Year 2025" awarded by WhatsApp</span>
-                    <!-- Border animation elements -->
-                    <div class="border-animation-circle"></div>
-                    <div class="border-animation-circle delay-1"></div>
-                    <div class="border-animation-circle delay-2"></div>
-                </div>
-            </div>
 
-            <div class="hero-trust-marquee-mask">
-                <div class="hero-section-trust-row">
-                    <div class="hero-section-trust-item"><img class="award-img" src="assets/six.svg" loading="lazy"
-                            alt="Award 5"></div>
-                    <div class="hero-section-trust-item"><img class="award-img" src="assets/two.svg" loading="lazy"
-                            alt="Award 1"></div>
-                    <div class="hero-section-trust-item"><img class="award-img" src="assets/three.svg" loading="lazy"
-                            alt="Award 2"></div>
-                    <div class="hero-section-trust-item"><img class="award-img" src="assets/four.svg" loading="lazy"
-                            alt="Award 3"></div>
-                    <div class="hero-section-trust-item"><img class="award-img" src="assets/five.svg" loading="lazy"
-                            alt="Award 4"></div>
-                    <!-- Duplicated items for mobile marquee -->
-                    <div class="hero-section-trust-item mobile-marquee-item"><img class="award-img" src="assets/six.svg"
-                            loading="lazy" alt="Award 5"></div>
-                    <div class="hero-section-trust-item mobile-marquee-item"><img class="award-img" src="assets/two.svg"
-                            loading="lazy" alt="Award 1"></div>
-                    <div class="hero-section-trust-item mobile-marquee-item"><img class="award-img"
-                            src="assets/three.svg" loading="lazy" alt="Award 2"></div>
-                    <div class="hero-section-trust-item mobile-marquee-item"><img class="award-img"
-                            src="assets/four.svg" loading="lazy" alt="Award 3"></div>
-                    <div class="hero-section-trust-item mobile-marquee-item"><img class="award-img"
-                            src="assets/five.svg" loading="lazy" alt="Award 4"></div>
-                </div>
-            </div>
-
-            <!-- Main Heading -->
-            <h1 class="hero-section-main-title ">
-                <span class="hero-section-text-green counter-wrapper">
-                    <span class="counter" data-target="5">1</span>X
-                </span>
-                <span class="hero-section-text-green">Your Revenue</span><br>
-                with the Power of WhatsApp
-            </h1>
-
-            <!-- Description -->
-            <p class="hero-section-sub-desc">
-                Broadcast, Automate, Engage, Sell - do everything with the Ai-powered<br class="d-none d-md-block">
-                WhatsApp Marketing & Engagement Platform. Powered by Official WhatsApp APIs⚡
-            </p>
-
-            <!-- Buttons -->
-            <div class="hero-section-btn-group">
-                <a href="#" class="hero-section-action-btn hero-section-btn-fill enhanced-btn enhanced-btn-fill">
-                    Try Easy Software
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
-                <a href="#" class="hero-section-action-btn hero-section-btn-outline enhanced-btn enhanced-btn-outline">
-                    Get Live Demo
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
-            </div>
-        </div>
-
-        <div class="hero-section-dashboard">
-            <div class="hero-section-dashboard-image">
-                <div class="hero-section-dashboard-head">
-                    <img src="assets/hero-head.svg" alt="hero-head">
-                </div>
-                <div class="hero-section-dashboard-money-boxes">
-                    <div class="hero-section-box1 hero-section-sales-box">
-                        <div class="hero-section-box-header">TODAY SALES</div>
-                        <div class="hero-section-box-body">
-                            <div class="hero-section-box-content-wrapper">
-                                <img src="assets/box1.svg" alt="Sales Icon" class="hero-section-box-icon">
-                                <div class="hero-section-currency-ticker">
-                                    <div class="hero-section-ticker-item">INR 30,000</div>
-                                    <div class="hero-section-ticker-item">USD 360</div>
-                                    <div class="hero-section-ticker-item">AED 1,320</div>
-                                    <div class="hero-section-ticker-item">KWD 111</div>
-                                    <div class="hero-section-ticker-item">QAR 1,320</div>
-                                    <!-- Duplicate first for seamless loop -->
-                                    <div class="hero-section-ticker-item">INR 30,000</div>
-                                </div>
-                            </div>
+    <section class="inner-page-hero">
+        <div class="container-fluid p-0 page1-hero-container">
+            <div class="row align-items-center g-0">
+                <div class="col-lg-6">
+                    <div class="page1-hero-left-wrapper">
+                        <h1 class="page1-hero-title">Simplify Your Business with Smart Billing Software</h1>
+                        <p class="page1-hero-desc">The all-in-one billing and management solution for salons, spas,
+                            clinics, tattoo studios, auto detailing businesses, and many more.</p>
+                        <div class="page1-hero-btns">
+                            <a href="#" class="hero-section-action-btn hero-section-btn-fill">
+                                Try Easy Software
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                            <a href="#" class="hero-section-action-btn hero-section-btn-outline">
+                                Get Live Demo
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
                         </div>
-                    </div>
-                    <div class="hero-section-box1">
-                        <div class="hero-section-box-header">TODAY APPOINTMENTS</div>
-                        <div class="hero-section-box-body">
-                            <div class="hero-section-box-content-wrapper">
-                                <img src="assets/box2.svg" alt="Appointments Icon" class="hero-section-box-icon">
-                                <div class="hero-section-count" data-target="8">0</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hero-section-box1">
-                        <div class="hero-section-box-header">TODAY ENQUIRY</div>
-                        <div class="hero-section-box-body">
-                            <div class="hero-section-box-content-wrapper">
-                                <img src="assets/box3.svg" alt="Enquiry Icon" class="hero-section-box-icon">
-                                <div class="hero-section-count" data-target="10">0</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hero-section-box1">
-                        <div class="hero-section-box-header">CLIENTS VISIT</div>
-                        <div class="hero-section-box-body">
-                            <div class="hero-section-box-content-wrapper">
-                                <img src="assets/box4.svg" alt="Clients Icon" class="hero-section-box-icon">
-                                <div class="hero-section-count" data-target="8">0</div>
-                            </div>
+                        <div class="page1-hero-badges">
+                            <img src="assets/two.svg" alt="Badge 1">
+                            <img src="assets/six.svg" alt="Badge 5">
+                            <img src="assets/three.svg" alt="Badge 2">
+                            <img src="assets/four.svg" alt="Badge 3">
+                            <img src="assets/five.svg" alt="Badge 4">
                         </div>
                     </div>
                 </div>
-                <div class="hero-section-dashboard-clients">
-                    <img src="assets/dashboard-c.png" loading="lazy" alt="">
+                <div class="col-lg-6">
+                    <div class="page1-right-image-bg">
+                        <img src="assets/half-dashboard-2.png" alt="Dashboard" class="img-fluid page1-dashboard-img">
+                    </div>
                 </div>
             </div>
-
-
         </div>
     </section>
 
@@ -599,123 +501,59 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
         <div class="brands-section-container">
             <h2 class="brands-section-title">Business Owners Love Us</h2>
             <p class="brands-section-p">Trusted by 50,000+ Businesses across 10+ Countries</p>
-            <div class="brands-marquee-container">
-                <div class="brands-marquee-inner">
-                    <div class="brands-section-box">
-                        <div class="brands-section-box1">
-                            <div class="brands-section-brand-img"><img src="assets/Group 1249.svg" loading="lazy"
-                                    alt="">
-                            </div>
-                            <div class="brands-section-flag"><img src="assets/flag-b1.svg" loading="lazy" alt="">Kenya
-                            </div>
+            <div class="brands-section-brands">
+                <div class="brands-section-box">
+                    <div class="brands-section-box1">
+                        <div class="brands-section-brand-img"><img src="assets/Group 1249.svg" loading="lazy" alt="">
+                        </div>
+                        <div class="brands-section-flag"><img src="assets/flag-b1.svg" loading="lazy" alt="">Kenya</div>
+                    </div>
+                </div>
+                <div class="brands-section-box">
+                    <div class="brands-section-box2">
+                        <div class="brands-section-brand-img"><img src="assets/Group 1250.svg" loading="lazy" alt="">
+                        </div>
+                        <div class="brands-section-flag"><img src="assets/flag-b2.svg" loading="lazy" alt=""> Tanzania
                         </div>
                     </div>
-                    <div class="brands-section-box">
-                        <div class="brands-section-box2">
-                            <div class="brands-section-brand-img"><img src="assets/Group 1250.svg" loading="lazy"
-                                    alt="">
-                            </div>
-                            <div class="brands-section-flag"><img src="assets/flag-b2.svg" loading="lazy" alt="">
-                                Tanzania
-                            </div>
+                </div>
+                <div class="brands-section-box">
+                    <div class="brands-section-box3">
+                        <div class="brands-section-brand-img"><img src="assets/Group 1251.svg" loading="lazy" alt="">
+                        </div>
+                        <div class="brands-section-flag"><img src="assets/flag-b3.svg" loading="lazy" alt="">Mauritius
                         </div>
                     </div>
-                    <div class="brands-section-box">
-                        <div class="brands-section-box3">
-                            <div class="brands-section-brand-img"><img src="assets/Group 1251.svg" loading="lazy"
-                                    alt="">
-                            </div>
-                            <div class="brands-section-flag"><img src="assets/flag-b3.svg" loading="lazy"
-                                    alt="">Mauritius
-                            </div>
+                </div>
+                <div class="brands-section-box">
+                    <div class="brands-section-box4">
+                        <div class="brands-section-brand-img"><img src="assets/Group 1252.svg" loading="lazy" alt="">
+                        </div>
+                        <div class="brands-section-flag"><img src="assets/flag-b4.svg" loading="lazy" alt="">Muscat
                         </div>
                     </div>
-                    <div class="brands-section-box">
-                        <div class="brands-section-box4">
-                            <div class="brands-section-brand-img"><img src="assets/Group 1252.svg" loading="lazy"
-                                    alt="">
-                            </div>
-                            <div class="brands-section-flag"><img src="assets/flag-b4.svg" loading="lazy" alt="">Muscat
-                            </div>
+                </div>
+                <div class="brands-section-box">
+                    <div id="brand-5" class="brands-section-box5">
+                        <div class="brands-section-brand-img"><img src="assets/Group 1253.svg" loading="lazy"
+                                alt="Kuwait Brand"></div>
+                        <div class="brands-section-flag"><img src="assets/flag-b5.svg" loading="lazy" alt="">Kuwait
                         </div>
                     </div>
-                    <div class="brands-section-box">
-                        <div id="brand-5" class="brands-section-box5">
-                            <div class="brands-section-brand-img"><img src="assets/Group 1253.svg" loading="lazy"
-                                    alt="Kuwait Brand"></div>
-                            <div class="brands-section-flag"><img src="assets/flag-b5.svg" loading="lazy" alt="">Kuwait
-                            </div>
-                        </div>
-                    </div>
-                    <div class="brands-section-box">
-                        <div class="brands-section-box6">
-                            <div class="brands-section-brand-img"><img src="assets/Group 1254.svg" loading="lazy"
-                                    alt="UAE Brand"></div>
-                            <div class="brands-section-flag"><img src="assets/flag-b6.svg" loading="lazy" alt="">UAE
-                            </div>
-                        </div>
-                    </div>
-                    <div class="brands-section-box">
-                        <div class="brands-section-box6">
-                            <div class="brands-section-brand-img"><img src="assets/arab.jpg" loading="lazy"
-                                    alt="UAE Brand"></div>
-                            <div class="brands-section-flag"><img src="assets/flag-b6.svg" loading="lazy" alt="">UAE
-                            </div>
-                        </div>
-                    </div>
-                    <div class="brands-section-box">
-                        <div class="brands-section-box6">
-                            <div class="brands-section-brand-img"><img src="assets/pony.jpg" loading="lazy"
-                                    alt="UAE Brand"></div>
-                            <div class="brands-section-flag"><img src="assets/flag-b6.svg" loading="lazy" alt="">UAE
-                            </div>
-                        </div>
-                    </div>
-                    <div class="brands-section-box">
-                        <div class="brands-section-box6">
-                            <div class="brands-section-brand-img"><img src="assets/kesh.jpg" loading="lazy"
-                                    alt="UAE Brand"></div>
-                            <div class="brands-section-flag"><img src="assets/flag-b6.svg" loading="lazy" alt="">UAE
-                            </div>
-                        </div>
-                    </div>
-                    <div class="brands-section-box">
-                        <div class="brands-section-box6">
-                            <div class="brands-section-brand-img"><img src="assets/redorchid.jpg" loading="lazy"
-                                    alt="UAE Brand"></div>
-                            <div class="brands-section-flag"><img src="assets/flag-b6.svg" loading="lazy" alt="">UAE
-                            </div>
-                        </div>
-                    </div>
-                    <div class="brands-section-box">
-                        <div class="brands-section-box6">
-                            <div class="brands-section-brand-img"><img src="assets/purple.jpg" loading="lazy"
-                                    alt="UAE Brand"></div>
-                            <div class="brands-section-flag"><img src="assets/flag-b6.svg" loading="lazy" alt="">UAE
-                            </div>
-                        </div>
-                    </div>
-                    <div class="brands-section-box">
-                        <div class="brands-section-box6">
-                            <div class="brands-section-brand-img"><img src="assets/manofcave.jpg" loading="lazy"
-                                    alt="UAE Brand"></div>
-                            <div class="brands-section-flag"><img src="assets/flag-b6.svg" loading="lazy" alt="">UAE
-                            </div>
-                        </div>
-                    </div>
-                    <div class="brands-section-box">
-                        <div class="brands-section-box6">
-                            <div class="brands-section-brand-img"><img src="assets/albed.jpg" loading="lazy"
-                                    alt="UAE Brand"></div>
-                            <div class="brands-section-flag"><img src="assets/flag-b6.svg" loading="lazy" alt="">UAE
-                            </div>
-                        </div>
+                </div>
+                <div class="brands-section-box">
+                    <div class="brands-section-box6">
+                        <div class="brands-section-brand-img"><img src="assets/Group 1254.svg" loading="lazy"
+                                alt="UAE Brand"></div>
+                        <div class="brands-section-flag"><img src="assets/flag-b6.svg" loading="lazy" alt="">UAE</div>
                     </div>
                 </div>
             </div>
 
         </div>
     </section>
+
+
 
     <section class="section-promo">
         <div class="container">
@@ -758,7 +596,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                             </div>
                         </div>
 
-                        <button class="section-promo-btn enhanced-btn enhanced-btn-fill">
+                        <button class="section-promo-btn">
                             Book Demo
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -816,6 +654,38 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                 </div>
 
                 <!-- Row 2 -->
+                <div class="row align-items-center section-three-row">
+                    <div class="col-lg-6 order-2 order-lg-2">
+                        <div class="section-three-text ps-lg-5">
+                            <h3>Empower your Business</h3>
+                            <p>Give your academy a boost! Manage schedule, students, and admin tasks. Make enrollment a
+                                breeze, streamline course management, and effortlessly track student progress for an
+                                optimized learning experience with our management software.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-1 order-lg-1 text-center">
+                        <div class="section-three-image">
+                            <img src="assets/second-three.png" loading="lazy" alt="Empower Business">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="row align-items-center section-three-row">
+                    <div class="col-lg-6 order-2 order-lg-1">
+                        <div class="section-three-text">
+                            <h3>Client Management</h3>
+                            <p>Turn client chaos into client charm! Now you can effortlessly manage client data, track
+                                every interaction, and nurture long-lasting relationships with our client management
+                                software - designed to fuel your business growth and success!</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-1 order-lg-2 text-center">
+                        <div class="section-three-image">
+                            <img src="assets/third-three.png" loading="lazy" alt="Client Management">
+                        </div>
+                    </div>
+                </div>
                 <div class="row align-items-center section-three-row">
                     <div class="col-lg-6 order-2 order-lg-2">
                         <div class="section-three-text ps-lg-5">
@@ -1021,78 +891,6 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                 <div class="check-point-item"><i class="bi bi-check2"></i> Zero Setup Fee</div>
                 <div class="check-point-item"><i class="bi bi-check2"></i> Inquiry Handling</div>
                 <div class="check-point-item"><i class="bi bi-check2"></i> Status Points</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="growth-solution">
-        <div class="container">
-            <h2 class="growth-title">Growth Solution for your Businesses</h2>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-3 col-md-6 col-6">
-                    <div class="growth-card">
-                        <div class="growth-icon-box">
-                            <img src="assets/Layer_1 (4).png" alt="Beauty Salon">
-                        </div>
-                        <p class="growth-card-text">Beauty Salon<br>Software</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-6">
-                    <div class="growth-card">
-                        <div class="growth-icon-box">
-                            <img src="assets/Layer_1 (5).png" alt="Spa">
-                        </div>
-                        <p class="growth-card-text">Spa<br>Software</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-6">
-                    <div class="growth-card">
-                        <div class="growth-icon-box">
-                            <img src="assets/Layer_1 (6).png" alt="Aesthetic Clinic">
-                        </div>
-                        <p class="growth-card-text">Aesthetic Clinic<br>Software</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-6">
-                    <div class="growth-card">
-                        <div class="growth-icon-box">
-                            <img src="assets/Layer_1 (7).png" alt="Nail Salon">
-                        </div>
-                        <p class="growth-card-text">Nail Salon<br>Software</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-6">
-                    <div class="growth-card">
-                        <div class="growth-icon-box">
-                            <img src="assets/Layer_1 (11).png" alt="Tattoo Studio">
-                        </div>
-                        <p class="growth-card-text">Tattoo Studio<br>Software</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-6">
-                    <div class="growth-card">
-                        <div class="growth-icon-box">
-                            <img src="assets/Layer_1 (8).png" alt="Car Spa">
-                        </div>
-                        <p class="growth-card-text">Car Spa<br>Software</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-6">
-                    <div class="growth-card">
-                        <div class="growth-icon-box">
-                            <img src="assets/Layer_1 (9).png" alt="Pet Facility">
-                        </div>
-                        <p class="growth-card-text">Pet Facility<br>Software</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-6">
-                    <div class="growth-card">
-                        <div class="growth-icon-box">
-                            <img src="assets/Layer_1 (10).png" alt="Makeup Academy">
-                        </div>
-                        <p class="growth-card-text">Makeup Academy<br>Software</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

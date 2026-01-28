@@ -1,21 +1,21 @@
 /* Section Three Hero Styles */
 .section-three-hero {
     padding: 100px 0;
-    background-color: #fff;
+    background-color: var(--color-white);
     overflow: hidden;
 }
 
 .section-three-main-title {
     font-size: clamp(28px, 5vw, 42px);
     font-weight: 750;
-    color: #111827;
+    color: var(--color-gray-900);
     margin-bottom: 16px;
     letter-spacing: -0.5px;
 }
 
 .section-three-main-subtitle {
     font-size: clamp(15px, 2.5vw, 18px);
-    color: #696969;
+    color: var(--color-gray-warm);
     margin-bottom: 80px;
 }
 
@@ -30,14 +30,14 @@
 .section-three-text h3 {
     font-size: clamp(24px, 4vw, 32px);
     font-weight: 700;
-    color: #111827;
+    color: var(--color-gray-900);
     margin-bottom: 20px;
 }
 
 .section-three-text p {
     font-size: 17px;
     line-height: 1.6;
-    color: #4B5563;
+    color: var(--color-gray-600);
     margin: 0;
 }
 

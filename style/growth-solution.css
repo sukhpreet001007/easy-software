@@ -13,7 +13,7 @@
 }
 
 .growth-card {
-    background-color: #F4FEF9;
+    background-color: #F8F4FE;
     border-radius: 12px;
     padding: 30px 20px;
     height: 100%;
@@ -29,9 +29,9 @@
 
 .growth-card:hover {
     transform: translateY(-8px);
-    background-color: #e6f9f0;
-    border-color: #03CF6533;
-    box-shadow: 0 10px 30px rgba(3, 207, 101, 0.08);
+    background-color: #F2E6F9;
+    border-color: #66339833;
+    box-shadow: 0 10px 30px rgba(102, 51, 152, 0.08);
 }
 
 .growth-icon-box {

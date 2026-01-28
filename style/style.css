@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
-    --navbar-primary-green: #03CF65;
-    --navbar-dark: #1a1a1a;
-    --navbar-gray: #666666;
     --navbar-font: 'Outfit', sans-serif;
 }
 
@@ -50,16 +47,16 @@ ul {
 
 /* Scrollbar track */
 ::-webkit-scrollbar-track {
-    background: #ffffff;
+    background: var(--color-white);
 }
 
 /* Scrollbar thumb */
 ::-webkit-scrollbar-thumb {
-    background: #10b981;
+    background: var(--color-emerald-500);
     border-radius: 10px;
 }
 
 /* Hover effect */
 ::-webkit-scrollbar-thumb:hover {
-    background: #ffffff;
+    background: var(--color-white);
 }

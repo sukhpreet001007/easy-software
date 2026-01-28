@@ -1,8 +1,8 @@
 /* Main Footer Styling */
 .main-footer {
-    background: linear-gradient(180deg, #ffffff 0%, #f0fdf9 100%);
+    background: linear-gradient(180deg, var(--color-white) 0%, var(--color-bg-mint-gradient-end) 100%);
     padding: 100px 0 40px;
-    border-top: 1px solid rgba(16, 185, 129, 0.1);
+    border-top: 1px solid var(--shadow-emerald-10);
     font-family: 'Inter', sans-serif;
     position: relative;
     overflow: hidden;
@@ -16,7 +16,7 @@
     right: -100px;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--bg-emerald-05) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
 }
@@ -28,7 +28,7 @@
     left: -50px;
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, rgba(5, 150, 105, 0.04) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--bg-emerald-dark-04) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
 }
@@ -63,7 +63,7 @@
 
 .footer-logo-img:hover {
     transform: scale(1.05) translateY(-5px);
-    filter: drop-shadow(0 10px 15px rgba(16, 185, 129, 0.2));
+    filter: drop-shadow(0 10px 15px var(--shadow-emerald-20));
 }
 
 /* Social Links */
@@ -80,9 +80,9 @@
     align-items: center;
     justify-content: center;
     border-radius: 12px;
-    background-color: #fff;
-    color: #4b5563;
-    border: 1px solid #e5e7eb;
+    background-color: var(--color-white);
+    color: var(--color-gray-600);
+    border: 1px solid var(--color-border-gray-200);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
@@ -96,7 +96,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #03CF65;
+    background: var(--navbar-primary-green);
     opacity: 0;
     z-index: -1;
     transition: opacity 0.3s ease;
@@ -105,10 +105,10 @@
 }
 
 .footer-social-link:hover {
-    color: #fff;
+    color: var(--color-white);
     border-color: transparent;
     transform: translateY(-4px);
-    box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 10px 20px -5px var(--shadow-emerald-40);
 }
 
 .footer-social-link:hover::before {
@@ -141,7 +141,7 @@
     font-size: 20px;
     /* Large Title */
     font-weight: 700;
-    color: #111827;
+    color: var(--color-gray-900);
     margin-bottom: 30px;
     position: relative;
     display: inline-block;
@@ -155,7 +155,7 @@
     bottom: -8px;
     width: 24px;
     height: 3px;
-    background: #10b981;
+    background: var(--color-emerald-500);
     border-radius: 2px;
     transition: width 0.3s ease;
 }
@@ -176,7 +176,7 @@
 }
 
 .footer-link {
-    color: #4b5563;
+    color: var(--color-gray-600);
     text-decoration: none;
     font-size: 16px;
     /* Large Text */
@@ -193,16 +193,16 @@
     position: absolute;
     left: -20px;
     opacity: 0;
-    color: #10b981;
+    color: var(--color-emerald-500);
     font-weight: bold;
     transition: all 0.3s ease;
     font-size: 16px;
 }
 
 .footer-link:hover {
-    color: #10b981;
+    color: var(--color-emerald-500);
     padding-left: 24px;
-    text-shadow: 0 0 1px rgba(16, 185, 129, 0.1);
+    text-shadow: 0 0 1px var(--shadow-emerald-10);
 }
 
 .footer-link:hover::before {
@@ -214,9 +214,9 @@
 .footer-bottom {
     margin-top: 40px;
     padding-top: 40px;
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-top: 1px solid var(--shadow-black-06);
     text-align: center;
-    color: #6b7280;
+    color: var(--color-gray-500);
     font-size: 15px;
     font-weight: 500;
     letter-spacing: 0.2px;
