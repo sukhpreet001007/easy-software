@@ -15,7 +15,7 @@
 }
 
 .section-promo-subtitle {
-    font-size: clamp(15px, 2.5vw, 18px);
+    font-size: clamp(15px, 2.5vw, 20px);
     color: var(--color-gray-warm);
     margin-bottom: 48px;
     font-weight: 400;
