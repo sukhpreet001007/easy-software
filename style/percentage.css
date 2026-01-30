@@ -11,13 +11,13 @@
 
 .section-percentage-header h2 {
     font-size: clamp(32px, 5vw, 48px);
-    font-weight: 700;
+    font-weight: 650;
     color: #000;
     margin-bottom: 15px;
 }
 
 .section-percentage-header p {
-    font-size: 18px;
+    font-size: 22px;
     color: #666;
     max-width: 800px;
     margin: 0 auto;
@@ -33,13 +33,37 @@
 .box-per {
     flex: 1 1 calc(25% - 25px);
     min-width: 250px;
-    background: #E4C7E5;
+    background: #FAFAFA;
+    /* Light neutral base for fill visibility */
     border: 1px solid #f0f0f0;
     border-radius: 12px;
     padding: 20px 30px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Background Fill Animation Layer */
+.box-per::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--fill-progress, 0%);
+    background: #E4C7E5;
+    /* Original color as requested */
+    z-index: -1;
+    transition: height 0.1s linear;
+    pointer-events: none;
+}
+
+/* Clear wave artifacts */
+.box-per::after {
+    display: none;
 }
 
 .box-per:hover {

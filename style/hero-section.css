@@ -487,8 +487,6 @@
     border-bottom: 1px solid var(--color-border-gray);
 }
 
-
-
 .hero-section-box-header {
     position: absolute;
     top: -25px;
@@ -512,11 +510,40 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
     padding-top: 0;
-    background-color: var(--color-bg-mint-light);
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
+
+    /* Fill Animation Context */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background: transparent;
+    /* Move bg to pseudo */
+}
+
+/* Base Mint Background */
+.hero-section-box-body::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-bg-mint-light);
+    z-index: -2;
+}
+
+/* Flowing Fill Animation */
+.hero-section-box-body::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--fill-progress, 0%);
+    background: #E4C7E5;
+    /* Percentage section fill color */
+    z-index: -1;
+    transition: height 0.1s linear;
+    pointer-events: none;
 }
 
 .hero-section-box-content-wrapper {
@@ -537,7 +564,7 @@
 .hero-section-count {
     font-size: 28px;
     font-weight: 750;
-    color: var(--color-gray-dark-2);
+    color: var(--color-black);
     text-align: right;
     flex-grow: 1;
 }
@@ -562,7 +589,7 @@
     /* Right side center */
     font-size: 20px;
     font-weight: 750;
-    color: var(--color-gray-dark-2);
+    color: var(--color-black);
     width: 100%;
     text-align: right;
 }

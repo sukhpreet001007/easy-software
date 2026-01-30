@@ -88,15 +88,16 @@
 }
 
 .section-promo-icon {
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
+    width: auto;
+    height: auto;
+    font-size: 28px;
+    color: var(--navbar-primary-green);
     transition: transform 0.3s ease;
 }
 
 .section-promo-feature-item:hover .section-promo-icon,
 .section-promo-feature-item.feature-item-active .section-promo-icon {
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 .section-promo-text h6 {

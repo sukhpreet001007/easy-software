@@ -6,15 +6,15 @@
 }
 
 .section-three-main-title {
-    font-size: clamp(28px, 5vw, 42px);
-    font-weight: 750;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 650;
     color: var(--color-gray-900);
     margin-bottom: 16px;
     letter-spacing: -0.5px;
 }
 
 .section-three-main-subtitle {
-    font-size: clamp(15px, 2.5vw, 18px);
+    font-size: clamp(15px, 2.5vw, 22px);
     color: var(--color-gray-warm);
     margin-bottom: 80px;
 }
@@ -30,14 +30,14 @@
 .section-three-text h3 {
     font-size: clamp(24px, 4vw, 32px);
     font-weight: 700;
-    color: var(--color-gray-900);
+    color: var(--color-black);
     margin-bottom: 20px;
 }
 
 .section-three-text p {
     font-size: 24px;
     line-height: 1.6;
-    color: var(--color-gray-600);
+    color: var(--color-gray-800);
     margin: 0;
 }
 

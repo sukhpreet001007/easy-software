@@ -37,7 +37,7 @@
     background: transparent;
     border: none;
     padding: 20px 0;
-    font-size: 16px;
+    font-size: 24px;
     font-weight: 500;
     color: #1f2937;
     box-shadow: none;
@@ -89,9 +89,9 @@
 
 .faq-body {
     padding: 0 0 24px 0;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 1.7;
-    color: #6b7280;
+    color: #141414;
 }
 
 /* Remove default Bootstrap accordion styles */

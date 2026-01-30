@@ -158,41 +158,89 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     };
 
-    // Percentage section counter animation
+    // Percentage section counter animation with Looping & BG Fill
     const animatePercentageCounters = () => {
         const counters = document.querySelectorAll('.counter-percentage');
 
         const observerOptions = {
-            threshold: 0.5
+            threshold: 0.2
         };
 
         const counterObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const counter = entry.target;
-                    const target = parseInt(counter.getAttribute('data-target'));
-                    const start = parseInt(counter.getAttribute('data-start') || 0);
+
+                    // Retrieve config
+                    const target = parseFloat(counter.getAttribute('data-target') || 0);
                     const prefix = counter.getAttribute('data-prefix') || '';
                     const suffix = counter.getAttribute('data-suffix') || '';
-                    const duration = 2000; // 2 seconds
+                    const decimals = parseInt(counter.getAttribute('data-decimals') || 0);
 
-                    let startTime = null;
+                    // Find parent box for background animation
+                    const box = counter.closest('.box-per, .hero-section-box1');
 
-                    const animation = (currentTime) => {
-                        if (!startTime) startTime = currentTime;
-                        const progress = Math.min((currentTime - startTime) / duration, 1);
-                        const current = Math.floor(progress * (target - start) + start);
+                    // Looping Logic Variables
+                    const animationDuration = 2000; // 2 seconds to count up
+                    const holdDuration = 3000; // 3 seconds hold on final number
 
-                        counter.textContent = prefix + current + suffix;
+                    const startLoop = () => {
+                        let startTime = null;
 
-                        if (progress < 1) {
-                            requestAnimationFrame(animation);
-                        } else {
-                            counter.textContent = prefix + target + suffix;
-                        }
+                        const step = (timestamp) => {
+                            if (!startTime) startTime = timestamp;
+                            const progress = Math.min((timestamp - startTime) / animationDuration, 1);
+
+                            // Easing function (easeOutExpo)
+                            // const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                            // Linear is often better for "filling" effect synchronization
+                            const ease = progress;
+
+                            const current = (ease * target);
+
+                            // Update Text
+                            counter.textContent = prefix + current.toFixed(decimals) + suffix;
+
+                            // Update Background Fill
+                            if (box) {
+                                box.style.setProperty('--fill-progress', `${ease * 100}%`);
+                            }
+
+                            if (progress < 1) {
+                                requestAnimationFrame(step);
+                            } else {
+                                // Animation finished, hold then reset
+                                counter.textContent = prefix + target.toFixed(decimals) + suffix;
+                                if (box) {
+                                    box.style.setProperty('--fill-progress', `100%`);
+                                }
+
+                                setTimeout(() => {
+                                    // Reset and restart
+                                    if (box) {
+                                        // Optional: Quick Fade out or instant reset?
+                                        // Let's do instant reset 0 to restart cycle
+                                        box.style.transition = 'none'; // disable transition for instant reset
+                                        box.style.setProperty('--fill-progress', `0%`);
+                                        counter.textContent = prefix + (0).toFixed(decimals) + suffix;
+
+                                        // Force reflow
+                                        void box.offsetWidth;
+
+                                        // Re-enable transition by clearing inline style (reverts to CSS)
+                                        box.style.transition = '';
+                                    }
+                                    startLoop();
+                                }, holdDuration);
+                            }
+                        };
+
+                        requestAnimationFrame(step);
                     };
 
-                    requestAnimationFrame(animation);
+                    startLoop();
+
+                    // Only start once per element
                     observer.unobserve(counter);
                 }
             });

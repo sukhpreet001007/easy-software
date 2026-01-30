@@ -43,15 +43,15 @@
 .points-hero-title {
     font-size: clamp(32px, 5vw, 48px);
     font-weight: 700;
-    color: #1a1a1a;
+    color: #000000;
     line-height: 1.2;
     margin-bottom: 20px;
     letter-spacing: -0.5px;
 }
 
 .points-hero-subtitle {
-    font-size: 16px;
-    color: #6b7280;
+    font-size: 20px;
+    color: #6c6e72;
     line-height: 1.6;
     margin-bottom: 40px;
     max-width: 90%;
@@ -63,50 +63,67 @@
 
 .points-hero-feature-item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 16px;
+    padding: 15px;
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
     margin-bottom: 28px;
-    transition: transform 0.3s ease;
 }
 
 .points-hero-feature-item:hover {
-    transform: translateX(8px);
+    background-color: var(--color-bg-mint-light);
+    border-color: var(--color-border-light);
+    transform: translateX(10px);
+    box-shadow: 0 10px 30px var(--shadow-black-04);
 }
 
 .points-hero-icon {
     flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    background: #663398;
-    border-radius: 10px;
+    width: 60px;
+    height: 60px;
+    background: var(--color-white);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(102, 51, 152, 0.25);
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px var(--shadow-primary-green-20);
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border: 2px solid var(--color-bg-mint-light);
+    color: var(--navbar-primary-green);
 }
 
 .points-hero-feature-item:hover .points-hero-icon {
     transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 6px 20px rgba(102, 51, 152, 0.35);
+    background: var(--color-white);
+    border-color: var(--navbar-primary-green);
+    box-shadow: none;
 }
 
 .points-hero-icon svg {
-    color: white;
+    color: var(--navbar-primary-green);
     stroke-width: 2.5;
+    width: 28px;
+    height: 28px;
 }
 
 .points-hero-feature-text h6 {
-    font-size: 16px;
-    font-weight: 600;
-    color: #1f2937;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-gray-900);
     margin-bottom: 6px;
     line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.points-hero-feature-item:hover .points-hero-feature-text h6 {
+    color: var(--navbar-primary-green);
 }
 
 .points-hero-feature-text p {
-    font-size: 14px;
-    color: #6b7280;
+    font-size: 18px;
+    color: var(--color-gray-warm);
     line-height: 1.5;
     margin: 0;
 }
@@ -268,6 +285,7 @@
 
     .points-hero-image img {
         border-radius: 16px;
+        margin-bottom: 30px;
     }
 }
 

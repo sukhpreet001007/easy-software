@@ -30,6 +30,18 @@
     .navbar-desktop-btns {
         display: none !important;
     }
+    .section-three-text p{
+        font-size: 16px;
+    }
+    .section-percentage-header p{
+        font-size: 15px !important;
+    }
+    .adv-feature-text p{
+        font-size: 15px !important;
+    }
+    .growth-card-text{
+        font-size: 14px !important;
+    }
 }
 
 /* Extra small devices (max-width: 575.98px) */
@@ -113,6 +125,12 @@
 
     .hero-section-trust-item img {
         height: 32px;
+    }
+    .faq-button{
+        font-size: 18px !important;
+    }
+    .faq-body{
+        font-size: 16px !important;
     }
 }
 
@@ -271,7 +289,7 @@
     }
 
     .hero-section-box-header {
-        font-size: 6px;
+        font-size: 5px;
         top: -16px;
     }
 
@@ -350,11 +368,12 @@
     }
 
 
-
+.section-promo-title{
+    text-align: left;
+}
     .section-promo-feature-item {
-        flex-direction: column;
-        align-items: center;
         gap: 12px;
+        text-align: left;
     }
 
     .section-promo-text h6 {
