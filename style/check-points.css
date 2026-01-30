@@ -48,7 +48,7 @@
 
 .check-point-item {
     font-family: 'Outfit', 'Inter', sans-serif;
-    font-size: 19px;
+    font-size: 24px;
     font-weight: 500;
     color: #333;
     display: flex;
@@ -59,7 +59,7 @@
 
 .check-point-item i {
     color: #5B2C8B;
-    font-size: 18px;
+    font-size: 24px;
 }
 
 /* Stop animation on hover */

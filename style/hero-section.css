@@ -29,7 +29,7 @@
 }
 
 .hero-section-award-text {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 400;
     color: var(--award-text);
     margin: 0;
@@ -51,7 +51,7 @@
 }
 
 .hero-section-award-icon img {
-    width: 16px;
+    width: 18px;
     position: relative;
     z-index: 2;
     filter: drop-shadow(0 0 2px var(--shadow-purple-30));
@@ -335,7 +335,7 @@
 
 /* Description */
 .hero-section-sub-desc {
-    font-size: 18px;
+    font-size: 22px;
     color: var(--color-gray-warm);
     line-height: 1.6;
     margin-bottom: 30px;

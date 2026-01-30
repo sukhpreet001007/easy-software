@@ -46,7 +46,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
 <body>
 
 
-    <nav class="container-fl uid navbar-container navbar-expand-lg">
+      <nav class="container-fl uid navbar-container navbar-expand-lg">
         <div class="container-fluid navbar-wrapper">
             <a class="navbar-brand-link" href="index.html">
                 <img src="assets/logo.svg" alt="Easy Software Logo" class="navbar-logo-img">
@@ -76,23 +76,6 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                             <div class="navbar-megamenu-inner">
                                 <div class="row g-4">
                                     <div class="col-lg-4">
-                                        <a href="#" class="navbar-megamenu-item">
-                                            <div class="navbar-megamenu-icon icon-blue">
-                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="2">
-                                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                                    <circle cx="9" cy="7" r="4" />
-                                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                                                </svg>
-                                            </div>
-                                            <div class="navbar-megamenu-content">
-                                                <h6>Client Management</h6>
-                                                <p>Transfer staff, products and analyse performance at one dashboard</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-4">
                                         <a href="marketing.html" class="navbar-megamenu-item">
                                             <div class="navbar-megamenu-icon icon-yellow">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -111,6 +94,23 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                                     </div>
                                     <div class="col-lg-4">
                                         <a href="#" class="navbar-megamenu-item">
+                                            <div class="navbar-megamenu-icon icon-blue">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                                    <circle cx="9" cy="7" r="4" />
+                                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                                </svg>
+                                            </div>
+                                            <div class="navbar-megamenu-content">
+                                                <h6>Properties Management</h6>
+                                                <p>Transfer staff, products and analyse performance at one dashboard</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <a href="#" class="navbar-megamenu-item">
                                             <div class="navbar-megamenu-icon icon-red">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                     stroke="currentColor" stroke-width="2">
@@ -121,7 +121,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                                                 </svg>
                                             </div>
                                             <div class="navbar-megamenu-content">
-                                                <h6>Class Booking</h6>
+                                                <h6>Appointment Management</h6>
                                                 <p>Convert your insta followers into your clients with free web portal
                                                 </p>
                                             </div>
@@ -155,7 +155,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                                                 </svg>
                                             </div>
                                             <div class="navbar-megamenu-content">
-                                                <h6>Billing</h6>
+                                                <h6>Billing & Payment</h6>
                                                 <p>Fast, reliable billing with secure payments and automated invoicing.
                                                 </p>
                                             </div>
@@ -171,7 +171,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                                                 </svg>
                                             </div>
                                             <div class="navbar-megamenu-content">
-                                                <h6>Reporting</h6>
+                                                <h6>Reportes & Graphs</h6>
                                                 <p>Analysing your business performance & sales made easy</p>
                                             </div>
                                         </a>
@@ -185,7 +185,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                                                 </svg>
                                             </div>
                                             <div class="navbar-megamenu-content">
-                                                <h6>Biometric</h6>
+                                                <h6>Inventory Management</h6>
                                                 <p>Reduce wastage of products & stay ahead in Inventory & Stock
                                                     Management</p>
                                             </div>
@@ -300,105 +300,112 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                     <div class="collapse" id="featuresCollapse">
                         <ul class="navbar-sidebar-sublist">
                             <li class="navbar-sidebar-subitem">
-                                <a href="#clientMgmtDesc"
-                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
-                                    data-bs-toggle="collapse">
-                                    Client Management
-                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </a>
-                                <div class="collapse" id="clientMgmtDesc">
-                                    <p class="navbar-sidebar-desc">Transfer staff, products and analyse performance at
-                                        one dashboard</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="marketing.html" class="navbar-sidebar-sublink">Marketing</a>
+                                    <button class="navbar-sidebar-toggle-btn collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#marketingDesc">
+                                        <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
                                 </div>
-                            </li>
-                            <li class="navbar-sidebar-subitem">
-                                <a href="#marketingDesc"
-                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
-                                    data-bs-toggle="collapse">
-                                    Marketing
-                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </a>
                                 <div class="collapse" id="marketingDesc">
                                     <p class="navbar-sidebar-desc">Boost your sales & bring more cash flow with
                                         marketing tools that convert.</p>
                                 </div>
                             </li>
                             <li class="navbar-sidebar-subitem">
-                                <a href="#classBookingDesc"
-                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
-                                    data-bs-toggle="collapse">
-                                    Class Booking
-                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </a>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="#" class="navbar-sidebar-sublink">Properties Management</a>
+                                    <button class="navbar-sidebar-toggle-btn collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#clientMgmtDesc">
+                                        <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="collapse" id="clientMgmtDesc">
+                                    <p class="navbar-sidebar-desc">Transfer staff, products and analyse performance at
+                                        one dashboard</p>
+                                </div>
+                            </li>
+                            <li class="navbar-sidebar-subitem">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="#" class="navbar-sidebar-sublink">Appointment Management</a>
+                                    <button class="navbar-sidebar-toggle-btn collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#classBookingDesc">
+                                        <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
                                 <div class="collapse" id="classBookingDesc">
                                     <p class="navbar-sidebar-desc">Convert your insta followers into your clients with
                                         free web portal</p>
                                 </div>
                             </li>
                             <li class="navbar-sidebar-subitem">
-                                <a href="#employeeMgmtDesc"
-                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
-                                    data-bs-toggle="collapse">
-                                    Employee Management
-                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </a>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="#" class="navbar-sidebar-sublink">Employee Management</a>
+                                    <button class="navbar-sidebar-toggle-btn collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#employeeMgmtDesc">
+                                        <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
                                 <div class="collapse" id="employeeMgmtDesc">
                                     <p class="navbar-sidebar-desc">Make your employees more efficient and productive
                                         with smart management</p>
                                 </div>
                             </li>
                             <li class="navbar-sidebar-subitem">
-                                <a href="#billingDesc"
-                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
-                                    data-bs-toggle="collapse">
-                                    Billing
-                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </a>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="#" class="navbar-sidebar-sublink">Billing & Payments</a>
+                                    <button class="navbar-sidebar-toggle-btn collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#billingDesc">
+                                        <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
                                 <div class="collapse" id="billingDesc">
                                     <p class="navbar-sidebar-desc">Fast, reliable billing with secure payments and
                                         automated invoicing.</p>
                                 </div>
                             </li>
                             <li class="navbar-sidebar-subitem">
-                                <a href="#reportingDesc"
-                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
-                                    data-bs-toggle="collapse">
-                                    Reporting
-                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </a>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="#" class="navbar-sidebar-sublink">Reports & Graphs</a>
+                                    <button class="navbar-sidebar-toggle-btn collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#reportingDesc">
+                                        <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
                                 <div class="collapse" id="reportingDesc">
                                     <p class="navbar-sidebar-desc">Analysing your business performance & sales made easy
                                     </p>
                                 </div>
                             </li>
                             <li class="navbar-sidebar-subitem">
-                                <a href="#biometricDesc"
-                                    class="navbar-sidebar-sublink d-flex justify-content-between align-items-center"
-                                    data-bs-toggle="collapse">
-                                    Biometric
-                                    <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </a>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="#" class="navbar-sidebar-sublink">Inventory Management</a>
+                                    <button class="navbar-sidebar-toggle-btn collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#biometricDesc">
+                                        <svg class="sublist-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
                                 <div class="collapse" id="biometricDesc">
                                     <p class="navbar-sidebar-desc">Reduce wastage of products & stay ahead in Inventory
                                         & Stock Management</p>
@@ -431,7 +438,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
 
             <!-- Sidebar Bottom Buttons -->
             <div class="navbar-sidebar-footer mt-5">
-                <a href="#" class="navbar-btn navbar-btn-primary w-100 mb-3">
+                <a href="#" class="navbar-btn navbar-btn-primary w-100 mb-3 enhanced-btn enhanced-btn-fill">
                     Book Free Demo
                     <svg class="navbar-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -439,7 +446,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                         <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                 </a>
-                <a href="#" class="navbar-btn navbar-btn-outline w-100">
+                <a href="#" class="navbar-btn navbar-btn-outline w-100 enhanced-btn enhanced-btn-outline">
                     Contact us
                     <svg class="navbar-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
