@@ -202,6 +202,9 @@
 
 /* Responsive Design */
 @media (max-width: 991px) {
+    .points-section-container{
+    padding-bottom: 0px !important;
+}
     .points-hero-section {
         padding: 60px 0;
     }

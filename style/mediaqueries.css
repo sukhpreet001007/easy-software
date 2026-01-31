@@ -26,21 +26,27 @@
         letter-spacing: 0.8px;
     }
 
-    /* Hide desktop buttons when menu button is visible */
     .navbar-desktop-btns {
         display: none !important;
     }
-    .section-three-text p{
+
+    .section-three-text p {
         font-size: 16px;
     }
-    .section-percentage-header p{
+
+    .section-percentage-header p {
         font-size: 15px !important;
     }
-    .adv-feature-text p{
+
+    .adv-feature-text p {
         font-size: 15px !important;
     }
-    .growth-card-text{
+
+    .growth-card-text {
         font-size: 14px !important;
+    }
+    .faq-section{
+        padding-top: 40px !important;
     }
 }
 
@@ -126,10 +132,12 @@
     .hero-section-trust-item img {
         height: 32px;
     }
-    .faq-button{
+
+    .faq-button {
         font-size: 18px !important;
     }
-    .faq-body{
+
+    .faq-body {
         font-size: 16px !important;
     }
 }
@@ -321,14 +329,25 @@
 /* Brands Section Media Queries */
 @media (max-width: 991.98px) {
     .brands-section {
-        padding: 60px 0;
+        padding: 0px 0;
     }
 
+    .section-percentage,
+    .growth-solution {
+        padding: 0px !important;
+    }
 
+    .check-point-sections {
+        padding-bottom: 50px !important;
+        padding-top: 0px !important;
+    }
 
     .brands-section-box {
         flex: 0 0 calc(33.33% - 24px);
         max-width: calc(33.33% - 24px);
+    }
+    .adv-features-section{
+        padding-bottom: 65px !important;
     }
 }
 
@@ -368,9 +387,10 @@
     }
 
 
-.section-promo-title{
-    text-align: left;
-}
+    .section-promo-title {
+        text-align: left;
+    }
+
     .section-promo-feature-item {
         gap: 12px;
         text-align: left;

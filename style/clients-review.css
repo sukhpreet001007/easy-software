@@ -6,7 +6,7 @@
 
 .clients-review-title {
     text-align: center;
-    font-size: clamp(32px, 5vw, 42px);
+    font-size: clamp(29px, 5vw, 42px);
     font-weight: 700;
     color: #1a1a1a;
     margin-bottom: 60px;

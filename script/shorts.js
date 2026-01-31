@@ -1,201 +1,222 @@
-// Shorts Carousel Logic - Optimized
+// Shorts 3D Carousel Logic - No Widget API Version
 (function () {
-    let players = [];
-    let track = document.getElementById('shortsTrack');
-    let container = document.querySelector('.shorts-carousel-container');
+    const videoIds = [
+        'VYYlVHE15II',
+        'RzytFGrGDrc',
+        'qGPQ8CRaWEE',
+        'WeT2P1kFO94',
+        '-Bi4pzA492I',
+        'NjXpahXVHUw',
+        's9hZEp0XBFE',
+        'SHYRJ1XG_e0'
+    ];
 
-    // If essential elements are missing, exit early
-    if (!track || !container) return;
+    let activeIndex = 0;
 
-    let isDragging = false;
-    let startX;
-    let scrollLeft;
-    let animationId;
-    let currentTranslate = 0;
-    let speed = 2.5;
-    let isHovered = false;
-    let isInteracting = false;
-    let interactionTimeout;
-    let isAPIInjected = false;
-    let hasInitialized = false;
+    // DOM Elements
+    const container3D = document.getElementById('shorts3DContainer');
+    const thumbnailsTrack = document.getElementById('thumbnailsTrack');
+    const prevBtn = document.getElementById('shortsPrev');
+    const nextBtn = document.getElementById('shortsNext');
 
-    // Use IntersectionObserver to lazy load the API only when section is visible
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !hasInitialized) {
-                loadYouTubeAPI();
-                hasInitialized = true;
-                sectionObserver.disconnect(); // Only need to load once
-            }
-        });
-    }, { threshold: 0.1 });
+    if (!container3D) return;
 
-    const section = document.querySelector('.shorts-section');
-    if (section) sectionObserver.observe(section);
+    // Initialization
+    function init() {
+        renderCarouselItems();
+        renderThumbnails();
+        updateCarouselState();
+        setupEventListeners();
 
-    function loadYouTubeAPI() {
-        if (!window.YT) {
-            // Check if another script has already requested the API
-            if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
-                const tag = document.createElement('script');
-                tag.src = "https://www.youtube.com/iframe_api";
-                const firstScriptTag = document.getElementsByTagName('script')[0];
-                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-            }
-            // Wait for global callback
-            const existingCallback = window.onYouTubeIframeAPIReady;
-            window.onYouTubeIframeAPIReady = function () {
-                if (existingCallback) existingCallback();
-                initCarousel();
-            };
-        } else {
-            initCarousel();
-        }
-    }
-
-    function initCarousel() {
-        const allPlaceholders = track.querySelectorAll('[data-video-id]');
-
-        // Limit active players to reduce WebGL context usage
-        // We will only initialize players, but not force them all to play immediately/heavy load
-        allPlaceholders.forEach((placeholder, index) => {
-            // Stagger initialization to prevent UI freeze and reduce immediate context demand
-            setTimeout(() => {
-                const videoId = placeholder.getAttribute('data-video-id');
-                // Check if element still exists
-                if (!document.getElementById(placeholder.id)) return;
-
-                const player = new YT.Player(placeholder.id, {
-                    videoId: videoId,
-                    playerVars: {
-                        'autoplay': 1,
-                        'mute': 1,
-                        'controls': 1,
-                        'loop': 1,
-                        'playlist': videoId,
-                        'modestbranding': 1,
-                        'rel': 0,
-                        'playsinline': 1,
-                        'iv_load_policy': 3,
-                        'fs': 0, // Disable fullscreen to simplify
-                        'disablekb': 1
-                    },
-                    events: {
-                        'onReady': (event) => {
-                            event.target.mute(); // Ensure muted
-                            event.target.playVideo();
-                        },
-                        'onStateChange': (event) => onPlayerStateChange(event, index),
-                        'onError': (e) => console.log("YT Error:", e.data)
-                    }
-                });
-                players[index] = player; // Store by index
-            }, index * 200); // 200ms stagger
-        });
-
-        startAnimation();
-        setupInteractions();
-    }
-
-    function onPlayerStateChange(event, index) {
-        // If user unmutes or plays a video, we pause others
-        if (event.data === YT.PlayerState.PLAYING) {
-            const currentPlayer = players[index];
-            if (currentPlayer && typeof currentPlayer.isMuted === 'function') {
-                if (!currentPlayer.isMuted()) {
-                    muteAllOthers(index);
+        // Autoplay on refresh fix
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    refreshActiveVideo();
+                } else {
+                    stopAllVideos();
                 }
-            }
-        }
+            });
+        }, { threshold: 0.1 });
+        observer.observe(container3D);
     }
 
-    function muteAllOthers(activeIndex) {
-        players.forEach((player, i) => {
-            if (i !== activeIndex && player && typeof player.mute === 'function') {
-                player.mute();
+    // Render 3D Cards
+    function renderCarouselItems() {
+        container3D.innerHTML = '';
+        videoIds.forEach((id, index) => {
+            const card = document.createElement('div');
+            card.className = 'short-card';
+            card.dataset.index = index;
+            card.dataset.id = id;
+
+            // Shorts Logo Overlay
+            const logoOverlay = document.createElement('div');
+            logoOverlay.className = 'shorts-logo-overlay';
+            logoOverlay.innerHTML = `<img src="assets/shorts-icon.png" alt="Shorts Icon">`;
+            card.appendChild(logoOverlay);
+
+            // Inner container for the video
+            const playerDiv = document.createElement('div');
+            playerDiv.id = `player-${id}-${index}`;
+            playerDiv.className = 'player-placeholder';
+            card.appendChild(playerDiv);
+
+            // Click on side card to navigate
+            card.addEventListener('click', (e) => {
+                // If it's an iframe click, don't navigate (it's active)
+                if (e.target.tagName !== 'IFRAME' && activeIndex !== index) {
+                    goToIndex(index);
+                }
+            });
+
+            container3D.appendChild(card);
+        });
+    }
+
+    // Render Thumbnails
+    function renderThumbnails() {
+        if (!thumbnailsTrack) return;
+        thumbnailsTrack.innerHTML = '';
+        videoIds.forEach((id, index) => {
+            const thumb = document.createElement('div');
+            thumb.className = 'thumb-item';
+            thumb.dataset.index = index;
+
+            const img = document.createElement('img');
+            img.src = `https://img.youtube.com/vi/${id}/mqdefault.jpg`;
+            img.alt = `Thumbnail ${index}`;
+
+            thumb.appendChild(img);
+
+            thumb.addEventListener('click', () => {
+                goToIndex(index);
+            });
+
+            thumbnailsTrack.appendChild(thumb);
+        });
+    }
+
+    // Update Carousel Classes & Transforms
+    function updateCarouselState() {
+        const cards = Array.from(container3D.children);
+        const thumbs = Array.from(thumbnailsTrack?.children || []);
+        const total = videoIds.length;
+
+        for (let i = 0; i < total; i++) {
+            const card = cards[i];
+            let diff = (i - activeIndex) % total;
+            if (diff < -total / 2) diff += total;
+            if (diff > total / 2) diff -= total;
+
+            card.className = 'short-card'; // Reset classes
+
+            if (diff === 0) card.classList.add('active');
+            else if (diff === -1) card.classList.add('prev');
+            else if (diff === 1) card.classList.add('next');
+            else if (diff === -2) card.classList.add('prev-2');
+            else if (diff === 2) card.classList.add('next-2');
+            else if (diff === -3) card.classList.add('prev-3');
+            else if (diff === 3) card.classList.add('next-3');
+
+            // Hide far neighbors
+            if (Math.abs(diff) > 3) {
+                card.style.opacity = '0';
+                card.style.zIndex = '-1';
+                card.style.pointerEvents = 'none';
+            } else {
+                card.style.opacity = '';
+                card.style.zIndex = '';
+                card.style.pointerEvents = '';
+            }
+        }
+
+        // Update Thumbnails track
+        thumbs.forEach((t, i) => t.classList.toggle('active', i === activeIndex));
+
+        if (thumbnailsTrack) {
+            let itemWidth = 75;
+            if (thumbnailsTrack.children.length > 0) {
+                const firstThumb = thumbnailsTrack.children[0];
+                const gap = parseFloat(window.getComputedStyle(thumbnailsTrack).gap) || 0;
+                itemWidth = firstThumb.offsetWidth + gap;
+            }
+            const shift = (total * itemWidth / 2) - (activeIndex * itemWidth + itemWidth / 2);
+            thumbnailsTrack.style.transform = `translate(calc(-50% + ${shift}px), -50%)`;
+        }
+
+        refreshActiveVideo();
+    }
+
+    function refreshActiveVideo() {
+        const cards = Array.from(container3D.children);
+        cards.forEach((card, i) => {
+            const placeholder = card.querySelector('.player-placeholder');
+            const videoId = card.dataset.id;
+
+            if (i === activeIndex) {
+                // Remove background image on active to prevent overlap/leakage
+                card.style.backgroundImage = 'none';
+                card.style.backgroundColor = '#000';
+
+                // Load iframe for active video if not already there
+                if (!placeholder.querySelector('iframe')) {
+                    placeholder.innerHTML = `
+                        <iframe 
+                            src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=1&modestbranding=1&rel=0" 
+                            frameborder="0" 
+                            allow="autoplay; encrypted-media" 
+                            allowfullscreen>
+                        </iframe>`;
+                }
+            } else {
+                // Restore background image for non-active cards
+                card.style.backgroundImage = `url('https://img.youtube.com/vi/${videoId}/hqdefault.jpg')`;
+                card.style.backgroundSize = 'cover';
+                card.style.backgroundPosition = 'center';
+
+                // Remove iframe for non-active videos to save resources
+                placeholder.innerHTML = '';
             }
         });
     }
 
-    function startAnimation() {
-        // Cancel any existing loop to prevent duplicates
-        if (animationId) cancelAnimationFrame(animationId);
-
-        function animate() {
-            // Flow logic: Move if not hovered, not dragging, and not actively interacting
-            if (!isHovered && !isDragging && !isInteracting) {
-                currentTranslate -= speed;
-                checkWrapping();
-                track.style.transform = `translateX(${currentTranslate}px)`;
-            }
-            animationId = requestAnimationFrame(animate);
-        }
-        animate();
+    function stopAllVideos() {
+        const placeholders = container3D.querySelectorAll('.player-placeholder');
+        placeholders.forEach(p => p.innerHTML = '');
     }
 
-    function checkWrapping() {
-        if (!track.firstElementChild) return;
-
-        const itemWidth = track.firstElementChild.offsetWidth + 20; // + gap (approx 20px based on CSS)
-        // Ensure halfTrackWidth calculation is robust
-        const totalItems = track.children.length;
-        const halfItems = Math.floor(totalItems / 2);
-        const halfTrackWidth = itemWidth * halfItems;
-
-        // Wrap around logic
-        if (Math.abs(currentTranslate) >= halfTrackWidth) {
-            currentTranslate += halfTrackWidth;
-        } else if (currentTranslate > 0) {
-            currentTranslate -= halfTrackWidth;
-        }
+    function goToIndex(index) {
+        if (index === activeIndex) return;
+        activeIndex = index;
+        updateCarouselState();
     }
 
-    function setupInteractions() {
-        container.addEventListener('mouseenter', () => { isHovered = true; });
-        container.addEventListener('mouseleave', () => {
-            isHovered = false;
-            // Force restart animation loop if it somehow stopped, though rqAF keeps specific logic running
-        });
-
-        container.addEventListener('mousedown', dragStart);
-        container.addEventListener('touchstart', dragStart, { passive: true });
-
-        window.addEventListener('mousemove', dragMove);
-        window.addEventListener('touchmove', dragMove, { passive: false });
-
-        window.addEventListener('mouseup', dragEnd);
-        window.addEventListener('touchend', dragEnd);
+    function next() {
+        activeIndex = (activeIndex + 1) % videoIds.length;
+        updateCarouselState();
     }
 
-    function dragStart(e) {
-        isDragging = true;
-        isInteracting = true;
-        startX = (e.type.includes('mouse') ? e.pageX : e.touches[0].pageX);
-        scrollLeft = currentTranslate;
-
-        // Stop momentum interaction timeout if new drag starts
-        if (interactionTimeout) clearTimeout(interactionTimeout);
+    function prev() {
+        activeIndex = (activeIndex - 1 + videoIds.length) % videoIds.length;
+        updateCarouselState();
     }
 
-    function dragMove(e) {
-        if (!isDragging) return;
-        const x = (e.type.includes('mouse') ? e.pageX : e.touches[0].pageX);
-        const walk = (x - startX) * 1.5; // Drag multiplier
-        currentTranslate = scrollLeft + walk;
-        checkWrapping();
-        track.style.transform = `translateX(${currentTranslate}px)`;
+    function setupEventListeners() {
+        prevBtn?.addEventListener('click', prev);
+        nextBtn?.addEventListener('click', next);
+
+        let touchStartX = 0;
+        container3D.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        container3D.addEventListener('touchend', e => {
+            const touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) next();
+            if (touchEndX - touchStartX > 50) prev();
+        }, { passive: true });
     }
 
-    function dragEnd() {
-        if (!isDragging) return;
-        isDragging = false;
-
-        // Delay resuming flow to let user finish "watching" or settling
-        // Reduced from 3000ms to 1000ms for better responsiveness
-        if (interactionTimeout) clearTimeout(interactionTimeout);
-        interactionTimeout = setTimeout(() => {
-            isInteracting = false;
-        }, 1000);
-    }
-
+    init();
 })();

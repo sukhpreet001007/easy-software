@@ -292,7 +292,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const style = window.getComputedStyle(reviewTrack);
             const gap = parseInt(style.gap || style.columnGap) || 40;
             totalSetWidth = (itemWidth + gap) * 4;
-            console.log("Calculated set width:", totalSetWidth);
         }
 
         function startInit() {
