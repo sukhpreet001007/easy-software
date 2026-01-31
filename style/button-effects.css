@@ -46,24 +46,22 @@
     z-index: 1;
 }
 
-/* Shimmer overlay for filled buttons */
-.enhanced-btn-fill::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg,
-            transparent,
-            rgba(255, 255, 255, 0.3),
-            transparent);
-    transition: left 0.5s ease;
-    z-index: 2;
+/* Base styles for filled buttons with sliding effect */
+.enhanced-btn-fill,
+.navbar-btn-primary {
+    background: linear-gradient(to right, var(--navbar-primary-green-hover) 50%, var(--navbar-primary-green) 50%) !important;
+    background-size: 200% 100% !important;
+    background-position: right bottom !important;
+    color: var(--color-white) !important;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+    border: none !important;
+    position: relative;
+    overflow: hidden;
 }
 
-.enhanced-btn-fill:hover::before {
-    left: 100%;
+.enhanced-btn-fill:hover,
+.navbar-btn-primary:hover {
+    background-position: left bottom !important;
 }
 
 /* Flowing border for outline buttons */
@@ -117,20 +115,6 @@
 /* Glow pulse on hover for filled buttons */
 .enhanced-btn-fill:hover {
     animation: pulseGlow 2s ease-in-out infinite;
-}
-
-/* Gradient background shift for filled buttons */
-.enhanced-btn-fill {
-    background: linear-gradient(135deg,
-            var(--navbar-primary-green) 0%,
-            #5B2C8A 50%,
-            var(--navbar-primary-green) 100%);
-    background-size: 200% 200%;
-    transition: background-position 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.enhanced-btn-fill:hover {
-    background-position: 100% 0;
 }
 
 /* Text content needs higher z-index */

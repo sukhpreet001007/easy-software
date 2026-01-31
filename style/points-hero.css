@@ -51,7 +51,7 @@
 
 .points-hero-subtitle {
     font-size: 20px;
-    color: #6c6e72;
+    color: var(--color-black);
     line-height: 1.6;
     margin-bottom: 40px;
     max-width: 90%;
@@ -123,7 +123,7 @@
 
 .points-hero-feature-text p {
     font-size: 18px;
-    color: var(--color-gray-warm);
+    color: var(--color-black);
     line-height: 1.5;
     margin: 0;
 }
