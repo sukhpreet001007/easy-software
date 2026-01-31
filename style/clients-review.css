@@ -27,11 +27,12 @@
 
 .review-item {
     width: 480px;
-    background: #fff;
+    background: #f0faf6;
+    /* Soft theme mint */
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.07);
-    border: 1px solid #f0f0f0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid #d4f1e3;
     flex-shrink: 0;
 }
 
@@ -39,7 +40,7 @@
     width: 100%;
     aspect-ratio: 16/9;
     position: relative;
-    background: #000;
+    background: #d4f1e3;
 }
 
 .review-video-wrapper iframe {

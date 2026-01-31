@@ -1,400 +1,257 @@
+/* High Advanced Shorts Carousel Styles */
 .shorts-section {
-    padding: 60px 0 80px;
-    position: relative;
+    padding: 80px 0;
     background: #fff;
-    /* Or match section background */
     overflow: hidden;
+    position: relative;
 }
 
 .shorts-title {
     font-size: clamp(32px, 5vw, 48px);
-    font-weight: 700;
+    font-weight: 800;
     color: #1a1a1a;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     text-align: center;
+    letter-spacing: -1px;
 }
 
-/* 3D Carousel Container */
-.shorts-carousel-wrapper {
+.shorts-carousel-main {
     position: relative;
     width: 100%;
-    /* overflow: hidden; */
-    /* Allow shadows/transforms to bleed if needed, but ensure no horizontal scroll on body */
+    max-width: 100%;
+    /* Increased max-width */
+    margin: 0;
+    padding: 0 40px;
+    /* Minimal padding for buttons to be at edges */
     display: flex;
-    flex-direction: column;
     align-items: center;
-    perspective: 1000px;
 }
 
-.shorts-3d-container {
-    position: relative;
+.shorts-slider-viewport {
     width: 100%;
-    height: 650px;
-    /* Increased height */
+    overflow: visible;
+    padding: 30px 0;
+}
+
+.shorts-slider-track {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 40px;
-    transform-style: preserve-3d;
+    gap: 10px;
+    /* More gap for grandeur */
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform;
 }
 
 .short-card {
-    position: absolute;
-    width: 280px;
-    /* Slightly narrower to fit more */
-    height: 500px;
-    border-radius: 20px;
+    flex: 0 0 280px;
+    /* Slightly smaller size as requested */
+    aspect-ratio: 9/16;
+    border-radius: 25px;
+    /* Sharper corners to avoid clipping player UI */
     overflow: hidden;
     background: #000;
-    /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2); */
-    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-    transform-origin: center center;
-    /* Default state: hidden/centered */
-    opacity: 0;
-    z-index: 0;
-    user-select: none;
-    pointer-events: none;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transform: scale(0.9);
+    opacity: 0.8;
 }
 
-/* Visible States */
-
-/* Center (Active) */
 .short-card.active {
+    transform: scale(1.05);
     opacity: 1;
-    z-index: 30;
-    transform: translateX(0) scale(1.15) translateZ(50px);
-    /* Big zoom */
-    /* box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5); */
-    pointer-events: auto;
-}
-
-/* 1st Neighbors */
-.short-card.prev,
-.short-card.next {
-    opacity: 0.9;
-    z-index: 20;
-    /* Slightly smaller base */
-    pointer-events: auto;
-    /* Clickable to nav */
-    cursor: pointer;
-}
-
-.short-card.prev {
-    transform: translateX(-320px) scale(0.9) translateZ(0);
-}
-
-.short-card.next {
-    transform: translateX(320px) scale(0.9) translateZ(0);
-}
-
-/* 2nd Neighbors */
-.short-card.prev-2,
-.short-card.next-2 {
-    opacity: 0.6;
     z-index: 10;
+    box-shadow: 0 15px 40px rgba(6, 171, 92, 0.2);
+    border: 4px solid var(--navbar-primary-green);
+}
+
+.short-card:hover {
+    transform: scale(0.98) translateY(-15px);
+    opacity: 1;
+}
+
+.player-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.short-card iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%) scale(1.0);
+    /* Exact fit to show all controls */
+    border: none;
+    pointer-events: none;
+    object-fit: cover;
+}
+
+.short-card.active iframe {
     pointer-events: auto;
-    cursor: pointer;
 }
 
-.short-card.prev-2 {
-    transform: translateX(-580px) scale(0.75) translateZ(-50px);
-}
-
-.short-card.next-2 {
-    transform: translateX(580px) scale(0.75) translateZ(-50px);
-}
-
-/* 3rd Neighbors (New) */
-.short-card.prev-3,
-.short-card.next-3 {
-    opacity: 0.3;
-    z-index: 5;
-    pointer-events: auto;
-    cursor: pointer;
-}
-
-.short-card.prev-3 {
-    transform: translateX(-800px) scale(0.6) translateZ(-100px);
-}
-
-.short-card.next-3 {
-    transform: translateX(800px) scale(0.6) translateZ(-100px);
-}
-
-/* Gradient Overlay for side items ("Ingredient Shade") */
-.short-card::after {
+/* Play/Pause Overlay */
+.short-card::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
-    opacity: 0;
-    transition: opacity 0.5s;
+    background: linear-gradient(to bottom, transparent 70%, rgba(0, 0, 0, 0.5));
+    z-index: 1;
+    transition: opacity 0.4s ease;
     pointer-events: none;
-    z-index: 2;
 }
 
-/* Shorts Logo Overlay Styling */
+.short-card.active::before {
+    opacity: 0.2;
+}
+
 .shorts-logo-overlay {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 3;
-    opacity: 1;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
+    z-index: 5;
+    width: 80px;
+    height: 80px;
+    background: var(--color-bg-mint-light);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.4s ease;
+    border: 1px solid var(--color-bg-green-header);
 }
 
 .shorts-logo-overlay img {
-    width: 60px;
-    /* Sized for the PNG icon */
+    width: 40px;
     height: auto;
-    filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
-    image-rendering: -webkit-optimize-contrast;
-    /* Sharper PNG */
 }
 
-/* Hide logo and shade on active card */
-.short-card.active .shorts-logo-overlay {
-    opacity: 0;
+/* Hide logo when iframe is loaded */
+.player-container:not(:empty)+.shorts-logo-overlay {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translate(-50%, -50%) scale(0.5);
 }
 
-.short-card.active::after {
-    opacity: 0;
-}
-
-.short-card.prev::after,
-.short-card.next::after {
-    opacity: 0.3;
-}
-
-.short-card.prev-2::after,
-.short-card.next-2::after {
-    opacity: 0.5;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
-}
-
-.short-card.prev-3::after,
-.short-card.next-3::after {
-    opacity: 0.8;
-    background: #000;
-    /* Almost fully shaded for far items */
-}
-
-/* Video Player Styling */
-.short-card iframe,
-.short-card .player-placeholder {
-    width: 100%;
-    height: 100%;
-    border: none;
-    object-fit: cover;
-    pointer-events: auto;
-    position: relative;
-    z-index: 1;
-}
-
-/* Disable pointer events on iframes for side cards so clicks trigger navigation instead of play */
-.short-card:not(.active) iframe {
-    pointer-events: none;
-}
-
-
-/* Controls Area */
-.shorts-controls-area {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
-    max-width: 900px;
-    padding: 0 20px;
-}
-
-/* Nav Buttons */
-.carousel-nav-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 1px solid #e0e0e0;
-    background: #fff;
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-}
-
-.carousel-nav-btn:hover {
-    background: #1a1a1a;
-    color: #fff;
-    border-color: #1a1a1a;
-    transform: scale(1.1);
-}
-
-/* Thumbnails Track */
-.thumbnails-viewport {
-    flex: 1;
-    overflow: hidden;
-    position: relative;
-    height: 100px;
-    /* Height of thumbnail + padding */
-}
-
-.thumbnails-track {
-    display: flex;
-    gap: 15px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    /* Start centered, JS will adjust */
-    transition: transform 0.4s ease-out;
-}
-
-.thumb-item {
+/* Navigation Buttons - Extreme Edges */
+.shorts-nav-btn {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    /* Circular thumbnails as per "small thumbnails" standard styles, or rect? User said "small thumbnails of videos". Let's do rounded rects. */
-    border-radius: 12px;
-    overflow: hidden;
+    border: none;
+    background: #fff;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    opacity: 0.5;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
     transition: all 0.3s ease;
-    flex-shrink: 0;
-    border: 2px solid transparent;
-    position: relative;
-    background: #eee;
+    color: #1a1a1a;
+    font-size: 24px;
 }
 
-.thumb-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.shorts-nav-btn:hover {
+    background: var(--navbar-primary-green);
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(6, 171, 92, 0.4);
+    transform: translateY(-50%) scale(1.1);
 }
 
-.thumb-item:hover {
-    opacity: 0.8;
-    transform: scale(1.05);
+.shorts-nav-btn.prev {
+    left: 5px;
 }
 
-.thumb-item.active {
-    opacity: 1;
-    border-color: #000;
-    /* Highlight color */
-    transform: scale(1.15);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.shorts-nav-btn.next {
+    right: 5px;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 992px) {
-    .shorts-3d-container {
-        height: 500px;
+/* Pagination Dots */
+.shorts-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 50px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    width: 40px;
+    border-radius: 12px;
+    background: var(--navbar-primary-green);
+    box-shadow: 0 4px 10px rgba(6, 171, 92, 0.2);
+}
+
+/* Responsive Optimizations */
+@media (max-width: 1650px) {
+    .shorts-carousel-main {
+        padding: 0 60px;
+        /* Add padding when screen is smaller to keep buttons inside */
     }
 
+    .shorts-nav-btn.prev {
+        left: 10px;
+    }
+
+    .shorts-nav-btn.next {
+        right: 10px;
+    }
+}
+
+@media (max-width: 1200px) {
     .short-card {
-        width: 260px;
-        height: 462px;
+        flex: 0 0 280px;
     }
+}
 
-    /* Reduce distance for smaller screens */
-    .short-card.prev {
-        transform: translateX(-240px) scale(0.9) translateZ(-50px);
-    }
-
-    .short-card.next {
-        transform: translateX(240px) scale(0.9) translateZ(-50px);
-    }
-
-    .short-card.prev-2 {
-        transform: translateX(-400px) scale(0.75) translateZ(-100px);
-    }
-
-    .short-card.next-2 {
-        transform: translateX(400px) scale(0.75) translateZ(-100px);
+@media (max-width: 992px) {
+    .short-card {
+        flex: 0 0 250px;
     }
 }
 
 @media (max-width: 768px) {
-
-    /* For mobile, simplify to single item or simple carousel */
-    .shorts-3d-container {
-        height: 480px;
+    .short-card {
+        flex: 0 0 220px;
     }
 
-    .short-card.active {
-        width: 280px;
-        height: 500px;
-        transform: translateX(0) scale(1);
-    }
-
-    /* Hide far items on mobile */
-    .short-card.prev-2,
-    .short-card.next-2 {
-        display: none;
-    }
-
-    .short-card.prev {
-        transform: translateX(-50%) scale(0.8);
-        left: 0;
-        filter: blur(2px);
-        opacity: 0.5;
-    }
-
-    .short-card.next {
-        transform: translateX(50%) scale(0.8);
-        right: 0;
-        filter: blur(2px);
-        opacity: 0.5;
-    }
-
-    /* Show thumbnails on mobile */
-    .thumbnails-viewport {
-        display: block;
-        width: 100%;
-        height: 80px;
-        /* Slightly smaller track height */
-        margin-top: 20px;
-    }
-
-    .thumbnails-track {
-        gap: 10px;
-        /* Smaller gap */
-    }
-
-    .thumb-item {
+    .shorts-nav-btn {
         width: 50px;
-        /* Smaller thumbnails */
         height: 50px;
-        border-radius: 10px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .short-card {
+        flex: 0 0 280px;
+        /* Bigger for single view on mobile */
     }
 
-    /* Let's keep the controls area layout but make it tighter. */
-    .shorts-controls-area {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        position: relative;
-        /* Context for children if needed */
-        gap: 15px;
-        padding-bottom: 20px;
+    .shorts-carousel-main {
+        padding: 0 10px;
     }
 
-    .carousel-nav-btn {
-        width: 40px;
-        height: 40px;
-        position: static;
-        /* Keep them inline with thumbnails for now, or user preference? 
-                           User said "below of shorts we will display small thumbnails of videos with left right arrow". 
-                           So inline is good. */
-        transform: none;
-        background: #fff;
-        border: 1px solid #e0e0e0;
+    .shorts-nav-btn {
+        display: none;
     }
 }

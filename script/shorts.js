@@ -1,4 +1,7 @@
-// Shorts 3D Carousel Logic - No Widget API Version
+/**
+ * High-End Shorts Carousel Logic
+ * Features: Infinite Looping, Dot Pagination, Autoplay on Scroll, Multi-video view
+ */
 (function () {
     const videoIds = [
         'VYYlVHE15II',
@@ -11,212 +14,163 @@
         'SHYRJ1XG_e0'
     ];
 
-    let activeIndex = 0;
-
-    // DOM Elements
-    const container3D = document.getElementById('shorts3DContainer');
-    const thumbnailsTrack = document.getElementById('thumbnailsTrack');
+    const track = document.getElementById('shortsSliderTrack');
+    const pagination = document.getElementById('shortsPagination');
     const prevBtn = document.getElementById('shortsPrev');
     const nextBtn = document.getElementById('shortsNext');
 
-    if (!container3D) return;
+    if (!track) return;
 
-    // Initialization
+    let currentIndex = videoIds.length; // Start at the beginning of the middle set
+    let isTransitioning = false;
+    const totalItems = videoIds.length;
+
+    // Create cloned items for infinite scroll [Set1, Set2, Set3]
+    const fullVideoList = [...videoIds, ...videoIds, ...videoIds];
+
     function init() {
-        renderCarouselItems();
-        renderThumbnails();
-        updateCarouselState();
-        setupEventListeners();
+        renderCards();
+        renderDots();
+        updateSlider(false); // Initial position without animation
+        setupIntersectionObserver();
 
-        // Autoplay on refresh fix
+        // Event Listeners
+        prevBtn.addEventListener('click', () => moveSlide(-1));
+        nextBtn.addEventListener('click', () => moveSlide(1));
+
+        window.addEventListener('resize', () => updateSlider(false));
+
+        // Infinite Loop Cleanup
+        track.addEventListener('transitionend', () => {
+            if (currentIndex >= totalItems * 2) {
+                currentIndex = totalItems;
+                updateSlider(false);
+            } else if (currentIndex < totalItems) {
+                currentIndex = totalItems * 2 - 1;
+                updateSlider(false);
+            }
+            isTransitioning = false;
+            manageAutoPlay();
+        });
+    }
+
+    function renderCards() {
+        track.innerHTML = '';
+        fullVideoList.forEach((id, index) => {
+            const card = document.createElement('div');
+            card.className = 'short-card';
+            card.dataset.id = id;
+            card.dataset.index = index % totalItems;
+
+            card.innerHTML = `
+                <div class="player-container"></div>
+                <div class="shorts-logo-overlay">
+                    <img src="assets/shorts-icon.png" alt="Shorts Icon">
+                </div>
+            `;
+
+            card.addEventListener('click', () => {
+                if (!card.classList.contains('active')) {
+                    const diff = index - currentIndex;
+                    moveSlide(diff);
+                }
+            });
+
+            track.appendChild(card);
+        });
+    }
+
+    function renderDots() {
+        if (!pagination) return;
+        pagination.innerHTML = '';
+        videoIds.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                const targetIndex = totalItems + i;
+                const diff = targetIndex - currentIndex;
+                moveSlide(diff);
+            });
+            pagination.appendChild(dot);
+        });
+    }
+
+    function updateSlider(animate = true) {
+        if (animate) {
+            track.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+        } else {
+            track.style.transition = 'none';
+        }
+
+        const cards = track.querySelectorAll('.short-card');
+        if (cards.length === 0) return;
+
+        const cardWidth = cards[0].offsetWidth;
+        const gap = parseInt(window.getComputedStyle(track).gap) || 0;
+
+        // Calculate the offset to center the "active" card
+        const viewportWidth = track.parentElement.offsetWidth;
+        const offset = (viewportWidth / 2) - (cardWidth / 2) - (currentIndex * (cardWidth + gap));
+
+        track.style.transform = `translateX(${offset}px)`;
+
+        // Update card states
+        cards.forEach((card, i) => {
+            card.classList.toggle('active', i === currentIndex);
+        });
+
+        // Update Dots
+        const dots = pagination?.querySelectorAll('.dot');
+        if (dots) {
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === (currentIndex % totalItems));
+            });
+        }
+    }
+
+    function moveSlide(direction) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        currentIndex += direction;
+        updateSlider(true);
+    }
+
+    function manageAutoPlay() {
+        const cards = track.querySelectorAll('.short-card');
+        const viewport = track.parentElement.getBoundingClientRect();
+
+        cards.forEach((card) => {
+            const cardRect = card.getBoundingClientRect();
+            // Load iframes for cards that enter the viewport area (and keep them)
+            const isNearVisible = (cardRect.right >= viewport.left - 500 && cardRect.left <= viewport.right + 500);
+            const container = card.querySelector('.player-container');
+            const videoId = card.dataset.id;
+
+            if (isNearVisible && !container.innerHTML) {
+                container.innerHTML = `
+                    <iframe 
+                        src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=1&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3" 
+                        frameborder="0" 
+                        allow="autoplay; encrypted-media" 
+                        allowfullscreen>
+                    </iframe>
+                `;
+            }
+        });
+    }
+
+    function setupIntersectionObserver() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    refreshActiveVideo();
-                } else {
-                    stopAllVideos();
+                    manageAutoPlay();
                 }
             });
         }, { threshold: 0.1 });
-        observer.observe(container3D);
+        observer.observe(track.parentElement);
     }
 
-    // Render 3D Cards
-    function renderCarouselItems() {
-        container3D.innerHTML = '';
-        videoIds.forEach((id, index) => {
-            const card = document.createElement('div');
-            card.className = 'short-card';
-            card.dataset.index = index;
-            card.dataset.id = id;
-
-            // Shorts Logo Overlay
-            const logoOverlay = document.createElement('div');
-            logoOverlay.className = 'shorts-logo-overlay';
-            logoOverlay.innerHTML = `<img src="assets/shorts-icon.png" alt="Shorts Icon">`;
-            card.appendChild(logoOverlay);
-
-            // Inner container for the video
-            const playerDiv = document.createElement('div');
-            playerDiv.id = `player-${id}-${index}`;
-            playerDiv.className = 'player-placeholder';
-            card.appendChild(playerDiv);
-
-            // Click on side card to navigate
-            card.addEventListener('click', (e) => {
-                // If it's an iframe click, don't navigate (it's active)
-                if (e.target.tagName !== 'IFRAME' && activeIndex !== index) {
-                    goToIndex(index);
-                }
-            });
-
-            container3D.appendChild(card);
-        });
-    }
-
-    // Render Thumbnails
-    function renderThumbnails() {
-        if (!thumbnailsTrack) return;
-        thumbnailsTrack.innerHTML = '';
-        videoIds.forEach((id, index) => {
-            const thumb = document.createElement('div');
-            thumb.className = 'thumb-item';
-            thumb.dataset.index = index;
-
-            const img = document.createElement('img');
-            img.src = `https://img.youtube.com/vi/${id}/mqdefault.jpg`;
-            img.alt = `Thumbnail ${index}`;
-
-            thumb.appendChild(img);
-
-            thumb.addEventListener('click', () => {
-                goToIndex(index);
-            });
-
-            thumbnailsTrack.appendChild(thumb);
-        });
-    }
-
-    // Update Carousel Classes & Transforms
-    function updateCarouselState() {
-        const cards = Array.from(container3D.children);
-        const thumbs = Array.from(thumbnailsTrack?.children || []);
-        const total = videoIds.length;
-
-        for (let i = 0; i < total; i++) {
-            const card = cards[i];
-            let diff = (i - activeIndex) % total;
-            if (diff < -total / 2) diff += total;
-            if (diff > total / 2) diff -= total;
-
-            card.className = 'short-card'; // Reset classes
-
-            if (diff === 0) card.classList.add('active');
-            else if (diff === -1) card.classList.add('prev');
-            else if (diff === 1) card.classList.add('next');
-            else if (diff === -2) card.classList.add('prev-2');
-            else if (diff === 2) card.classList.add('next-2');
-            else if (diff === -3) card.classList.add('prev-3');
-            else if (diff === 3) card.classList.add('next-3');
-
-            // Hide far neighbors
-            if (Math.abs(diff) > 3) {
-                card.style.opacity = '0';
-                card.style.zIndex = '-1';
-                card.style.pointerEvents = 'none';
-            } else {
-                card.style.opacity = '';
-                card.style.zIndex = '';
-                card.style.pointerEvents = '';
-            }
-        }
-
-        // Update Thumbnails track
-        thumbs.forEach((t, i) => t.classList.toggle('active', i === activeIndex));
-
-        if (thumbnailsTrack) {
-            let itemWidth = 75;
-            if (thumbnailsTrack.children.length > 0) {
-                const firstThumb = thumbnailsTrack.children[0];
-                const gap = parseFloat(window.getComputedStyle(thumbnailsTrack).gap) || 0;
-                itemWidth = firstThumb.offsetWidth + gap;
-            }
-            const shift = (total * itemWidth / 2) - (activeIndex * itemWidth + itemWidth / 2);
-            thumbnailsTrack.style.transform = `translate(calc(-50% + ${shift}px), -50%)`;
-        }
-
-        refreshActiveVideo();
-    }
-
-    function refreshActiveVideo() {
-        const cards = Array.from(container3D.children);
-        cards.forEach((card, i) => {
-            const placeholder = card.querySelector('.player-placeholder');
-            const videoId = card.dataset.id;
-
-            if (i === activeIndex) {
-                // Remove background image on active to prevent overlap/leakage
-                card.style.backgroundImage = 'none';
-                card.style.backgroundColor = '#000';
-
-                // Load iframe for active video if not already there
-                if (!placeholder.querySelector('iframe')) {
-                    placeholder.innerHTML = `
-                        <iframe 
-                            src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=1&modestbranding=1&rel=0" 
-                            frameborder="0" 
-                            allow="autoplay; encrypted-media" 
-                            allowfullscreen>
-                        </iframe>`;
-                }
-            } else {
-                // Restore background image for non-active cards
-                card.style.backgroundImage = `url('https://img.youtube.com/vi/${videoId}/hqdefault.jpg')`;
-                card.style.backgroundSize = 'cover';
-                card.style.backgroundPosition = 'center';
-
-                // Remove iframe for non-active videos to save resources
-                placeholder.innerHTML = '';
-            }
-        });
-    }
-
-    function stopAllVideos() {
-        const placeholders = container3D.querySelectorAll('.player-placeholder');
-        placeholders.forEach(p => p.innerHTML = '');
-    }
-
-    function goToIndex(index) {
-        if (index === activeIndex) return;
-        activeIndex = index;
-        updateCarouselState();
-    }
-
-    function next() {
-        activeIndex = (activeIndex + 1) % videoIds.length;
-        updateCarouselState();
-    }
-
-    function prev() {
-        activeIndex = (activeIndex - 1 + videoIds.length) % videoIds.length;
-        updateCarouselState();
-    }
-
-    function setupEventListeners() {
-        prevBtn?.addEventListener('click', prev);
-        nextBtn?.addEventListener('click', next);
-
-        let touchStartX = 0;
-        container3D.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        container3D.addEventListener('touchend', e => {
-            const touchEndX = e.changedTouches[0].screenX;
-            if (touchStartX - touchEndX > 50) next();
-            if (touchEndX - touchStartX > 50) prev();
-        }, { passive: true });
-    }
-
-    init();
+    // Initialize after a small delay to ensure layout is ready
+    setTimeout(init, 100);
 })();

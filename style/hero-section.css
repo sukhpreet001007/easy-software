@@ -539,8 +539,8 @@
     left: 0;
     width: 100%;
     height: var(--fill-progress, 0%);
-    background: #E4C7E5;
-    /* Percentage section fill color */
+    background: var(--color-bg-green-header);
+    /* Theme Light Green */
     z-index: -1;
     transition: height 0.1s linear;
     pointer-events: none;
@@ -717,7 +717,7 @@
 }
 
 .page1-right-image-bg {
-    background-color: #F6F0FA;
+    background-color: #F0FAF6;
     padding: 50px 0 50px 50px;
     display: flex;
     align-items: center;

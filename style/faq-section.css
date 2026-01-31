@@ -54,7 +54,7 @@
 
 .faq-button:hover {
     background: transparent;
-    color: #663398;
+    color: var(--navbar-primary-green);
 }
 
 /* Custom accordion arrow */
@@ -72,19 +72,19 @@
 
 .faq-button:not(.collapsed) {
     background: transparent;
-    color: #663398 !important;
+    color: var(--navbar-primary-green) !important;
     box-shadow: none;
 }
 
 .faq-button:not(.collapsed)::after {
     content: '−';
-    color: #663398;
+    color: var(--navbar-primary-green);
     transform: none;
     background-image: none !important;
 }
 
 .faq-button:hover::after {
-    color: #663398;
+    color: var(--navbar-primary-green);
 }
 
 .faq-body {

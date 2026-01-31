@@ -53,8 +53,8 @@
     left: 0;
     width: 100%;
     height: var(--fill-progress, 0%);
-    background: #E4C7E5;
-    /* Original color as requested */
+    background: var(--color-bg-green-header);
+    /* Theme Light Green */
     z-index: -1;
     transition: height 0.1s linear;
     pointer-events: none;

@@ -133,14 +133,14 @@
     align-items: center;
     gap: 10px;
     padding: 14px 32px;
-    background: #663398;
+    background: var(--navbar-primary-green);
     color: white;
     font-size: 16px;
     font-weight: 600;
     border-radius: 12px;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(102, 51, 152, 0.3);
+    box-shadow: var(--shadow-primary-30);
     position: relative;
     overflow: hidden;
 }
@@ -162,7 +162,7 @@
 
 .points-hero-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(102, 51, 152, 0.4);
+    box-shadow: 0 6px 24px rgba(6, 171, 92, 0.4);
     color: white;
 }
 
@@ -202,9 +202,10 @@
 
 /* Responsive Design */
 @media (max-width: 991px) {
-    .points-section-container{
-    padding-bottom: 0px !important;
-}
+    .points-section-container {
+        padding-bottom: 0px !important;
+    }
+
     .points-hero-section {
         padding: 60px 0;
     }

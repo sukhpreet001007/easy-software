@@ -35,7 +35,7 @@
     }
 
     50% {
-        box-shadow: 0 0 20px 5px rgba(102, 51, 152, 0.3);
+        box-shadow: 0 0 20px 5px rgba(6, 171, 92, 0.3);
     }
 }
 
@@ -69,8 +69,8 @@
     background: linear-gradient(var(--color-white), var(--color-white)) padding-box,
         linear-gradient(90deg,
             var(--navbar-primary-green),
-            #3b82f6,
-            #8b5cf6,
+            #08cf6f,
+            #058749,
             var(--navbar-primary-green)) border-box;
     background-size: 100% 100%, 300% 300%;
     border: 2px solid transparent;
@@ -79,7 +79,7 @@
 
 .enhanced-btn-outline:hover {
     animation: flowingBorder 1.5s ease infinite;
-    box-shadow: 0 0 20px rgba(102, 51, 152, 0.4);
+    box-shadow: 0 0 20px rgba(6, 171, 92, 0.4);
 }
 
 /* Ripple effect on click */

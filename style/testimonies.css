@@ -1,0 +1,218 @@
+/* Testimonies Marquee Styling */
+.testimonies-section {
+    padding: 100px 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+
+}
+
+.testimonies-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+@media (min-width: 1025px) {
+    .testimonies-inner {
+        padding: 0 20%;
+        max-width: none;
+    }
+}
+
+.testimonies-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 0 40px;
+}
+
+.testimonies-title {
+    font-size: clamp(29px, 5vw, 48px);
+    font-weight: 700;
+    color: var(--color-black);
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -1px;
+    display: flex;
+    gap: 10px;
+}
+
+.accent-icon {
+    color: var(--navbar-primary-green);
+    font-weight: 300;
+}
+
+.testimonies-marquee-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonies-marquee-container::before,
+.testimonies-marquee-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.testimonies-marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, #fff 10%, transparent 30%);
+}
+
+.testimonies-marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, #fff 10%, transparent 30%);
+}
+
+.testimonies-marquee-row {
+    display: flex;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+}
+
+.testimonies-marquee-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+}
+
+/* Animations - Right to Left */
+@keyframes marqueeScrollLTR {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Animations - Left to Right */
+@keyframes marqueeScrollRTL {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.row-rtl .testimonies-marquee-track {
+    animation: marqueeScrollLTR 40s linear infinite;
+}
+
+.row-ltr .testimonies-marquee-track {
+    animation: marqueeScrollRTL 40s linear infinite;
+}
+
+.testimonies-marquee-row:hover .testimonies-marquee-track {
+    animation-play-state: paused;
+}
+
+.testimony-card {
+    width: 380px;
+    background: #f0faf6;
+    /* Soft theme mint */
+    border: 1px solid #d4f1e3;
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.testimony-card:hover {
+    border-color: var(--navbar-primary-green);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(6, 171, 92, 0.1);
+}
+
+.testimony-user-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 5px;
+}
+
+.testimony-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-bg-green-header);
+    flex-shrink: 0;
+}
+
+.testimony-card:hover .testimony-avatar {
+    border-color: var(--navbar-primary-green);
+}
+
+.testimony-content {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+    margin: 0;
+    flex: 1;
+}
+
+.testimony-user-handle {
+    color: var(--navbar-primary-green);
+    font-weight: 700;
+    font-size: 13px;
+    margin: 0;
+    align-self: flex-end;
+    /* Align to bottom right or left? I'll keep it default for now but under the text container */
+}
+
+/* Remove old full-width section gradients */
+.testimonies-section::before,
+.testimonies-section::after {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .testimony-card {
+        width: 300px;
+        padding: 20px;
+    }
+
+    .testimony-content {
+        font-size: 12px;
+    }
+
+    .testimonies-section::before,
+    .testimonies-section::after {
+        width: 100px;
+    }
+
+    .testimonies-marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, #fff 2%, transparent 15%);
+}
+
+.testimonies-marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, #fff 2%, transparent 15%);
+}
+.testimonies-inner{
+    padding: 0 1px;
+}
+}

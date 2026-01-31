@@ -235,11 +235,20 @@
         width: 18px;
         height: 14px;
     }
+    .brands-marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-white) 2%, transparent 15%);
+}
+
+.brands-marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-white) 2%, transparent 15%);
+}
 }
 
 /* Badges Section Styles */
 .badges-section {
-    padding: 60px 0;
+    /* padding: 60px 0; */
     background-color: var(--color-white);
     overflow: hidden;
 }
@@ -286,7 +295,7 @@
 }
 
 .badge-item:hover img {
-    filter: drop-shadow(0 20px 30px rgba(102, 51, 152, 0.3));
+    filter: drop-shadow(0 20px 30px rgba(6, 171, 92, 0.3));
     animation: badgeBounce 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
@@ -321,7 +330,7 @@
     transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgba(102, 51, 152, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(6, 171, 92, 0.15) 0%, transparent 70%);
     border-radius: 50%;
     opacity: 0;
     transition: all 0.4s ease;
