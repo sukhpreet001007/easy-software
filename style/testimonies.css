@@ -51,6 +51,7 @@
     position: relative;
     overflow: hidden;
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .testimonies-marquee-container::before,

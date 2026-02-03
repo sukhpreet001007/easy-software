@@ -10,10 +10,43 @@
     top: 0;
     left: 0;
     width: 0%;
-    height: 3px;
-    background-color: var(--navbar-primary-green);
+    height: 4px;
     z-index: 9999;
     transition: width 0.1s ease-out;
+    
+    /* Smooth multi-color gradient */
+    background: linear-gradient(
+        90deg,
+        #0e741b 0%,
+        #0aff02 20%,
+        #6cc778 40%,
+        #0be881 60%,
+        #07d800bd 80%,
+        #27632f 100%
+    );
+    background-size: 600% 100%;
+    
+    /* Add a subtle shine effect */
+    box-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    
+    /* Rounded corners */
+    border-radius: 0 2px 2px 0;
+}
+
+/* Optional: Add a pulsing effect at the end */
+#progress-bar.complete {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
 }
 
 body {
@@ -54,9 +87,4 @@ ul {
 ::-webkit-scrollbar-thumb {
     background: var(--color-emerald-500);
     border-radius: 10px;
-}
-
-/* Hover effect */
-::-webkit-scrollbar-thumb:hover {
-    background: var(--color-white);
 }

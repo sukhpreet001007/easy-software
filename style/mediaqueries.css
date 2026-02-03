@@ -435,7 +435,7 @@
 /* Section Three Hero Media Queries */
 @media (max-width: 991.98px) {
     .section-three-hero {
-        padding: 60px 0;
+        padding: 0px 0;
     }
 
     .section-three-header {
@@ -458,6 +458,18 @@
 
     .section-three-image {
         margin-bottom: 0;
+    }
+    .shorts-section{
+        padding-top: 50px !important;
+    }
+    .shorts-title{
+        margin-bottom: 20px !important;
+    }
+    .clients-review-title{
+        margin-bottom: 30px !important;
+    }
+    .review-track{
+        gap: 20px !important;
     }
 }
 

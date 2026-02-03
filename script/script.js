@@ -418,4 +418,82 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     })();
+
+    // Synchronized Feature Points & Image Slider (Index Page)
+    (function () {
+        const featureItems = document.querySelectorAll('.index-points-feature-item[data-index]');
+        const imageSlides = document.querySelectorAll('.index-points-image-slide');
+
+        if (featureItems.length === 0 || imageSlides.length === 0) return;
+
+        let currentIndex = 0;
+        const totalItems = featureItems.length;
+        const intervalTime = 3000; // 3 seconds per slide
+
+        function setActiveItem(index) {
+            // Remove active class from all
+            featureItems.forEach(item => item.classList.remove('index-feature-point-active'));
+            imageSlides.forEach(img => img.classList.remove('active'));
+
+            // Add active class to current
+            if (featureItems[index]) featureItems[index].classList.add('index-feature-point-active');
+            if (imageSlides[index]) imageSlides[index].classList.add('active');
+        }
+
+        // Initialize first item
+        setActiveItem(0);
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalItems;
+            setActiveItem(currentIndex);
+        }, intervalTime);
+
+        // Optional: Manual hover interaction
+        featureItems.forEach((item, index) => {
+            item.addEventListener('mouseenter', () => {
+                currentIndex = index;
+                setActiveItem(currentIndex);
+            });
+        });
+    })();
+});
+
+// Smooth gradient progress bar
+let scrollTimeout;
+const progressBar = document.getElementById('progress-bar');
+
+window.addEventListener('scroll', function() {
+    // Clear any existing timeout
+    if (scrollTimeout) {
+        cancelAnimationFrame(scrollTimeout);
+    }
+    
+    // Use requestAnimationFrame for smoother animation
+    scrollTimeout = requestAnimationFrame(function() {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight - windowHeight;
+        const scrolled = window.scrollY;
+        const scrollPercent = Math.min(scrolled / documentHeight, 1);
+        
+        // Update progress bar width
+        progressBar.style.width = (scrollPercent * 100) + '%';
+        
+        // Animate gradient based on scroll position
+        // This creates a "moving gradient" effect
+        const gradientPosition = (scrollPercent * 100) - 100;
+        progressBar.style.backgroundPosition = gradientPosition + '% 0';
+        
+        // Add/remove complete class when at bottom
+        if (scrollPercent >= 0.99) {
+            progressBar.classList.add('complete');
+        } else {
+            progressBar.classList.remove('complete');
+        }
+    });
+});
+
+// Reset on page load
+window.addEventListener('load', function() {
+    progressBar.style.width = '0%';
+    progressBar.style.backgroundPosition = '-100% 0';
 });
