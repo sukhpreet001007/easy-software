@@ -263,6 +263,7 @@
     gap: 20px;
     flex-wrap: wrap;
     perspective: 1000px;
+    padding-top: 20px;
     /* For 3D tilt depth */
 }
 

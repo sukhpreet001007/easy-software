@@ -24,7 +24,7 @@
 .section-promo-features {
     display: flex;
     flex-direction: column;
-    gap: 36px;
+    gap: 10px;
     margin-bottom: 56px;
 }
 

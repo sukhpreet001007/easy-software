@@ -188,6 +188,78 @@
 }
 
 
+
+.feature-point-active {
+    background-color: var(--color-bg-mint-light);
+    border-color: var(--color-border-light);
+    transform: translateX(10px);
+    box-shadow: 0 10px 30px var(--shadow-black-04);
+}
+
+.feature-point-active .points-hero-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: var(--color-white);
+    border-color: var(--navbar-primary-green);
+    box-shadow: none;
+}
+
+.feature-point-active .points-hero-feature-text h6 {
+    color: var(--navbar-primary-green);
+}
+
+.points-hero-image-slider {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 466/289;
+    /* Maintain aspect ratio roughly based on typical dashboard images if needed, or rely on content */
+    border-radius: 20px;
+    overflow: hidden;
+    /* animation: float 6s ease-in-out infinite; */
+}
+
+.points-hero-image-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    object-fit: contain;
+    /* or cover, depending on image sizes */
+}
+
+.points-hero-image-slide.active {
+    opacity: 1;
+    position: relative;
+    /* Keep one in flow if needed, but absolute stack is better for crossfade. Let's stick to absolute and force container height if needed, OR keep the first one relative to set height? No, JS will handle classes. */
+    /* To ensure container height, we can utilize a "ghost" image or aspect-ratio */
+}
+
+/* Better approach for container height: make sure one is always relative? No, crossfade needs overlap. */
+/* Let's set the container aspect ratio or min-height */
+/* Actually, simpler: Grid stack */
+.points-hero-image-slider {
+    display: grid;
+    place-items: center;
+}
+
+.points-hero-image-slide {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    transform: scale(0.98);
+}
+
+.points-hero-image-slide.active {
+    opacity: 1;
+    z-index: 1;
+    transform: scale(1);
+}
+
 @keyframes float {
 
     0%,
@@ -293,12 +365,311 @@
     }
 }
 
+/* Marketing Page Specific Styles (Duplicated from Points Hero) */
+.marketing-points-section {
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.marketing-points-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.marketing-points-section::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.marketing-points-container {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 45px 35px;
+}
+
+.marketing-points-content {
+    padding-right: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.marketing-points-title {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    color: #000000;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.marketing-points-subtitle {
+    font-size: 20px;
+    color: var(--color-black);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 90%;
+}
+
+.marketing-points-features {
+    margin-bottom: 40px;
+}
+
+.marketing-points-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 15px;
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+   
+}
+
+.marketing-points-feature-item:hover {
+    background-color: var(--color-bg-mint-light);
+    border-color: var(--color-border-light);
+    transform: translateX(10px);
+    box-shadow: 0 10px 30px var(--shadow-black-04);
+}
+
+.marketing-feature-point-active {
+    background-color: var(--color-bg-mint-light);
+    border-color: var(--color-border-light);
+    transform: translateX(10px);
+    box-shadow: 0 10px 30px var(--shadow-black-04);
+}
+
+.marketing-points-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px var(--shadow-primary-green-20);
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border: 2px solid var(--color-bg-mint-light);
+    color: var(--navbar-primary-green);
+}
+
+.marketing-points-feature-item:hover .marketing-points-icon,
+.marketing-feature-point-active .marketing-points-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: var(--color-white);
+    border-color: var(--navbar-primary-green);
+    box-shadow: none;
+}
+
+.marketing-points-icon svg {
+    color: var(--navbar-primary-green);
+    stroke-width: 2.5;
+    width: 28px;
+    height: 28px;
+}
+
+.marketing-points-feature-text h6 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-gray-900);
+    margin-bottom: 6px;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.marketing-points-feature-item:hover .marketing-points-feature-text h6,
+.marketing-feature-point-active .marketing-points-feature-text h6 {
+    color: var(--navbar-primary-green);
+}
+
+.marketing-points-feature-text p {
+    font-size: 18px;
+    color: var(--color-black);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.marketing-points-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: var(--navbar-primary-green);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-primary-30);
+    position: relative;
+    overflow: hidden;
+}
+
+.marketing-points-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.marketing-points-btn:hover::before {
+    left: 100%;
+}
+
+.marketing-points-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(6, 171, 92, 0.4);
+    color: white;
+}
+
+.marketing-points-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.marketing-points-btn:hover svg {
+    transform: translateX(4px);
+}
+
+.marketing-points-image-slider {
+    display: grid;
+    place-items: center;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 466/289;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.marketing-points-image-slide {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    transform: scale(0.98);
+}
+
+.marketing-points-image-slide.active {
+    opacity: 1;
+    z-index: 1;
+    transform: scale(1);
+}
+
+/* Responsive Design for Marketing Points */
+@media (max-width: 991px) {
+    .marketing-points-container {
+        padding-bottom: 0px !important;
+    }
+
+    .marketing-points-section {
+        padding: 60px 0;
+    }
+
+    .marketing-points-content {
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+
+    .marketing-points-title {
+        font-size: 36px;
+        margin-bottom: 16px;
+    }
+
+    .marketing-points-subtitle {
+        font-size: 15px;
+        margin-bottom: 30px;
+        max-width: 100%;
+    }
+
+    .marketing-points-features {
+        margin-bottom: 30px;
+    }
+
+    .marketing-points-feature-item {
+        margin-bottom: 24px;
+    }
+}
+
+@media (max-width: 767px) {
+    .marketing-points-section {
+        padding: 40px 0;
+    }
+
+    .marketing-points-section::before,
+    .marketing-points-section::after {
+        display: none;
+    }
+
+    .marketing-points-title {
+        font-size: 28px;
+    }
+
+    .marketing-points-subtitle {
+        font-size: 14px;
+    }
+
+    .marketing-points-feature-item {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .marketing-points-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .marketing-points-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .marketing-points-feature-text h6 {
+        font-size: 15px;
+    }
+
+    .marketing-points-feature-text p {
+        font-size: 13px;
+    }
+
+    .marketing-points-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 24px;
+        font-size: 15px;
+    }
+
+    .marketing-points-image-slide {
+        border-radius: 16px;
+        margin-bottom: 30px;
+    }
+}
+
 @media (max-width: 480px) {
-    .points-hero-title {
+    .marketing-points-title {
         font-size: 24px;
     }
 
-    .points-hero-feature-item:hover {
+    .marketing-points-feature-item:hover {
         transform: none;
     }
 }

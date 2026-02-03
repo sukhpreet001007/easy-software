@@ -10,267 +10,166 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // --- Smash Counter Logic ---
     const counterElement = document.querySelector('.counter');
-    if (!counterElement) return;
+    if (counterElement) {
+        const targetNumber = parseInt(counterElement.getAttribute('data-target'));
+        const duration = 800;
+        const steps = targetNumber - 1;
+        const stepDuration = duration / steps;
 
-    const targetNumber = parseInt(counterElement.getAttribute('data-target'));
-    const duration = 800; // Slightly faster counting (0.8 seconds)
-    const steps = targetNumber - 1; // Since we start at 1
-    const stepDuration = duration / steps;
+        let currentStep = 1;
+        let hasPlayedSmash = false;
 
-    let currentStep = 1;
-    let hasPlayedSmash = false;
+        const counterWrapper = counterElement.closest('.counter-wrapper');
+        const particleContainer = document.createElement('div');
+        particleContainer.style.position = 'absolute';
+        particleContainer.style.top = '0';
+        particleContainer.style.left = '0';
+        particleContainer.style.width = '100%';
+        particleContainer.style.height = '100%';
+        particleContainer.style.pointerEvents = 'none';
+        particleContainer.style.zIndex = '100';
+        counterWrapper.style.position = 'relative';
+        counterWrapper.appendChild(particleContainer);
 
-    // Create particle container
-    const counterWrapper = counterElement.closest('.counter-wrapper');
-    const particleContainer = document.createElement('div');
-    particleContainer.style.position = 'absolute';
-    particleContainer.style.top = '0';
-    particleContainer.style.left = '0';
-    particleContainer.style.width = '100%';
-    particleContainer.style.height = '100%';
-    particleContainer.style.pointerEvents = 'none';
-    particleContainer.style.zIndex = '100';
-    counterWrapper.style.position = 'relative';
-    counterWrapper.appendChild(particleContainer);
-
-    function createParticles() {
-        // Clear previous particles
-        particleContainer.innerHTML = '';
-
-        // Create 8 particles in a circle
-        const particleCount = 8;
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-
-            // Calculate angle for circular distribution
-            const angle = (i / particleCount) * Math.PI * 2;
-            const distance = 30;
-
-            // Set custom properties for animation
-            const tx = Math.cos(angle) * distance;
-            const ty = Math.sin(angle) * distance;
-
-            particle.style.setProperty('--tx', `${tx}px`);
-            particle.style.setProperty('--ty', `${ty}px`);
-
-            // Randomize animation duration
-            const duration = Math.random() * 0.5 + 0.3;
-
-            particle.style.animation = `particleFly ${duration}s ease-out forwards`;
-
-            particleContainer.appendChild(particle);
-        }
-
-        // Remove particles after animation
-        setTimeout(() => {
+        function createParticles() {
             particleContainer.innerHTML = '';
-        }, 800);
-    }
-
-    function playSmashEffect() {
-        // Add smash animation class
-        counterElement.classList.add('smash-animation');
-
-        // Add shake effect to the X
-        const xElement = counterElement.nextSibling;
-        if (xElement && xElement.nodeType === 3 && xElement.textContent === 'X') {
-            // Create a span for the X to animate separately
-            const xSpan = document.createElement('span');
-            xSpan.textContent = 'X';
-            xSpan.classList.add('shake-animation');
-
-            // Replace the text node with our span
-            xElement.parentNode.replaceChild(xSpan, xElement);
-
-            // Remove animation class after completion
-            setTimeout(() => {
-                xSpan.classList.remove('shake-animation');
-            }, 500);
+            const particleCount = 8;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const angle = (i / particleCount) * Math.PI * 2;
+                const distance = 30;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+                particle.style.setProperty('--tx', `${tx}px`);
+                particle.style.setProperty('--ty', `${ty}px`);
+                const duration = Math.random() * 0.5 + 0.3;
+                particle.style.animation = `particleFly ${duration}s ease-out forwards`;
+                particleContainer.appendChild(particle);
+            }
+            setTimeout(() => { particleContainer.innerHTML = ''; }, 800);
         }
 
-        // Create particle explosion
-        createParticles();
+        function playSmashEffect() {
+            counterElement.classList.add('smash-animation');
+            const xElement = counterElement.nextSibling;
+            if (xElement && xElement.nodeType === 3 && xElement.textContent === 'X') {
+                const xSpan = document.createElement('span');
+                xSpan.textContent = 'X';
+                xSpan.classList.add('shake-animation');
+                xElement.parentNode.replaceChild(xSpan, xElement);
+                setTimeout(() => { xSpan.classList.remove('shake-animation'); }, 500);
+            }
+            createParticles();
+            setTimeout(() => { counterElement.classList.remove('smash-animation'); }, 500);
+        }
 
-        // Remove animation class after completion
-        setTimeout(() => {
-            counterElement.classList.remove('smash-animation');
-        }, 500);
+        const animateCounter = () => {
+            if (currentStep <= targetNumber) {
+                counterElement.textContent = currentStep;
+                counterElement.style.transform = 'scale(1.1)';
+                setTimeout(() => { counterElement.style.transform = 'scale(1)'; }, 80);
+
+                if (currentStep === targetNumber && !hasPlayedSmash) {
+                    hasPlayedSmash = true;
+                    setTimeout(() => { playSmashEffect(); }, stepDuration / 2);
+                }
+
+                currentStep++;
+                let currentStepDuration = stepDuration;
+                if (currentStep > targetNumber - 2) {
+                    currentStepDuration = stepDuration * 0.7;
+                }
+                setTimeout(animateCounter, currentStepDuration);
+            }
+        };
+
+        // Start Counter Animation
+        setTimeout(animateCounter, 500);
     }
 
-    const animateCounter = () => {
-        if (currentStep <= targetNumber) {
-            counterElement.textContent = currentStep;
-
-            // Add a subtle scale effect for each number change
-            counterElement.style.transform = 'scale(1.1)';
-            setTimeout(() => {
-                counterElement.style.transform = 'scale(1)';
-            }, 80);
-
-            // Check if we reached the final number
-            if (currentStep === targetNumber && !hasPlayedSmash) {
-                hasPlayedSmash = true;
-
-                // Small delay before smash effect
-                setTimeout(() => {
-                    playSmashEffect();
-                }, stepDuration / 2);
-            }
-
-            currentStep++;
-
-            // Speed up counting as we approach the end
-            let currentStepDuration = stepDuration;
-            if (currentStep > targetNumber - 2) {
-                // Speed up last two steps
-                currentStepDuration = stepDuration * 0.7;
-            }
-
-            setTimeout(animateCounter, currentStepDuration);
-        }
-    };
-
-    // Dashboard counts animation function
+    // --- Dashboard Counts Animation ---
     const animateDashboardCounts = () => {
         const counts = document.querySelectorAll('.hero-section-count');
         counts.forEach(countElement => {
             const target = parseInt(countElement.getAttribute('data-target'));
-            const duration = 1500; // 1.5 seconds for dashboard counts
+            const duration = 1500;
             const stepTime = Math.abs(Math.floor(duration / target));
             let current = 0;
-
             const timer = setInterval(() => {
                 current += 1;
                 countElement.textContent = current;
-
-                // Add digital watch scale effect
                 countElement.style.transform = 'scale(1.1)';
-                setTimeout(() => {
-                    countElement.style.transform = 'scale(1)';
-                }, 50);
-
-                if (current === target) {
-                    clearInterval(timer);
-                }
+                setTimeout(() => { countElement.style.transform = 'scale(1)'; }, 50);
+                if (current === target) { clearInterval(timer); }
             }, stepTime);
         });
     };
 
-    // Percentage section counter animation with Looping & BG Fill
+    // --- Percentage Counter Animation ---
     const animatePercentageCounters = () => {
         const counters = document.querySelectorAll('.counter-percentage');
-
-        const observerOptions = {
-            threshold: 0.2
-        };
-
+        const observerOptions = { threshold: 0.2 };
         const counterObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const counter = entry.target;
-
-                    // Retrieve config
                     const target = parseFloat(counter.getAttribute('data-target') || 0);
                     const prefix = counter.getAttribute('data-prefix') || '';
                     const suffix = counter.getAttribute('data-suffix') || '';
                     const decimals = parseInt(counter.getAttribute('data-decimals') || 0);
-
-                    // Find parent box for background animation
                     const box = counter.closest('.box-per, .hero-section-box1');
-
-                    // Looping Logic Variables
-                    const animationDuration = 2000; // 2 seconds to count up
-                    const holdDuration = 3000; // 3 seconds hold on final number
+                    const animationDuration = 2000;
+                    const holdDuration = 3000;
 
                     const startLoop = () => {
                         let startTime = null;
-
                         const step = (timestamp) => {
                             if (!startTime) startTime = timestamp;
                             const progress = Math.min((timestamp - startTime) / animationDuration, 1);
-
-                            // Easing function (easeOutExpo)
-                            // const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-                            // Linear is often better for "filling" effect synchronization
                             const ease = progress;
-
                             const current = (ease * target);
-
-                            // Update Text
                             counter.textContent = prefix + current.toFixed(decimals) + suffix;
-
-                            // Update Background Fill
-                            if (box) {
-                                box.style.setProperty('--fill-progress', `${ease * 100}%`);
-                            }
+                            if (box) { box.style.setProperty('--fill-progress', `${ease * 100}%`); }
 
                             if (progress < 1) {
                                 requestAnimationFrame(step);
                             } else {
-                                // Animation finished, hold then reset
                                 counter.textContent = prefix + target.toFixed(decimals) + suffix;
-                                if (box) {
-                                    box.style.setProperty('--fill-progress', `100%`);
-                                }
-
+                                if (box) { box.style.setProperty('--fill-progress', `100%`); }
                                 setTimeout(() => {
-                                    // Reset and restart
                                     if (box) {
-                                        // Optional: Quick Fade out or instant reset?
-                                        // Let's do instant reset 0 to restart cycle
-                                        box.style.transition = 'none'; // disable transition for instant reset
+                                        box.style.transition = 'none';
                                         box.style.setProperty('--fill-progress', `0%`);
                                         counter.textContent = prefix + (0).toFixed(decimals) + suffix;
-
-                                        // Force reflow
                                         void box.offsetWidth;
-
-                                        // Re-enable transition by clearing inline style (reverts to CSS)
                                         box.style.transition = '';
                                     }
                                     startLoop();
                                 }, holdDuration);
                             }
                         };
-
                         requestAnimationFrame(step);
                     };
-
                     startLoop();
-
-                    // Only start once per element
                     observer.unobserve(counter);
                 }
             });
         }, observerOptions);
-
         counters.forEach(counter => counterObserver.observe(counter));
     };
 
-    // Start animations
+    // Start Other Animations
     setTimeout(() => {
-        animateCounter();
         animateDashboardCounts();
         animatePercentageCounters();
     }, 500);
 
-    // Clients review carousel logic
+    // Clients review carousel logic - Multi-instance support
     (function () {
-        let reviewPlayers = [];
-        const reviewTrack = document.getElementById('reviewTrack');
-        const reviewContainer = document.querySelector('.review-carousel-container');
-        if (!reviewTrack || !reviewContainer) return;
-
-        let reviewCurrentTranslate = 0;
-        let reviewSpeed = 1.0;
-        let reviewIsHovered = false;
-        let reviewAnimationId;
-        let totalSetWidth = 0;
-        let isInitializing = false;
-
-        // Force load YouTube API independently of other scripts
+        // Global YouTube API Ready check
         function ensureYTAPI() {
             if (!window.YT) {
                 const tag = document.createElement('script');
@@ -279,97 +178,123 @@ document.addEventListener('DOMContentLoaded', function () {
                 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
                 return;
             }
-            if (window.YT && window.YT.Player && !isInitializing) {
-                startInit();
+            if (window.YT && window.YT.Player) {
+                initializeAllCarousels();
             }
         }
 
-        function calculateWidths() {
-            const items = reviewTrack.querySelectorAll('.review-item');
-            if (items.length < 4) return;
-            const firstItem = items[0];
-            const itemWidth = firstItem.offsetWidth || 480;
-            const style = window.getComputedStyle(reviewTrack);
-            const gap = parseInt(style.gap || style.columnGap) || 40;
-            totalSetWidth = (itemWidth + gap) * 4;
+        let isApiReady = false;
+        function initializeAllCarousels() {
+            if (isApiReady) return;
+            isApiReady = true;
+            document.querySelectorAll('.review-carousel-container').forEach(initCarouselInstance);
         }
 
-        function startInit() {
-            isInitializing = true;
-            setTimeout(() => {
-                calculateWidths();
-                window.addEventListener('resize', calculateWidths);
+        function initCarouselInstance(reviewContainer) {
+            const reviewTrack = reviewContainer.querySelector('.review-track');
+            if (!reviewTrack) return;
 
-                const placeholders = reviewTrack.querySelectorAll('[data-review-id]');
-                placeholders.forEach((placeholder, index) => {
-                    const videoId = placeholder.getAttribute('data-review-id');
-                    try {
-                        const player = new YT.Player(placeholder.id, {
-                            videoId: videoId,
-                            playerVars: {
-                                'autoplay': 0,
-                                'mute': 0,
-                                'controls': 1,
-                                'rel': 0,
-                                'modestbranding': 1,
-                                'playsinline': 1,
-                                'iv_load_policy': 3
+            let reviewPlayers = [];
+            let reviewCurrentTranslate = 0;
+            let reviewSpeed = 1.0;
+            let reviewIsHovered = false;
+            let reviewAnimationId;
+            let totalSetWidth = 0;
+
+            function calculateWidths() {
+                const items = reviewTrack.querySelectorAll('.review-item');
+                if (items.length < 4) return;
+                const firstItem = items[0];
+                const itemWidth = firstItem.offsetWidth || 480;
+                const style = window.getComputedStyle(reviewTrack);
+                const gap = parseInt(style.gap || style.columnGap) || 40;
+                totalSetWidth = (itemWidth + gap) * 4;
+            }
+
+            // Initialize Players
+            const placeholders = reviewTrack.querySelectorAll('[data-review-id]');
+            placeholders.forEach((placeholder, index) => {
+                const videoId = placeholder.getAttribute('data-review-id');
+                // Use DOM Element directly avoids ID conflicts
+                try {
+                    const player = new YT.Player(placeholder, {
+                        videoId: videoId,
+                        playerVars: {
+                            'autoplay': 0,
+                            'mute': 0, // Muted by default
+                            'controls': 1,
+                            'rel': 0,
+                            'modestbranding': 1,
+                            'playsinline': 1,
+                            'iv_load_policy': 3
+                        },
+                        events: {
+                            'onReady': (e) => {
+                                const ifr = e.target.getIframe();
+                                if (ifr) { ifr.style.width = '100%'; ifr.style.height = '100%'; }
                             },
-                            events: {
-                                'onReady': (e) => {
-                                    const ifr = e.target.getIframe();
-                                    if (ifr) { ifr.style.width = '100%'; ifr.style.height = '100%'; }
-                                },
-                                'onStateChange': (event) => onReviewPlayerStateChange(event, index)
-                            }
-                        });
-                        reviewPlayers.push(player);
-                    } catch (err) { console.error("YT Player init error:", err); }
-                });
-                startReviewAnimation();
-            }, 1000);
-        }
+                            'onStateChange': (event) => onReviewPlayerStateChange(event, index, reviewPlayers)
+                        }
+                    });
+                    reviewPlayers.push(player);
+                } catch (err) { console.error("YT Player init error:", err); }
+            });
 
-        function onReviewPlayerStateChange(event, index) {
-            if (event.data === YT.PlayerState.PLAYING) {
-                reviewIsHovered = true;
-                reviewPlayers.forEach((p, i) => {
-                    if (i !== index) { try { if (p && p.pauseVideo) p.pauseVideo(); } catch (e) { } }
-                });
+            // State Change Handler (Scoped to this instance)
+            function onReviewPlayerStateChange(event, index, players) {
+                if (event.data === YT.PlayerState.PLAYING) {
+                    reviewIsHovered = true;
+                    // Pause others in this carousel
+                    players.forEach((p, i) => {
+                        if (i !== index) { try { if (p && p.pauseVideo) p.pauseVideo(); } catch (e) { } }
+                    });
+                }
             }
-        }
 
-        function startReviewAnimation() {
-            function animate() {
+            function startReviewAnimation() {
+                function animate() {
+                    const isAnyPlaying = reviewPlayers.some(p => {
+                        try { return p && p.getPlayerState && p.getPlayerState() === YT.PlayerState.PLAYING; } catch (e) { return false; }
+                    });
+
+                    if (!reviewIsHovered && !isAnyPlaying && totalSetWidth > 0) {
+                        reviewCurrentTranslate -= reviewSpeed;
+                        if (Math.abs(reviewCurrentTranslate) >= totalSetWidth) {
+                            reviewCurrentTranslate += totalSetWidth;
+                        }
+                        reviewTrack.style.transform = `translateX(${reviewCurrentTranslate}px)`;
+                    }
+                    reviewAnimationId = requestAnimationFrame(animate);
+                }
+                animate();
+            }
+
+            // Event Listeners
+            reviewContainer.addEventListener('mouseenter', () => reviewIsHovered = true);
+            reviewContainer.addEventListener('mouseleave', () => {
                 const isAnyPlaying = reviewPlayers.some(p => {
                     try { return p && p.getPlayerState && p.getPlayerState() === YT.PlayerState.PLAYING; } catch (e) { return false; }
                 });
+                if (!isAnyPlaying) reviewIsHovered = false;
+            });
 
-                if (!reviewIsHovered && !isAnyPlaying && totalSetWidth > 0) {
-                    reviewCurrentTranslate -= reviewSpeed;
-                    if (Math.abs(reviewCurrentTranslate) >= totalSetWidth) {
-                        reviewCurrentTranslate += totalSetWidth;
-                    }
-                    reviewTrack.style.transform = `translateX(${reviewCurrentTranslate}px)`;
-                }
-                reviewAnimationId = requestAnimationFrame(animate);
-            }
-            animate();
+            window.addEventListener('resize', calculateWidths);
+
+            // Initial Width Calc & Start
+            setTimeout(() => {
+                calculateWidths();
+                startReviewAnimation();
+            }, 500);
         }
 
-        reviewContainer.addEventListener('mouseenter', () => reviewIsHovered = true);
-        reviewContainer.addEventListener('mouseleave', () => {
-            const isAnyPlaying = reviewPlayers.some(p => {
-                try { return p && p.getPlayerState && p.getPlayerState() === YT.PlayerState.PLAYING; } catch (e) { return false; }
-            });
-            if (!isAnyPlaying) reviewIsHovered = false;
-        });
-
+        // Bootstrap the logic
         ensureYTAPI();
+
+        // Polling fallack for YT API
         const checkYT = setInterval(() => {
-            if (window.YT && window.YT.Player && !isInitializing) {
+            if (window.YT && window.YT.Player) {
                 clearInterval(checkYT);
-                startInit();
+                initializeAllCarousels();
             }
         }, 500);
     })();
@@ -454,5 +379,43 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         revealElements.forEach(el => revealObserver.observe(el));
+    })();
+
+    // Synchronized Feature Points & Image Slider (Marketing Page)
+    (function () {
+        const featureItems = document.querySelectorAll('.marketing-points-feature-item[data-index]');
+        const imageSlides = document.querySelectorAll('.marketing-points-image-slide');
+
+        if (featureItems.length === 0 || imageSlides.length === 0) return;
+
+        let currentIndex = 0;
+        const totalItems = featureItems.length;
+        const intervalTime = 3000; // 3 seconds per slide
+
+        function setActiveItem(index) {
+            // Remove active class from all
+            featureItems.forEach(item => item.classList.remove('marketing-feature-point-active'));
+            imageSlides.forEach(img => img.classList.remove('active'));
+
+            // Add active class to current
+            if (featureItems[index]) featureItems[index].classList.add('marketing-feature-point-active');
+            if (imageSlides[index]) imageSlides[index].classList.add('active');
+        }
+
+        // Initialize first item
+        setActiveItem(0);
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalItems;
+            setActiveItem(currentIndex);
+        }, intervalTime);
+
+        // Optional: Manual hover interaction
+        featureItems.forEach((item, index) => {
+            item.addEventListener('mouseenter', () => {
+                currentIndex = index;
+                setActiveItem(currentIndex);
+            });
+        });
     })();
 });
