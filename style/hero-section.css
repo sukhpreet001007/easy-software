@@ -707,23 +707,34 @@
     margin-bottom: 50px;
 }
 
+.page1-hero-badges-container {
+    width: 100%;
+    overflow: hidden;
+}
+
 .page1-hero-badges {
     display: flex;
-    gap: 24px;
+    gap: 20px;
+    /* Reduced from 30px */
     align-items: center;
     flex-wrap: wrap;
 }
 
 .page1-hero-badges img {
-    height: 50px;
+    height: 60px;
+   
     width: auto;
     object-fit: contain;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
+
+    transition: all 0.3s ease;
+}
+
+.mobile-only-badge {
+    display: none;
 }
 
 .page1-hero-badges img:hover {
-    opacity: 1;
+    cursor: pointer;
 }
 
 .page1-right-image-bg {
@@ -843,5 +854,40 @@
 
     .page1-hero-title::after {
         animation-duration: 1s;
+    }
+
+    /* Mobile Marquee for Badges */
+    .page1-hero-badges-container {
+        margin-top: 30px;
+        position: relative;
+    }
+
+    .page1-hero-badges {
+        flex-wrap: nowrap !important;
+        width: max-content;
+        gap: 40px;
+        animation: badgeMarquee 15s linear infinite;
+        padding: 10px 0;
+    }
+
+    .page1-hero-badges img {
+        height: 65px;
+        /* Increased from 48px to match large style */
+        flex-shrink: 0;
+    }
+
+    .mobile-only-badge {
+        display: block;
+    }
+}
+
+@keyframes badgeMarquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 20px));
+        /* Half of the container width minus half gap */
     }
 }
