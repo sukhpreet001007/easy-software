@@ -184,6 +184,16 @@
     flex-wrap: wrap;
 }
 
+.mobile-marquee-item {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .mobile-marquee-item {
+        display: flex !important;
+    }
+}
+
 .hero-section-trust-item {
     height: 64px;
     display: flex;
@@ -749,6 +759,7 @@
         transform: translateX(0);
     }
 }
+
 /* Simpler animation for title and description */
 .page1-hero-title {
     font-size: 56px;
@@ -757,7 +768,7 @@
     margin-bottom: 24px;
     line-height: 1.1;
     letter-spacing: -1px;
-    
+
     /* Animation */
     opacity: 0;
     animation: slideInFromBottom 0.8s ease-out forwards;
@@ -770,7 +781,7 @@
     margin-bottom: 40px;
     line-height: 1.6;
     max-width: 90%;
-    
+
     /* Animation */
     opacity: 0;
     animation: slideInFromBottom 0.8s ease-out forwards;
@@ -782,6 +793,7 @@
         opacity: 0;
         transform: translateY(30px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -801,12 +813,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        90deg,
-        rgba(255,255,255,0) 0%,
-        rgba(255,255,255,1) 50%,
-        rgba(255,255,255,0) 100%
-    );
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 1) 50%,
+            rgba(255, 255, 255, 0) 100%);
     animation: sweep 1.5s ease-in-out forwards;
     animation-delay: 0.5s;
 }
@@ -815,6 +825,7 @@
     0% {
         transform: translateX(-100%);
     }
+
     100% {
         transform: translateX(100%);
     }
@@ -825,11 +836,11 @@
     .page1-hero-title {
         animation-delay: 0.2s;
     }
-    
+
     .page1-hero-desc {
         animation-delay: 0.4s;
     }
-    
+
     .page1-hero-title::after {
         animation-duration: 1s;
     }

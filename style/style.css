@@ -4,7 +4,6 @@
     --navbar-font: 'Outfit', sans-serif;
 }
 
-/* Scroll Progress Bar */
 #progress-bar {
     position: fixed;
     top: 0;
@@ -13,26 +12,27 @@
     height: 4px;
     z-index: 9999;
     transition: width 0.1s ease-out;
-    
-    /* Smooth multi-color gradient */
-    background: linear-gradient(
+      background: linear-gradient(
         90deg,
-        #0e741b 0%,
-        #0aff02 20%,
+        #4bc25b 0%,
+        #40be3b 20%,
         #6cc778 40%,
-        #0be881 60%,
+        #27b13e 60%,
         #07d800bd 80%,
-        #27632f 100%
+        #3dc04e 100%
     );
-    background-size: 600% 100%;
-    
-    /* Add a subtle shine effect */
+       
+    background-size: 100% 100%, 200% 100%;
+    animation: lightShimmer 3s linear infinite;
     box-shadow: 
-        0 2px 10px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    
-    /* Rounded corners */
+        0 2px 12px rgba(72, 187, 120, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
     border-radius: 0 2px 2px 0;
+}
+
+@keyframes lightShimmer {
+    0% { background-position: 0% 0, 200% 0; }
+    100% { background-position: 0% 0, -200% 0; }
 }
 
 /* Optional: Add a pulsing effect at the end */

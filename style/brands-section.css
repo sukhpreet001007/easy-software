@@ -1,13 +1,14 @@
 /* Brands Section Styles */
 .brands-section {
-    padding: 100px 0;
+    padding: 80px 0;
     background-color: var(--color-white);
+    overflow: hidden;
 }
 
 .brands-section-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 10px;
+    padding: 0 20px;
     text-align: center;
 }
 
@@ -20,121 +21,170 @@
 
 .brands-section-p {
     font-size: clamp(15px, 2.5vw, 22px);
-    color: var(--color-gray-warm);
+    color: var(--color-black);
     margin-bottom: 60px;
 }
 
-.brands-section-brands {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    /* Fallback for no-js or initial state */
-}
-
-/* Marquee Specific Styles */
-.brands-marquee-container {
+/* Brands Marquee Wrapper */
+.brands-marquee-wrapper {
     position: relative;
     width: 100%;
     overflow: hidden;
     padding: 10px 0;
 }
 
-/* Blur/Shade effect on sides */
-.brands-marquee-container::before,
-.brands-marquee-container::after {
+.brands-marquee-wrapper::before,
+.brands-marquee-wrapper::after {
     content: "";
     position: absolute;
     top: 0;
-    width: 200px;
+    width: 150px;
     height: 100%;
-    z-index: 5;
+    z-index: 2;
     pointer-events: none;
 }
 
-.brands-marquee-container::before {
+.brands-marquee-wrapper::before {
     left: 0;
-    background: linear-gradient(to right, var(--color-white) 20%, transparent 100%);
+    background: linear-gradient(to right, var(--color-white) 0%, transparent 100%);
 }
 
-.brands-marquee-container::after {
+.brands-marquee-wrapper::after {
     right: 0;
-    background: linear-gradient(to left, var(--color-white) 20%, transparent 100%);
+    background: linear-gradient(to left, var(--color-white) 0%, transparent 100%);
 }
 
-.brands-marquee-inner {
-    display: flex;
-    width: max-content;
-    animation: marqueeFlow 30s linear infinite;
-    padding: 20px 0;
-}
-
-.brands-marquee-inner:hover {
-    animation-play-state: paused;
-}
-
-.brands-section-box {
-    flex: 0 0 auto;
-    width: 320px;
-    /* Increased from 240px */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.brands-section-box:hover {
-    transform: translateY(-8px) scale(1.05);
-    cursor: pointer;
-}
-
-.brands-section-brand-img {
-    height: 140px;
-    /* Increased from 100px */
+/* Marquee Row */
+.brands-marquee-row {
+    position: relative;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
     margin-bottom: 20px;
 }
 
-.brands-section-brand-img img {
-    max-width: 260px;
-    /* Increased from 200px */
-    max-height: 110px;
-    /* Increased from 80px */
-    object-fit: contain;
-    transition: all 0.3s ease;
+.brands-marquee-row:last-child {
+    margin-bottom: 0;
 }
 
+/* Marquee Track */
+.brands-marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 30px;
+    padding: 15px 0;
+}
 
-/* Flag container */
-.brands-section-flag {
+/* Right to Left Animation */
+.row-rtl .brands-marquee-track {
+    animation: marqueeRTL 40s linear infinite;
+}
+
+.row-rtl .brands-marquee-track:hover {
+    animation-play-state: paused;
+}
+
+/* Left to Right Animation */
+.row-ltr .brands-marquee-track {
+    animation: marqueeLTR 40s linear infinite;
+}
+
+.row-ltr .brands-marquee-track:hover {
+    animation-play-state: paused;
+}
+
+/* Brand Card */
+.brand-card {
+    flex: 0 0 auto;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: transform 0.3s ease;
+}
+
+.brand-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Brand Logo */
+.brand-logo {
+    width: 100%;
+    height: 110px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    font-size: 20px;
-    /* Increased from 15px */
-    font-weight: 600;
-    color: var(--color-gray-500);
-    width: 100%;
-    transition: color 0.3s ease;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.103);
+    transition: all 0.3s ease;
 }
 
-.brands-section-box:hover .brands-section-flag {
+.brand-card:hover .brand-logo {
+    box-shadow: 0 8px 30px rgba(6, 171, 92, 0.15);
+    transform: scale(1.02);
+}
+
+.brand-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(0%);
+    transition: all 0.3s ease;
+}
+
+.brand-card:hover .brand-logo img {
+    filter: grayscale(0%) brightness(1.05);
+}
+
+/* Country Name - Top Position */
+.brand-country-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-gray-600);
+    order: -1;
+}
+
+.brand-country-top img {
+    width: 22px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Country Name - Bottom Position */
+.brand-country-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-gray-600);
+}
+
+.brand-country-bottom img {
+    width: 22px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.brand-card:hover .brand-country-top,
+.brand-card:hover .brand-country-bottom {
     color: var(--navbar-primary-green);
 }
 
-.brands-section-flag img {
-    width: 20px;
-    height: 15px;
-    object-fit: cover;
-    border-radius: 3px;
-    box-shadow: 0 1px 3px var(--shadow-black-10);
-}
-
-@keyframes marqueeFlow {
+/* Animations */
+@keyframes marqueeRTL {
     0% {
         transform: translateX(0);
     }
@@ -144,111 +194,119 @@
     }
 }
 
-/* Fix for side effects on Hero Section duplicates */
-.mobile-marquee-item {
-    display: none !important;
-}
+@keyframes marqueeLTR {
+    0% {
+        transform: translateX(-50%);
+    }
 
-/* Responsive adjustments - Only show duplicates on mobile phones, not tablets */
-@media (max-width: 575px) {
-    .mobile-marquee-item {
-        display: flex !important;
+    100% {
+        transform: translateX(0);
     }
 }
 
-@media (max-width: 768px) {
+/* Tablet Styles */
+@media (max-width: 991px) {
     .brands-section {
         padding: 60px 0;
     }
 
+    .brands-section-p {
+        margin-bottom: 40px;
+    }
+
+    .brands-marquee-row {
+        margin-bottom: 20px;
+    }
+
+    .brands-marquee-track {
+        gap: 30px;
+    }
+
+    .brand-card {
+        width: 180px;
+    }
+
+    .brand-logo {
+        height: 90px;
+        padding: 12px;
+    }
+
+    .brand-country-top,
+    .brand-country-bottom {
+        font-size: 14px;
+    }
+
+    .brand-country-top img,
+    .brand-country-bottom img {
+        width: 20px;
+        height: 14px;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 576px) {
+    .brands-section {
+        padding: 50px 0;
+    }
+
     .brands-section-title {
-        font-size: 28px;
+        font-size: 24px;
         margin-bottom: 10px;
     }
 
     .brands-section-p {
         font-size: 14px;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
     }
 
-    .brands-marquee-container {
-        position: relative;
-        width: 100%;
-        overflow: hidden;
+    .brands-marquee-wrapper {
         padding: 10px 0;
     }
 
-    .brands-marquee-container::before,
-    .brands-marquee-container::after {
-        width: 60px;
+    .brands-marquee-row {
+        margin-bottom: 15px;
     }
 
-    .brands-marquee-inner {
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        width: max-content !important;
-        gap: 15px;
-        animation: marqueeFlow 20s linear infinite;
+    .brands-marquee-track {
+        gap: 20px;
         padding: 15px 0;
     }
 
-    .brands-section-box {
-        flex: 0 0 auto !important;
-        width: 220px !important;
-        min-width: 220px !important;
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
+    .brand-card {
+        width: 150px;
+        gap: 8px;
     }
 
-    /* Ensure nested divs don't break layout */
-    .brands-section-box>div {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .brand-logo {
+        height: 80px;
+        padding: 10px;
+        border-radius: 10px;
     }
 
-    .brands-section-brand-img {
-        height: 100px !important;
-        width: 100% !important;
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 10px;
-    }
-
-    .brands-section-brand-img img {
-        max-width: 180px !important;
-        max-height: 80px !important;
-        width: auto !important;
-        height: auto !important;
-        object-fit: contain !important;
-    }
-
-    .brands-section-flag {
-        font-size: 14px;
+    .brand-country-top,
+    .brand-country-bottom {
+        font-size: 13px;
         gap: 6px;
     }
 
-    .brands-section-flag img {
+    .brand-country-top img,
+    .brand-country-bottom img {
         width: 18px;
-        height: 14px;
+        height: 13px;
     }
-    .brands-marquee-container::before {
-    left: 0;
-    background: linear-gradient(to right, var(--color-white) 2%, transparent 15%);
+
+    /* Faster animation on mobile */
+    .row-rtl .brands-marquee-track {
+        animation: marqueeRTL 30s linear infinite;
+    }
+
+    .row-ltr .brands-marquee-track {
+        animation: marqueeLTR 30s linear infinite;
+    }
 }
 
-.brands-marquee-container::after {
-    right: 0;
-    background: linear-gradient(to left, var(--color-white) 2%, transparent 15%);
-}
-}
-
-/* Badges Section Styles */
+/* Badges Section Styles (Keep existing badges section unchanged) */
 .badges-section {
-    /* padding: 60px 0; */
     background-color: var(--color-white);
     overflow: hidden;
 }
@@ -264,7 +322,6 @@
     flex-wrap: wrap;
     perspective: 1000px;
     padding-top: 20px;
-    /* For 3D tilt depth */
 }
 
 /* Badge Item Base */
@@ -322,7 +379,7 @@
     }
 }
 
-/* Simple Glow (Removed Holographic Shine) */
+/* Simple Glow */
 .badge-item::before {
     content: '';
     position: absolute;
@@ -344,29 +401,42 @@
     opacity: 1;
 }
 
-/* Mobile Adjustments for Badges */
-@media (max-width: 991px) {
-    .badge-item {
-        width: 110px;
-        height: 140px;
-    }
-     .badges-container {
-        gap: 15px;
+/* Tablet Portrait Adjustments for Badges (577px to 991px) */
+@media (min-width: 577px) and (max-width: 991px) {
+    .badges-container {
+        gap: 18px;
+        padding: 0 30px;
         padding-top: 40px !important;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
     }
-    .testimonies-section{
+
+    .badge-item {
+        width: 120px;
+        height: 150px;
+        flex: 0 0 auto;
+    }
+
+    .testimonies-section {
         padding-top: 60px !important;
         padding-bottom: 20px !important;
     }
-    .testimonies-marquee-container{
+
+    .testimonies-marquee-container {
         margin-top: -40px;
     }
 }
 
+/* Mobile Adjustments for Badges (576px and below) */
 @media (max-width: 576px) {
     .badges-container {
         gap: 15px;
         padding: 0 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .badge-item {

@@ -124,9 +124,6 @@
 
 .testimony-card {
     width: 380px;
-    background: #f0faf6;
-    /* Soft theme mint */
-    border: 1px solid #d4f1e3;
     border-radius: 20px;
     padding: 25px;
     display: flex;
@@ -136,12 +133,17 @@
     flex-shrink: 0;
     white-space: normal;
     word-wrap: break-word;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05),
+                0 1px 2px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .testimony-card:hover {
     border-color: var(--navbar-primary-green);
+     background: #f0faf6;
+    /* Soft theme mint */
+    border: 1px solid #d4f1e3;
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(6, 171, 92, 0.1);
 }
 
 .testimony-user-info {
@@ -167,7 +169,7 @@
 .testimony-content {
     font-size: 15px;
     line-height: 1.5;
-    color: #333;
+    color: #000000;
     font-family: 'Inter', sans-serif;
     font-style: italic;
     margin: 0;
