@@ -164,7 +164,7 @@
 }
 
 .icon-purple {
-    background: var(--icon-purple-bg);
+    background: var(--icon-orange-bg);
     color: var(--icon-purple);
 }
 
@@ -181,6 +181,31 @@
 .icon-teal {
     background: var(--icon-teal-bg);
     color: var(--icon-teal);
+}
+
+.icon-pink {
+    background: #fdf2f8;
+    color: #db2777;
+}
+
+.icon-indigo {
+    background: #eef2ff;
+    color: #4f46e5;
+}
+
+.icon-orange {
+    background: #fff7ed;
+    color: #ea580c;
+}
+
+.icon-brown {
+    background: #fdf8f6;
+    color: #92400e;
+}
+
+.icon-lightblue {
+    background: #f0f9ff;
+    color: #0284c7;
 }
 
 .navbar-lang-toggle {
@@ -301,9 +326,25 @@
 .navbar-sidebar-desc {
     font-size: 13px;
     color: var(--navbar-gray);
-    padding: 5px 0 10px 15px;
+    padding: 5px 0 10px 48px;
+    /* Increased padding to align with icon-enabled text */
     margin: 0;
     line-height: 1.4;
+}
+
+.navbar-sidebar-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.navbar-sidebar-icon svg {
+    width: 18px;
+    height: 18px;
 }
 
 .sublist-arrow {
