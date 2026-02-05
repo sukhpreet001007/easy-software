@@ -28,7 +28,7 @@
 
 .review-item {
     width: 480px;
-    background: #f0faf6;
+    /* background: #f0faf6; */
     /* Soft theme mint */
     border-radius: 20px;
     overflow: hidden;
@@ -41,7 +41,7 @@
     width: 100%;
     aspect-ratio: 16/9;
     position: relative;
-    background: #d4f1e3;
+    /* background: #d4f1e3; */
 }
 
 .review-video-wrapper iframe {

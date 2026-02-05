@@ -45,21 +45,25 @@
     .growth-card-text {
         font-size: 14px !important;
     }
-    .faq-section{
+
+    .faq-section {
         padding-top: 40px !important;
     }
-    .brands-marquee-wrapper::before {
-    left: 0;
-    background: linear-gradient(to right, var(--color-white) 0%, transparent 15%);
-}
 
-.brands-marquee-wrapper::after {
-    right: 0;
-    background: linear-gradient(to left, var(--color-white) 0%, transparent 15%);
-}
-.brands-section-title{
-    margin-top: 20px;
-}
+    .brands-marquee-wrapper::before {
+        left: 0;
+        background: linear-gradient(to right, var(--color-white) 0%, transparent 15%);
+    }
+
+    .brands-marquee-wrapper::after {
+        right: 0;
+        background: linear-gradient(to left, var(--color-white) 0%, transparent 15%);
+    }
+
+    .brands-section-title {
+        margin-top: 20px;
+    }
+
 }
 
 /* Extra small devices (max-width: 575.98px) */
@@ -358,7 +362,8 @@
         flex: 0 0 calc(33.33% - 24px);
         max-width: calc(33.33% - 24px);
     }
-    .adv-features-section{
+
+    .adv-features-section {
         padding-bottom: 65px !important;
     }
 }
@@ -471,39 +476,30 @@
     .section-three-image {
         margin-bottom: 0;
     }
-    .shorts-section{
+
+    .shorts-section {
         padding-top: 50px !important;
     }
-    .shorts-title{
+
+    .shorts-title {
         margin-bottom: 20px !important;
     }
-    .clients-review-title{
+
+    .clients-review-title {
         margin-bottom: 30px !important;
     }
-    .review-track{
+
+    .review-track {
         gap: 20px !important;
     }
 }
 
 /* Percentage Section Media Queries */
-@media (max-width: 991.98px) {
-    .box-per {
-        flex: 1 1 calc(50% - 25px);
-    }
-}
+@media (max-width: 991.98px) {}
 
 @media (max-width: 575.98px) {
     .section-percentage {
         padding: 60px 0;
-    }
-
-    .box-per {
-        flex: 1 1 100%;
-        min-width: 100%;
-    }
-
-    .box-per {
-        padding: 30px 15px;
     }
 }
 

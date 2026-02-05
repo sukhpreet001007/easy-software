@@ -314,14 +314,13 @@
 .badges-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 20px 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
     perspective: 1000px;
-    padding-top: 20px;
 }
 
 /* Badge Item Base */
@@ -344,6 +343,8 @@
     filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
     transition: all 0.4s ease;
     will-change: transform;
+    mix-blend-mode: multiply;
+    
 }
 
 /* Elastic Pop Hover Effects */
@@ -433,7 +434,7 @@
 @media (max-width: 576px) {
     .badges-container {
         gap: 15px;
-        padding: 0 20px;
+        padding: 60px 20px 0px 20px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -442,5 +443,9 @@
     .badge-item {
         width: 90px;
         height: 120px;
+    }
+     .testimonies-section {
+        padding-top: 80px !important;
+        padding-bottom: 20px !important;
     }
 }

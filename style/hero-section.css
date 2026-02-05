@@ -676,11 +676,82 @@
     .page1-hero-left-wrapper {
         padding-left: calc((100vw - 1140px) / 2 + 15px);
     }
+
+    /* Dashboard Desktop Enhancements */
+    .hero-section-dashboard-image {
+        max-width: 1250px;
+    }
+
+    .hero-section-box-body {
+        --ticker-height: 85px;
+    }
+
+    .hero-section-box-header {
+        font-size: 14px;
+        top: -28px;
+    }
+
+    .hero-section-box1 {
+        border-top: 40px solid var(--navbar-primary-green);
+    }
+
+    .hero-section-count {
+        font-size: 32px;
+    }
+
+    .hero-section-ticker-item {
+        font-size: 24px;
+    }
+
+    .hero-section-box-icon {
+        width: 44px;
+        height: 44px;
+    }
 }
 
 @media (min-width: 1400px) {
     .page1-hero-left-wrapper {
         padding-left: calc((100vw - 1520px) / 2 + 15px);
+    }
+
+    /* Dashboard Large Desktop Enhancements */
+    .hero-section-dashboard-image {
+        max-width: 1390px;
+    }
+
+    .hero-section-dashboard-money-boxes {
+        padding: 20px 45px;
+        gap: 25px;
+    }
+
+    .hero-section-box-body {
+        --ticker-height: 100px;
+    }
+
+    .hero-section-box-header {
+        font-size: 16px;
+        top: -34px;
+    }
+
+    .hero-section-box1 {
+        border-top: 50px solid var(--navbar-primary-green);
+    }
+
+    .hero-section-count {
+        font-size: 40px;
+    }
+
+    .hero-section-ticker-item {
+        font-size: 28px;
+    }
+
+    .hero-section-box-icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .hero-section-box-content-wrapper {
+        width: 75%;
     }
 }
 
@@ -722,7 +793,7 @@
 
 .page1-hero-badges img {
     height: 60px;
-   
+
     width: auto;
     object-fit: contain;
 
