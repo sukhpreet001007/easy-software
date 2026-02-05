@@ -117,7 +117,20 @@
 
         // Update card states
         cards.forEach((card, i) => {
-            card.classList.toggle('active', i === currentIndex);
+            const isActive = i === currentIndex;
+            card.classList.toggle('active', isActive);
+
+            // AUTO-MUTE: When sliding, ensure non-active videos are muted
+            if (!isActive) {
+                const iframe = card.querySelector('iframe');
+                if (iframe && iframe.contentWindow) {
+                    iframe.contentWindow.postMessage(JSON.stringify({
+                        event: 'command',
+                        func: 'mute',
+                        args: []
+                    }), '*');
+                }
+            }
         });
 
         // Update Dots
@@ -150,7 +163,7 @@
             if (isNearVisible && !container.innerHTML) {
                 container.innerHTML = `
                     <iframe 
-                        src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=1&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3" 
+                        src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=1&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&enablejsapi=1" 
                         frameborder="0" 
                         allow="autoplay; encrypted-media" 
                         allowfullscreen>
@@ -159,6 +172,36 @@
             }
         });
     }
+
+    // Single Audio Management: Robust detection and enforcement
+    window.addEventListener('message', (event) => {
+        if (!event.origin.includes('youtube.com')) return;
+
+        let data;
+        try {
+            data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+        } catch (e) {
+            return;
+        }
+
+        // Detect manual unmute via YouTube's internal 'infoDelivery' or 'volumeChange'
+        const isUnmuted = (data.event === 'infoDelivery' && data.info && data.info.muted === false) ||
+            (data.info && data.info.volume > 0 && data.info.muted === false);
+
+        if (isUnmuted) {
+            const iframes = document.querySelectorAll('.short-card iframe');
+            iframes.forEach(iframe => {
+                // Mute every other iframe except the one currently sending the "unmuted" signal
+                if (iframe.contentWindow !== event.source) {
+                    iframe.contentWindow.postMessage(JSON.stringify({
+                        event: 'command',
+                        func: 'mute',
+                        args: []
+                    }), '*');
+                }
+            });
+        }
+    });
 
     function setupIntersectionObserver() {
         const observer = new IntersectionObserver((entries) => {
