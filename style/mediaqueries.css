@@ -142,11 +142,11 @@
     }
 
     .hero-section-trust-row {
-        gap: 20px;
+        gap: 30px;
     }
 
     .hero-section-trust-item img {
-        height: 32px;
+        height: 52px;
     }
 
     .faq-button {
