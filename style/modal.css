@@ -1,0 +1,295 @@
+.demo-modal-form {
+    z-index: 3000 !important;
+}
+
+.demo-modal-form .modal-dialog {
+    max-width: 900px;
+}
+
+.demo-modal-form .modal-content {
+    border: none;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--color-white);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.demo-modal-form .modal-header {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 10;
+    border: none;
+    padding: 0;
+}
+
+.demo-modal-form .btn-close {
+    background-color: var(--color-white);
+    opacity: 0.8;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.demo-modal-form .btn-close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.demo-modal-form .modal-body {
+    padding: 0;
+}
+
+.modal-box {
+    display: flex;
+    min-height: 550px;
+}
+
+/* Left Side - Visual/Decorative */
+.modal-left {
+    flex: 1;
+    background: linear-gradient(135deg, var(--navbar-primary-green) 0%, #047841 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    color: var(--color-white);
+    text-align: center;
+    overflow: hidden;
+}
+
+.modal-left::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    animation: pulseGlow 8s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: scale(1.1);
+        opacity: 0.6;
+    }
+}
+
+/* Feature List */
+.modal-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+}
+
+.modal-features-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-white);
+    transition: transform 0.3s ease;
+}
+
+.modal-features-list li:hover {
+    transform: translateX(5px);
+}
+
+.modal-features-list li i {
+    font-size: 20px;
+    color: #ffffff;
+    /* Gold check color for premium feel */
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.4));
+}
+
+.modal-features-list li span {
+    opacity: 0.95;
+    letter-spacing: 0.3px;
+}
+
+/* Right Side - Form */
+.modal-right {
+    flex: 1.2;
+    padding: 50px 40px;
+    background: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-right h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-gray-900);
+    margin-bottom: 10px;
+}
+
+.modal-right p {
+    color: var(--color-gray-500);
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+.demo-modal-form .form-label {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-gray-700);
+    margin-bottom: 8px;
+}
+
+.demo-modal-form .form-control {
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1.5px solid var(--color-border-gray);
+    background: var(--color-bg-light);
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.demo-modal-form .form-control:focus {
+    background: var(--color-white);
+    border-color: var(--navbar-primary-green);
+    box-shadow: 0 0 0 4px var(--shadow-primary-08);
+    outline: none;
+}
+
+.country-code-select {
+    padding: 12px 8px 12px 12px !important;
+    border-radius: 12px 0 0 12px !important;
+    border: 1.5px solid var(--color-border-gray) !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e") !important;
+    background-size: 12px 10px !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    cursor: pointer;
+}
+
+.country-code-select:focus {
+    border-color: var(--navbar-primary-green) !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.demo-modal-form .input-group {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.demo-modal-form .input-group .form-control {
+    border-left: 1px solid var(--color-border-gray) !important;
+}
+
+/* Floating Animation for Input Fields */
+.demo-modal-form .mb-3 {
+    position: relative;
+    margin-bottom: 20px !important;
+}
+
+.demo-modal-form .btn-submit-demo {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    background: var(--navbar-primary-green);
+    border: none;
+    color: var(--color-white);
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 20px var(--shadow-primary-25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.demo-modal-form .btn-submit-demo:hover {
+    background: var(--navbar-primary-green-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px var(--shadow-primary-35);
+}
+
+.demo-modal-form .btn-submit-demo:active {
+    transform: translateY(-1px);
+}
+
+.demo-modal-form .btn-submit-demo svg {
+    transition: transform 0.3s ease;
+}
+
+.demo-modal-form .btn-submit-demo:hover svg {
+    transform: translateX(5px);
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+    .demo-modal-form .modal-dialog {
+        max-width: 90%;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .modal-left {
+        display: none !important;
+    }
+
+    .modal-right {
+        padding: 40px 25px;
+        flex: 1;
+        width: 100%;
+    }
+
+    .modal-right h3 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .demo-modal-form .modal-content {
+        border-radius: 16px;
+    }
+
+    .modal-right {
+        padding: 30px 20px;
+    }
+
+    .modal-right h3 {
+        font-size: 22px;
+    }
+
+    .modal-right p {
+        font-size: 14px;
+    }
+}
+
+/* Entry Animation */
+.demo-modal-form.show .modal-dialog {
+    animation: modalBounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes modalBounce {
+    0% {
+        transform: scale(0.8) translateY(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}

@@ -12,27 +12,30 @@
     height: 4px;
     z-index: 9999;
     transition: width 0.1s ease-out;
-      background: linear-gradient(
-        90deg,
-        #4bc25b 0%,
-        #40be3b 20%,
-        #6cc778 40%,
-        #27b13e 60%,
-        #07d800bd 80%,
-        #3dc04e 100%
-    );
-       
+    background: linear-gradient(90deg,
+            #4bc25b 0%,
+            #40be3b 20%,
+            #6cc778 40%,
+            #27b13e 60%,
+            #07d800bd 80%,
+            #3dc04e 100%);
+
     background-size: 100% 100%, 200% 100%;
     animation: lightShimmer 3s linear infinite;
-    box-shadow: 
+    box-shadow:
         0 2px 12px rgba(72, 187, 120, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.5);
     border-radius: 0 2px 2px 0;
 }
 
 @keyframes lightShimmer {
-    0% { background-position: 0% 0, 200% 0; }
-    100% { background-position: 0% 0, -200% 0; }
+    0% {
+        background-position: 0% 0, 200% 0;
+    }
+
+    100% {
+        background-position: 0% 0, -200% 0;
+    }
 }
 
 /* Optional: Add a pulsing effect at the end */
@@ -41,12 +44,21 @@
 }
 
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
     }
+
     50% {
         opacity: 0.8;
     }
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {

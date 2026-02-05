@@ -42,6 +42,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
     <link rel="stylesheet" href="style/points-hero.css">
     <link rel="stylesheet" href="style/faq-section.css">
     <link rel="stylesheet" href="style/button-effects.css">
+<link rel="stylesheet" href="style/modal.css">
     <link rel="stylesheet" href="style/scroll-animations.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -50,7 +51,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
 <body>
 
     <div id="progress-bar"></div>
-    <nav class="container-fl uid navbar-container navbar-expand-lg">
+   <nav class="container-fluid navbar-container navbar-expand-lg">
         <div class="container-fluid navbar-wrapper">
             <a class="navbar-brand-link" href="index.html">
                 <img src="assets/logoo.svg" alt="Easy Software Logo" class="navbar-logo-img">
@@ -190,7 +191,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                                         </a>
                                     </div>
                                     <div class="col-lg-4">
-                                        <a href="#" class="navbar-megamenu-item">
+                                        <a href="inventory.html" class="navbar-megamenu-item">
                                             <div class="navbar-megamenu-icon icon-teal">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                     stroke="currentColor" stroke-width="1.5">
@@ -443,7 +444,8 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                         </a>
                     </li>
                     <li class="navbar-nav-item ms-4 navbar-desktop-btns">
-                        <a href="#" class="navbar-btn navbar-btn-primary enhanced-btn enhanced-btn-fill">
+                        <a href="#" class="navbar-btn navbar-btn-primary enhanced-btn enhanced-btn-fill"
+                            data-bs-target="#ModalTogglesix" data-bs-toggle="modal">
                             Book Free Demo
                             <svg class="navbar-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -638,7 +640,8 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                             </li>
                             <li class="navbar-sidebar-subitem">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a href="billing.html" class="navbar-sidebar-sublink d-flex align-items-center gap-3">
+                                    <a href="billing.html"
+                                        class="navbar-sidebar-sublink d-flex align-items-center gap-3">
                                         <div class="navbar-sidebar-icon icon-green">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2">
@@ -663,7 +666,8 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                             </li>
                             <li class="navbar-sidebar-subitem">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a href="reporting.html" class="navbar-sidebar-sublink d-flex align-items-center gap-3">
+                                    <a href="reporting.html"
+                                        class="navbar-sidebar-sublink d-flex align-items-center gap-3">
                                         <div class="navbar-sidebar-icon icon-cyan">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2">
@@ -688,7 +692,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                             </li>
                             <li class="navbar-sidebar-subitem">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a href="#" class="navbar-sidebar-sublink d-flex align-items-center gap-3">
+                                    <a href="inventory.html" class="navbar-sidebar-sublink d-flex align-items-center gap-3">
                                         <div class="navbar-sidebar-icon icon-teal">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="1.5">
@@ -1028,7 +1032,8 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
 
             <!-- Sidebar Bottom Buttons -->
             <div class="navbar-sidebar-footer mt-5">
-                <a href="#" class="navbar-btn navbar-btn-primary w-100 mb-3 enhanced-btn enhanced-btn-fill">
+                <a href="#" class="navbar-btn navbar-btn-primary w-100 mb-3 enhanced-btn enhanced-btn-fill"
+                    data-bs-target="#ModalTogglesix" data-bs-toggle="modal" data-bs-dismiss="offcanvas">
                     Book Free Demo
                     <svg class="navbar-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1063,7 +1068,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                         </p>
                         <div class="page1-hero-btns">
                             <a href="#"
-                                class="hero-section-action-btn hero-section-btn-fill enhanced-btn enhanced-btn-fill">
+                                class="hero-section-action-btn hero-section-btn-fill enhanced-btn enhanced-btn-fill" data-bs-target="#ModalTogglesix" data-bs-toggle="modal">
                                 Simplify Your Operations
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1071,7 +1076,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                                     <polyline points="12 5 19 12 12 19"></polyline>
                                 </svg>
                             </a>
-                            <a href="#" class="hero-section-action-btn  enhanced-btn enhanced-btn-outline">
+                            <a href="#" class="hero-section-action-btn  enhanced-btn enhanced-btn-outline" data-bs-target="#ModalTogglesix" data-bs-toggle="modal">
                                 See What You Can Do
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1110,9 +1115,10 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
 
     <section class="brands-section">
         <div class="brands-section-container">
-            <h2 class="brands-section-title"> <span class="accent-icon">›</span> Business Owners Love Us</h2>
-            <p class="brands-section-p">Trusted by 3k+ businesses worldwide for smarter growth and optimized business
-                operations
+            <h2 class="brands-section-title"> <span class="accent-icon">›</span> Built for Business Owners Like You</h2>
+            <p class="brands-section-p">
+Chosen by 3,000+ property managers for smarter, seamless dashboard management
+
             </p>
 
             <div class="brands-marquee-wrapper">
@@ -1463,7 +1469,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                                 </div>
                             </div>
                         </div>
-                        <button class="section-promo-btn enhanced-btn enhanced-btn-fill">
+                        <button class="section-promo-btn enhanced-btn enhanced-btn-fill" data-bs-target="#ModalTogglesix" data-bs-toggle="modal">
                             Start Your Free Demo
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -2249,7 +2255,7 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
                                 </div>
                             </div>
                         </div>
-                        <button class="marketing-points-btn enhanced-btn enhanced-btn-fill">
+                        <button class="marketing-points-btn enhanced-btn enhanced-btn-fill" data-bs-target="#ModalTogglesix" data-bs-toggle="modal">
                             See it in Action
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -2541,6 +2547,85 @@ style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
+<div class="modal fade demo-modal-form" id="ModalTogglesix" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-box">
+                        <div class="modal-left">
+                            <div class="modal-branding">
+                                <img src="assets/logoo.svg" alt="Logo"
+                                    style="width: 150px; filter: brightness(0) invert(1); margin-bottom: 30px;">
+
+                                <ul class="modal-features-list">
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>Instant WhatsApp Sync</span>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>Smart GST/Non-GST Billing</span>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>Advanced Inventory Control</span>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>24/7 Dedicated Support</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="modal-right">
+                            <h3>Book a Free Demo</h3>
+                            <p>Transform your business with Get Easy Software. Fill out the form below and our team will
+                                get in touch.</p>
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label">Business Name*</label>
+                                    <input type="text" class="form-control" placeholder="Enter your business name">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Contact Person Name*</label>
+                                    <input type="text" class="form-control" placeholder="Enter your full name">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Email Address*</label>
+                                    <input type="email" class="form-control" placeholder="yourname@company.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Contact Number*</label>
+                                    <div class="input-group">
+                                        <select class="form-select country-code-select"
+                                            style="max-width: 100px; border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-right: none; background-color: var(--color-bg-light);">
+                                            <option value="+91">+91</option>
+                                            <option value="+1">+1</option>
+                                            <option value="+44">+44</option>
+                                        </select>
+                                        <input type="tel" class="form-control" placeholder="Enter your phone number"
+                                            style="border-top-left-radius: 0; border-bottom-left-radius: 0;">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn-submit-demo">
+                                    Submit Request
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

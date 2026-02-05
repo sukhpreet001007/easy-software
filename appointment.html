@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="style/points-hero.css">
     <link rel="stylesheet" href="style/faq-section.css">
     <link rel="stylesheet" href="style/button-effects.css">
+<link rel="stylesheet" href="style/modal.css">
     <link rel="stylesheet" href="style/scroll-animations.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -39,7 +40,7 @@
 <body>
 
     <div id="progress-bar"></div>
-   <nav class="container-fl uid navbar-container navbar-expand-lg">
+   <nav class="container-fluid navbar-container navbar-expand-lg">
         <div class="container-fluid navbar-wrapper">
             <a class="navbar-brand-link" href="index.html">
                 <img src="assets/logoo.svg" alt="Easy Software Logo" class="navbar-logo-img">
@@ -179,7 +180,7 @@
                                         </a>
                                     </div>
                                     <div class="col-lg-4">
-                                        <a href="#" class="navbar-megamenu-item">
+                                        <a href="inventory.html" class="navbar-megamenu-item">
                                             <div class="navbar-megamenu-icon icon-teal">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                     stroke="currentColor" stroke-width="1.5">
@@ -367,13 +368,17 @@
                                     <div class="col-lg-4">
                                         <a href="#" class="navbar-megamenu-item">
                                             <div class="navbar-megamenu-icon icon-lightblue">
-                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M2 16h20M4 16l1-2.5h14l1 2.5M6 13.5l1.5-4.5h9l1.5 4.5" stroke="currentColor" />
-  <path d="M3 16c0-1 1-5 4-6h10c3 1 4 5 4 6" stroke="currentColor" fill="currentColor" fill-opacity="0.1"/>
-  
-  <circle cx="7" cy="17" r="2" fill="white" stroke="currentColor"/>
-  <circle cx="17" cy="17" r="2" fill="white" stroke="currentColor"/>
-</svg>
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg" stroke="currentColor"
+                                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M2 16h20M4 16l1-2.5h14l1 2.5M6 13.5l1.5-4.5h9l1.5 4.5"
+                                                        stroke="currentColor" />
+                                                    <path d="M3 16c0-1 1-5 4-6h10c3 1 4 5 4 6" stroke="currentColor"
+                                                        fill="currentColor" fill-opacity="0.1" />
+
+                                                    <circle cx="7" cy="17" r="2" fill="white" stroke="currentColor" />
+                                                    <circle cx="17" cy="17" r="2" fill="white" stroke="currentColor" />
+                                                </svg>
 
                                             </div>
                                             <div class="navbar-megamenu-content">
@@ -388,9 +393,11 @@
                                     <div class="col-lg-4">
                                         <a href="#" class="navbar-megamenu-item">
                                             <div class="navbar-megamenu-icon icon-green">
-                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5">
-    <path d="M12 5c1.2 0 2.25 1.05 2.25 2.25v1.25c0 1.2-1.05 2.25-2.25 2.25S9.75 9.7 9.75 8.5V7.25C9.75 6.05 10.8 5 12 5zm6.5 4.5c1.2 0 2.25 1.05 2.25 2.25v1.25c0 1.2-1.05 2.25-2.25 2.25s-2.25-1.05-2.25-2.25v-1.25c0-1.2 1.05-2.25 2.25-2.25zM5.5 9.5c1.2 0 2.25 1.05 2.25 2.25v1.25c0 1.2-1.05 2.25-2.25 2.25s-2.25-1.05-2.25-2.25v-1.25c0-1.2 1.05-2.25 2.25-2.25zM12 14c3.8 0 7 3.2 7 7 0 .9-.7 1.5-1.5 1.5H6.5C5.7 22.5 5 21.8 5 21c0-3.8 3.2-7 7-7z"/>
-</svg>
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path
+                                                        d="M12 5c1.2 0 2.25 1.05 2.25 2.25v1.25c0 1.2-1.05 2.25-2.25 2.25S9.75 9.7 9.75 8.5V7.25C9.75 6.05 10.8 5 12 5zm6.5 4.5c1.2 0 2.25 1.05 2.25 2.25v1.25c0 1.2-1.05 2.25-2.25 2.25s-2.25-1.05-2.25-2.25v-1.25c0-1.2 1.05-2.25 2.25-2.25zM5.5 9.5c1.2 0 2.25 1.05 2.25 2.25v1.25c0 1.2-1.05 2.25-2.25 2.25s-2.25-1.05-2.25-2.25v-1.25c0-1.2 1.05-2.25 2.25-2.25zM12 14c3.8 0 7 3.2 7 7 0 .9-.7 1.5-1.5 1.5H6.5C5.7 22.5 5 21.8 5 21c0-3.8 3.2-7 7-7z" />
+                                                </svg>
                                             </div>
                                             <div class="navbar-megamenu-content">
                                                 <h6>Pet Facility</h6>
@@ -426,7 +433,8 @@
                         </a>
                     </li>
                     <li class="navbar-nav-item ms-4 navbar-desktop-btns">
-                        <a href="#" class="navbar-btn navbar-btn-primary enhanced-btn enhanced-btn-fill">
+                        <a href="#" class="navbar-btn navbar-btn-primary enhanced-btn enhanced-btn-fill"
+                            data-bs-target="#ModalTogglesix" data-bs-toggle="modal">
                             Book Free Demo
                             <svg class="navbar-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -593,7 +601,8 @@
                             </li>
                             <li class="navbar-sidebar-subitem">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a href="employee.html" class="navbar-sidebar-sublink d-flex align-items-center gap-3">
+                                    <a href="employee.html"
+                                        class="navbar-sidebar-sublink d-flex align-items-center gap-3">
                                         <div class="navbar-sidebar-icon icon-purple">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f29250"
                                                 stroke-width="2">
@@ -620,7 +629,8 @@
                             </li>
                             <li class="navbar-sidebar-subitem">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a href="billing.html" class="navbar-sidebar-sublink d-flex align-items-center gap-3">
+                                    <a href="billing.html"
+                                        class="navbar-sidebar-sublink d-flex align-items-center gap-3">
                                         <div class="navbar-sidebar-icon icon-green">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2">
@@ -645,7 +655,8 @@
                             </li>
                             <li class="navbar-sidebar-subitem">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a href="reporting.html" class="navbar-sidebar-sublink d-flex align-items-center gap-3">
+                                    <a href="reporting.html"
+                                        class="navbar-sidebar-sublink d-flex align-items-center gap-3">
                                         <div class="navbar-sidebar-icon icon-cyan">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2">
@@ -670,7 +681,7 @@
                             </li>
                             <li class="navbar-sidebar-subitem">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a href="#" class="navbar-sidebar-sublink d-flex align-items-center gap-3">
+                                    <a href="inventory.html" class="navbar-sidebar-sublink d-flex align-items-center gap-3">
                                         <div class="navbar-sidebar-icon icon-teal">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="1.5">
@@ -931,13 +942,17 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <a href="#" class="navbar-sidebar-sublink d-flex align-items-center gap-3">
                                         <div class="navbar-sidebar-icon icon-lightblue">
-                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M2 16h20M4 16l1-2.5h14l1 2.5M6 13.5l1.5-4.5h9l1.5 4.5" stroke="currentColor" />
-  <path d="M3 16c0-1 1-5 4-6h10c3 1 4 5 4 6" stroke="currentColor" fill="currentColor" fill-opacity="0.1"/>
-  
-  <circle cx="7" cy="17" r="2" fill="white" stroke="currentColor"/>
-  <circle cx="17" cy="17" r="2" fill="white" stroke="currentColor"/>
-</svg>
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M2 16h20M4 16l1-2.5h14l1 2.5M6 13.5l1.5-4.5h9l1.5 4.5"
+                                                    stroke="currentColor" />
+                                                <path d="M3 16c0-1 1-5 4-6h10c3 1 4 5 4 6" stroke="currentColor"
+                                                    fill="currentColor" fill-opacity="0.1" />
+
+                                                <circle cx="7" cy="17" r="2" fill="white" stroke="currentColor" />
+                                                <circle cx="17" cy="17" r="2" fill="white" stroke="currentColor" />
+                                            </svg>
                                         </div>
                                         Car Detailing
                                     </a>
@@ -959,9 +974,11 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <a href="#" class="navbar-sidebar-sublink d-flex align-items-center gap-3">
                                         <div class="navbar-sidebar-icon icon-green">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5">
-    <path d="M12 5c1.2 0 2.25 1.05 2.25 2.25v1.25c0 1.2-1.05 2.25-2.25 2.25S9.75 9.7 9.75 8.5V7.25C9.75 6.05 10.8 5 12 5zm6.5 4.5c1.2 0 2.25 1.05 2.25 2.25v1.25c0 1.2-1.05 2.25-2.25 2.25s-2.25-1.05-2.25-2.25v-1.25c0-1.2 1.05-2.25 2.25-2.25zM5.5 9.5c1.2 0 2.25 1.05 2.25 2.25v1.25c0 1.2-1.05 2.25-2.25 2.25s-2.25-1.05-2.25-2.25v-1.25c0-1.2 1.05-2.25 2.25-2.25zM12 14c3.8 0 7 3.2 7 7 0 .9-.7 1.5-1.5 1.5H6.5C5.7 22.5 5 21.8 5 21c0-3.8 3.2-7 7-7z"/>
-</svg>
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+                                                stroke="currentColor" stroke-width="1.5">
+                                                <path
+                                                    d="M12 5c1.2 0 2.25 1.05 2.25 2.25v1.25c0 1.2-1.05 2.25-2.25 2.25S9.75 9.7 9.75 8.5V7.25C9.75 6.05 10.8 5 12 5zm6.5 4.5c1.2 0 2.25 1.05 2.25 2.25v1.25c0 1.2-1.05 2.25-2.25 2.25s-2.25-1.05-2.25-2.25v-1.25c0-1.2 1.05-2.25 2.25-2.25zM5.5 9.5c1.2 0 2.25 1.05 2.25 2.25v1.25c0 1.2-1.05 2.25-2.25 2.25s-2.25-1.05-2.25-2.25v-1.25c0-1.2 1.05-2.25 2.25-2.25zM12 14c3.8 0 7 3.2 7 7 0 .9-.7 1.5-1.5 1.5H6.5C5.7 22.5 5 21.8 5 21c0-3.8 3.2-7 7-7z" />
+                                            </svg>
                                         </div>
                                         Pet Facility
                                     </a>
@@ -1004,7 +1021,8 @@
 
             <!-- Sidebar Bottom Buttons -->
             <div class="navbar-sidebar-footer mt-5">
-                <a href="#" class="navbar-btn navbar-btn-primary w-100 mb-3 enhanced-btn enhanced-btn-fill">
+                <a href="#" class="navbar-btn navbar-btn-primary w-100 mb-3 enhanced-btn enhanced-btn-fill"
+                    data-bs-target="#ModalTogglesix" data-bs-toggle="modal" data-bs-dismiss="offcanvas">
                     Book Free Demo
                     <svg class="navbar-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1037,7 +1055,7 @@
 Manage appointments across all locations from one powerful dashboard, simplifying scheduling, preventing conflicts, boosting staff productivity, and delivering seamless booking experiences at every branch.
 </p>
                         <div class="page1-hero-btns">
-                            <a href="#" class="hero-section-action-btn hero-section-btn-fill enhanced-btn enhanced-btn-fill">
+                            <a href="#" class="hero-section-action-btn hero-section-btn-fill enhanced-btn enhanced-btn-fill" data-bs-target="#ModalTogglesix" data-bs-toggle="modal">
                                 Start Your Free Trial 
 
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1046,7 +1064,7 @@ Manage appointments across all locations from one powerful dashboard, simplifyin
                                     <polyline points="12 5 19 12 12 19"></polyline>
                                 </svg>
                             </a>
-                            <a href="#" class="hero-section-action-btn  enhanced-btn enhanced-btn-outline">
+                            <a href="#" class="hero-section-action-btn  enhanced-btn enhanced-btn-outline" data-bs-target="#ModalTogglesix" data-bs-toggle="modal">
                                 See How It Works
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1075,9 +1093,10 @@ Manage appointments across all locations from one powerful dashboard, simplifyin
 
 <section class="brands-section">
         <div class="brands-section-container">
-            <h2 class="brands-section-title"> <span class="accent-icon">›</span> Business Owners Love Us</h2>
-            <p class="brands-section-p">Trusted by 3k+ businesses worldwide for smarter growth and optimized business
-                operations
+            <h2 class="brands-section-title"> <span class="accent-icon">›</span> Designed to Simplify Your Scheduling</h2>
+            <p class="brands-section-p">
+Empowering 3,000+ businesses with seamless appointment management
+
             </p>
 
             <div class="brands-marquee-wrapper">
@@ -1424,7 +1443,7 @@ Instantly register walk-ins or calls, easily assign services, trainers, and trig
                                 </div>
                             </div>
                         </div>
-                        <button class="section-promo-btn enhanced-btn enhanced-btn-fill">
+                        <button class="section-promo-btn enhanced-btn enhanced-btn-fill" data-bs-target="#ModalTogglesix" data-bs-toggle="modal">
                            Unlock Free Demo
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -2201,7 +2220,7 @@ By leveraging actionable insights on peak hours, bookings, staff usage, owners c
                                 </div>
                             </div>
                         </div>
-                        <button class="marketing-points-btn enhanced-btn enhanced-btn-fill">
+                        <button class="marketing-points-btn enhanced-btn enhanced-btn-fill" data-bs-target="#ModalTogglesix" data-bs-toggle="modal">
                            Try Your Free Demo
 
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -2483,6 +2502,85 @@ By leveraging actionable insights on peak hours, bookings, staff usage, owners c
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+<div class="modal fade demo-modal-form" id="ModalTogglesix" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-box">
+                        <div class="modal-left">
+                            <div class="modal-branding">
+                                <img src="assets/logoo.svg" alt="Logo"
+                                    style="width: 150px; filter: brightness(0) invert(1); margin-bottom: 30px;">
+
+                                <ul class="modal-features-list">
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>Instant WhatsApp Sync</span>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>Smart GST/Non-GST Billing</span>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>Advanced Inventory Control</span>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>24/7 Dedicated Support</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="modal-right">
+                            <h3>Book a Free Demo</h3>
+                            <p>Transform your business with Get Easy Software. Fill out the form below and our team will
+                                get in touch.</p>
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label">Business Name*</label>
+                                    <input type="text" class="form-control" placeholder="Enter your business name">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Contact Person Name*</label>
+                                    <input type="text" class="form-control" placeholder="Enter your full name">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Email Address*</label>
+                                    <input type="email" class="form-control" placeholder="yourname@company.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Contact Number*</label>
+                                    <div class="input-group">
+                                        <select class="form-select country-code-select"
+                                            style="max-width: 100px; border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-right: none; background-color: var(--color-bg-light);">
+                                            <option value="+91">+91</option>
+                                            <option value="+1">+1</option>
+                                            <option value="+44">+44</option>
+                                        </select>
+                                        <input type="tel" class="form-control" placeholder="Enter your phone number"
+                                            style="border-top-left-radius: 0; border-bottom-left-radius: 0;">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn-submit-demo">
+                                    Submit Request
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
