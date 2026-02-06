@@ -462,27 +462,27 @@ document.addEventListener('DOMContentLoaded', function () {
 let scrollTimeout;
 const progressBar = document.getElementById('progress-bar');
 
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     // Clear any existing timeout
     if (scrollTimeout) {
         cancelAnimationFrame(scrollTimeout);
     }
-    
+
     // Use requestAnimationFrame for smoother animation
-    scrollTimeout = requestAnimationFrame(function() {
+    scrollTimeout = requestAnimationFrame(function () {
         const windowHeight = window.innerHeight;
         const documentHeight = document.documentElement.scrollHeight - windowHeight;
         const scrolled = window.scrollY;
         const scrollPercent = Math.min(scrolled / documentHeight, 1);
-        
+
         // Update progress bar width
         progressBar.style.width = (scrollPercent * 100) + '%';
-        
+
         // Animate gradient based on scroll position
         // This creates a "moving gradient" effect
         const gradientPosition = (scrollPercent * 100) - 100;
         progressBar.style.backgroundPosition = gradientPosition + '% 0';
-        
+
         // Add/remove complete class when at bottom
         if (scrollPercent >= 0.99) {
             progressBar.classList.add('complete');
@@ -493,7 +493,31 @@ window.addEventListener('scroll', function() {
 });
 
 // Reset on page load
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     progressBar.style.width = '0%';
     progressBar.style.backgroundPosition = '-100% 0';
+});
+
+// Video Modal - Stop video when modal is closed
+document.addEventListener('DOMContentLoaded', function () {
+    const videoModal = document.getElementById('VideoModal');
+    if (videoModal) {
+        videoModal.addEventListener('hidden.bs.modal', function () {
+            const iframe = document.getElementById('youtubeVideo');
+            if (iframe) {
+                // Stop the video by reloading the iframe src
+                const src = iframe.src;
+                iframe.src = '';
+                iframe.src = src.replace('autoplay=1', 'autoplay=0');
+            }
+        });
+
+        // Reset to autoplay when modal is opened
+        videoModal.addEventListener('show.bs.modal', function () {
+            const iframe = document.getElementById('youtubeVideo');
+            if (iframe && iframe.src.indexOf('autoplay=0') > -1) {
+                iframe.src = iframe.src.replace('autoplay=0', 'autoplay=1');
+            }
+        });
+    }
 });

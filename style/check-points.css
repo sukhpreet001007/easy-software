@@ -4,10 +4,12 @@
     background-color: #fff;
     position: relative;
     width: 100%;
+    
+}
+.check-points-hero{
     margin-top: 25px;
     margin-bottom: -50px;
 }
-
 .check-point-wrapper {
     display: flex;
     white-space: nowrap;

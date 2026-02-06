@@ -47,30 +47,31 @@
 }
 
 .termsandconditions {
-  position: relative;
-  color: #0059ff;
-  text-decoration: none;
-  transition: color 0.3s ease-in-out;
+    position: relative;
+    color: #0059ff;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
 }
 
 .termsandconditions::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: #0059ff;
-  transition: width 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #0059ff;
+    transition: width 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .termsandconditions:hover {
-  color: #0059ff;
+    color: #0059ff;
 }
 
 .termsandconditions:hover::after {
-  width: 100%;
+    width: 100%;
 }
+
 /* Left Side - Visual/Decorative */
 .modal-left {
     flex: 1;
@@ -108,9 +109,11 @@
         opacity: 0.6;
     }
 }
-.required{
+
+.required {
     color: #ff0000;
 }
+
 /* Feature List */
 .modal-features-list {
     list-style: none;
@@ -322,3 +325,118 @@
     }
 }
 
+/* Video Modal Styles */
+.video-modal {
+    z-index: 3000 !important;
+}
+
+.video-modal .modal-dialog {
+    max-width: 1140px;
+}
+
+.video-modal .modal-content {
+    border: none;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--color-black);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.video-modal .modal-header {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 10;
+    border: none;
+    padding: 0;
+}
+
+.video-modal .btn-close {
+    background-color: var(--color-white);
+    opacity: 0.9;
+    border-radius: 50%;
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    filter: invert(1);
+}
+
+.video-modal .btn-close:hover {
+    opacity: 1;
+    transform: rotate(90deg) scale(1.1);
+}
+
+.video-modal .modal-body {
+    padding: 0;
+    background: var(--color-black);
+}
+
+/* Video Container - Responsive 16:9 Aspect Ratio */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    background: var(--color-black);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Entry Animation */
+.video-modal.show .modal-dialog {
+    animation: videoModalBounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes videoModalBounce {
+    0% {
+        transform: scale(0.8) translateY(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Styles for Video Modal */
+@media (max-width: 1199px) {
+    .video-modal .modal-dialog {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 767px) {
+    .video-modal .modal-dialog {
+        max-width: 95%;
+        margin: 10px auto;
+    }
+
+    .video-modal .modal-content {
+        border-radius: 16px;
+    }
+
+    .video-modal .btn-close {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-modal .modal-dialog {
+        max-width: 98%;
+        margin: 5px auto;
+    }
+
+    .video-modal .modal-content {
+        border-radius: 12px;
+    }
+}
