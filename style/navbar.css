@@ -155,51 +155,53 @@
 }
 
 /* Icon Colors */
-.icon-pink img{
+.icon-pink-img img{
     width: 37px;
 }
-.icon-blue img{
-    width: 37px;
-}
-
-.icon-yellow img{
+.icon-blue-img img{
     width: 37px;
 }
 
-.icon-red img{
+.icon-yellow-img img{
     width: 37px;
 }
 
-.icon-purple img{
+.icon-red-img img{
     width: 37px;
 }
 
-.icon-green img{
+.icon-purple-img img{
     width: 37px;
 }
 
-.icon-cyan img{
+.icon-green-img img{
     width: 37px;
 }
 
-.icon-teal img{
+.icon-cyan-img img{
     width: 37px;
 }
 
-.icon-indigo img{
+.icon-teal-img img{
     width: 37px;
 }
 
-.icon-orange svg{
+.icon-indigo-img img{
+    width: 37px;
+}
+
+.icon-orange-img svg{
     width: 37px;
     color: #3D8C74;
 }
-
-.icon-brown img{
+.unbold-icon {
+    stroke-width: 1.1;
+}
+.icon-brown-img img{
     width: 37px;
 }
 
-.icon-lightblue img{
+.icon-lightblue-img img{
     width: 37px;
 }
 

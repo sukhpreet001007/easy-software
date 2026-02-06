@@ -5,6 +5,52 @@
 
 /* Medium & Small screens (max-width: 991.98px) */
 @media (max-width: 991.98px) {
+    .icon-pink-img img{
+    width: 27px;
+}
+.icon-blue-img img{
+    width: 27px;
+}
+
+.icon-yellow-img img{
+    width: 27px;
+}
+
+.icon-red-img img{
+    width: 27px;
+}
+
+.icon-purple-img img{
+    width: 27px;
+}
+
+.icon-green-img img{
+    width: 27px;
+}
+
+.icon-cyan-img img{
+    width: 27px;
+}
+
+.icon-teal-img img{
+    width: 27px;
+}
+
+.icon-indigo-img img{
+    width: 27px;
+}
+
+.icon-orange-img svg{
+    width: 27px;
+    color: #3D8C74;
+}
+.icon-brown-img img{
+    width: 27px;
+}
+
+.icon-lightblue-img img{
+    width: 27px;
+}
     .navbar-container {
         padding: 12px 0;
     }

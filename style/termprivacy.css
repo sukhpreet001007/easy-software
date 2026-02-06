@@ -280,16 +280,11 @@
         min-height: auto;
         max-height: none;
     }
-    
+
     .terms-sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid rgba(6, 171, 92, 0.1);
-        padding: 20px 0;
-        height: auto;
-        max-height: 300px;
+        display: none;
     }
-    
+
     .sidebar-nav {
         flex-direction: row;
         flex-wrap: nowrap;
@@ -300,7 +295,7 @@
         margin-right: 0;
         margin-left: 0;
     }
-    
+
     .nav-item {
         flex-direction: column;
         text-align: center;
@@ -310,30 +305,30 @@
         border-bottom: 3px solid transparent;
         flex-shrink: 0;
     }
-    
+
     .nav-item:hover,
     .nav-item.active {
         border-left: none;
         border-bottom-color: var(--green-medium);
     }
-    
+
     .nav-number {
         font-size: 11px;
     }
-    
+
     .nav-text {
         font-size: 13px;
         white-space: normal;
         text-align: center;
     }
-    
+
     .terms-main-content {
         max-width: 100%;
         padding: 40px 30px;
         height: auto;
         overflow: visible;
     }
-    
+
     .terms-main-content::-webkit-scrollbar {
         display: none;
     }
@@ -347,22 +342,23 @@
         max-height: 700px;
         flex-direction: row;
     }
-    
+
     .terms-sidebar {
+        display: flex;
         width: 280px;
         height: 100%;
         border-right: 1px solid rgba(6, 171, 92, 0.1);
         border-bottom: none;
         padding: 25px 0;
     }
-    
+
     .sidebar-nav {
         flex-direction: column;
         overflow-y: auto;
         overflow-x: hidden;
         padding: 0 20px;
     }
-    
+
     .nav-item {
         flex-direction: row;
         text-align: left;
@@ -371,18 +367,18 @@
         border-left: 3px solid transparent;
         border-bottom: none;
     }
-    
+
     .nav-item:hover,
     .nav-item.active {
         border-left-color: var(--green-medium);
         border-bottom: none;
     }
-    
+
     .nav-text {
         text-align: left;
         white-space: nowrap;
     }
-    
+
     .terms-main-content {
         max-width: calc(100% - 320px);
         height: 100%;
@@ -394,29 +390,29 @@
     .terms-privacy-section {
         padding: 40px 0;
     }
-    
+
     .terms-privacy-title {
         font-size: 36px;
     }
-    
+
     .terms-privacy-subtitle {
         font-size: 16px;
         padding: 0 15px;
     }
-    
+
     .terms-main-content {
         padding: 30px 20px;
     }
-    
+
     .article-header {
         flex-direction: column;
         gap: 15px;
     }
-    
+
     .article-content {
         padding-left: 0;
     }
-    
+
     .article-title-section {
         width: 100%;
     }
@@ -426,16 +422,16 @@
     .terms-privacy-title {
         font-size: 28px;
     }
-    
+
     .article-title {
         font-size: 20px;
     }
-    
+
     .article-icon {
         width: 40px;
         height: 40px;
     }
-    
+
     .article-icon svg {
         width: 18px;
         height: 18px;
