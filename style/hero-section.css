@@ -223,6 +223,10 @@
     color: var(--navbar-primary-green);
 }
 
+.category-hero{
+color: var(--color-black);
+}
+
 .counter-wrapper {
     position: relative;
     display: inline-block;

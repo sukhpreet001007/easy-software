@@ -155,6 +155,55 @@
 }
 
 /* Icon Colors */
+.icon-pink img{
+    width: 37px;
+}
+.icon-blue img{
+    width: 37px;
+}
+
+.icon-yellow img{
+    width: 37px;
+}
+
+.icon-red img{
+    width: 37px;
+}
+
+.icon-purple img{
+    width: 37px;
+}
+
+.icon-green img{
+    width: 37px;
+}
+
+.icon-cyan img{
+    width: 37px;
+}
+
+.icon-teal img{
+    width: 37px;
+}
+
+.icon-indigo img{
+    width: 37px;
+}
+
+.icon-orange svg{
+    width: 37px;
+    color: #3D8C74;
+}
+
+.icon-brown img{
+    width: 37px;
+}
+
+.icon-lightblue img{
+    width: 37px;
+}
+
+/* features */
 .icon-blue {
     background: var(--icon-blue-bg);
     color: var(--icon-blue);
@@ -214,6 +263,7 @@
     background: #f0f9ff;
     color: #0284c7;
 }
+
 
 .navbar-lang-toggle {
     gap: 8px;
