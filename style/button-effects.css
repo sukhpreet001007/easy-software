@@ -112,9 +112,17 @@
     transform: translateY(-3px) scale(1.02);
 }
 
-/* Glow pulse on hover for filled buttons */
-.enhanced-btn-fill:hover {
-    animation: pulseGlow 2s ease-in-out infinite;
+/* Custom Hover effect for GREEN BUTTONS ONLY (Removes Zoom & Pulse) */
+.enhanced-btn-fill:hover,
+.navbar-btn-primary:hover {
+    transform: translateY(-2px) !important;
+    /* Subtle lift without zoom */
+    box-shadow: 0 14px 24px rgba(6, 171, 92, 0.4) !important;
+    /* Premium drop shadow */
+    animation: none !important;
+    /* Removes the pulse/whitish play */
+    filter: brightness(1.05);
+    /* Slight brightness boost for interaction */
 }
 
 /* Text content needs higher z-index */
