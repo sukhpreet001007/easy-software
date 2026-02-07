@@ -501,23 +501,27 @@ window.addEventListener('load', function () {
 // Video Modal - Stop video when modal is closed
 document.addEventListener('DOMContentLoaded', function () {
     const videoModal = document.getElementById('VideoModal');
-    if (videoModal) {
-        const iframe = document.getElementById('youtubeVideo');
-        let videoSrc = '';
-        if (iframe) {
-            videoSrc = iframe.getAttribute('src');
-        }
+    const iframe = document.getElementById('youtubeVideo');
 
-        videoModal.addEventListener('hidden.bs.modal', function () {
-            if (iframe) {
-                iframe.setAttribute('src', '');
-            }
-        });
+    if (!videoModal || !iframe) return;
 
-        videoModal.addEventListener('show.bs.modal', function () {
-            if (iframe && videoSrc) {
-                iframe.setAttribute('src', videoSrc);
-            }
-        });
+    const VIDEO_URL = "https://www.youtube.com/embed/LgrDGUmQoVI?autoplay=1&mute=0&controls=1&rel=0&modestbranding=1";
+
+    function stopVideo() {
+        iframe.src = "about:blank"; // HARD stop (kills audio 100%)
     }
+
+    function playVideo() {
+        iframe.src = VIDEO_URL;
+    }
+
+    // Play when modal opens
+    videoModal.addEventListener('shown.bs.modal', playVideo);
+
+    // Stop instantly when modal closes
+    videoModal.addEventListener('hide.bs.modal', stopVideo);
+
+    // EXTRA SAFETY: stop video on page change / refresh / back
+    window.addEventListener('beforeunload', stopVideo);
+    window.addEventListener('pagehide', stopVideo); // Safari / iOS fix
 });

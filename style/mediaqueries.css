@@ -208,7 +208,9 @@
     .hero-section-wrapper {
         padding: 50px 0;
     }
-
+.hero-section-wrapper1 {
+    padding: 50px 0px 0px 0px !important;
+}
     .hero-section-award-badge {
         padding: 8px 16px;
     }

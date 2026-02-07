@@ -49,7 +49,16 @@
     padding: 0 30px;
     width: max-content;
 }
-
+.check-point-track1 {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    /* Space between items */
+    animation: marquee-scroll 40s linear infinite;
+    /* Slower, smoother scroll */
+    padding: 0 30px;
+    width: max-content;
+}
 .check-point-item {
     font-size: 24px;
     font-weight: 500;
@@ -69,7 +78,9 @@
 .check-point-sections:hover .check-point-track {
     animation-play-state: paused;
 }
-
+.check-point-sections:hover .check-point-track1 {
+    animation-play-state: paused;
+}
 @keyframes marquee-scroll {
     from {
         transform: translateX(0);
@@ -89,7 +100,10 @@
     .check-point-track {
         gap: 40px;
     }
-
+.check-point-track1 {
+    margin-top: 15px;
+        gap: 40px;
+    }
     .check-point-sections::before,
     .check-point-sections::after {
         width: 80px;

@@ -3,7 +3,10 @@
     padding: 80px 0;
     background-color: var(--color-white);
 }
-
+.hero-section-wrapper1 {
+    padding: 80px 0;
+    background-color: var(--color-white);
+}
 /* Award Banner */
 .hero-section-award-container {
     display: flex;
