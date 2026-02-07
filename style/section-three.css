@@ -4,9 +4,13 @@
     background-color: var(--color-white);
     overflow: hidden;
 }
-
+.section-three-hero-category{
+    padding: 100px 0;
+    background-color: var(--color-white);
+    overflow: hidden;
+}
 .section-three-main-title {
-    font-size: clamp(28px, 5vw, 48px);
+    font-size: clamp(32px, 5vw, 48px);
     font-weight: 650;
     color: var(--color-black);
     margin-bottom: 16px;

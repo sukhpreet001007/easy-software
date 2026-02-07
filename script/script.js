@@ -502,21 +502,21 @@ window.addEventListener('load', function () {
 document.addEventListener('DOMContentLoaded', function () {
     const videoModal = document.getElementById('VideoModal');
     if (videoModal) {
+        const iframe = document.getElementById('youtubeVideo');
+        let videoSrc = '';
+        if (iframe) {
+            videoSrc = iframe.getAttribute('src');
+        }
+
         videoModal.addEventListener('hidden.bs.modal', function () {
-            const iframe = document.getElementById('youtubeVideo');
             if (iframe) {
-                // Stop the video by reloading the iframe src
-                const src = iframe.src;
-                iframe.src = '';
-                iframe.src = src.replace('autoplay=1', 'autoplay=0');
+                iframe.setAttribute('src', '');
             }
         });
 
-        // Reset to autoplay when modal is opened
         videoModal.addEventListener('show.bs.modal', function () {
-            const iframe = document.getElementById('youtubeVideo');
-            if (iframe && iframe.src.indexOf('autoplay=0') > -1) {
-                iframe.src = iframe.src.replace('autoplay=0', 'autoplay=1');
+            if (iframe && videoSrc) {
+                iframe.setAttribute('src', videoSrc);
             }
         });
     }

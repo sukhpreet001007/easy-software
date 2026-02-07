@@ -4,10 +4,13 @@
     overflow: hidden;
     position: relative;
     width: 100%;
-
-
 }
-
+.testimonies-section-category{
+    padding: 100px 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
 .testimonies-inner {
     max-width: 1400px;
     margin: 0 auto;
@@ -140,8 +143,7 @@
 
 .testimony-card:hover {
     border-color: var(--navbar-primary-green);
-     background: #f0faf6;
-    /* Soft theme mint */
+    background: #f0faf6;
     border: 1px solid #d4f1e3;
     transform: translateY(-5px);
 }
@@ -182,12 +184,15 @@
     font-size: 13px;
     margin: 0;
     align-self: flex-end;
-    /* Align to bottom right or left? I'll keep it default for now but under the text container */
 }
 
-/* Remove old full-width section gradients */
+
 .testimonies-section::before,
 .testimonies-section::after {
+    display: none;
+}
+.testimonies-section-category::before,
+.testimonies-section-category::after {
     display: none;
 }
 
@@ -206,7 +211,10 @@
     .testimonies-section::after {
         width: 100px;
     }
-
+.testimonies-section-category::before,
+.testimonies-section-category::after{
+    width: 100px;
+}
     .testimonies-marquee-container::before {
     left: 0;
     background: linear-gradient(to right, #fff 2%, transparent 15%);

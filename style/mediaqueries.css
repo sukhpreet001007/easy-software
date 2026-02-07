@@ -468,10 +468,6 @@
 }
 
 @media (max-width: 575.98px) {
-
-
-
-
     .section-promo-subtitle {
         margin-bottom: 32px;
     }
@@ -492,7 +488,12 @@
     .section-three-hero {
         padding: 0px 0;
     }
-
+.section-three-hero-category{
+    padding: 60px 0px 0px 0px!important;
+}
+.testimonies-section-category{
+    padding: 0px !important;
+}
     .section-three-header {
         margin-bottom: 40px;
     }
