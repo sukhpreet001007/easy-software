@@ -456,6 +456,75 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     })();
+
+    // --- Blog Load More Logic (Mobile Only) ---
+    (function () {
+        const blogGrid = document.querySelector('.blog-grid');
+        const loadMoreContainer = document.getElementById('blog-load-more-container');
+        const loadMoreBtn = document.getElementById('load-more-btn');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const btnText = loadMoreBtn ? loadMoreBtn.querySelector('.btn-text') : null;
+
+        if (!blogGrid || !loadMoreContainer || !loadMoreBtn) return;
+
+        const cards = blogGrid.querySelectorAll('.blog-card');
+        const MOBILE_LIMIT = 10;
+        let isExpanded = false;
+
+        function updateView() {
+            const isMobile = window.innerWidth <= 768;
+
+            if (!isMobile) {
+                // Desktop: Show everything, hide button
+                cards.forEach(card => card.style.display = '');
+                loadMoreContainer.style.display = 'none';
+                return;
+            }
+
+            // Mobile logic
+            loadMoreContainer.style.display = 'block';
+
+            if (isExpanded) {
+                // Show all cards, button says "All Loaded"
+                cards.forEach(card => card.style.display = '');
+                if (btnText) btnText.textContent = 'All loaded';
+                loadMoreBtn.disabled = true;
+                if (loadingSpinner) loadingSpinner.style.display = 'none';
+            } else {
+                // Show first 10, hide rest
+                cards.forEach((card, index) => {
+                    if (index >= MOBILE_LIMIT) {
+                        card.style.display = 'none';
+                    } else {
+                        card.style.display = '';
+                    }
+                });
+                if (btnText) btnText.textContent = 'Load All Blogs';
+                loadMoreBtn.disabled = false;
+                if (loadingSpinner) loadingSpinner.style.display = 'none';
+            }
+        }
+
+        // Click Handler
+        loadMoreBtn.addEventListener('click', function () {
+            if (isExpanded) return;
+
+            // Loading State
+            if (loadingSpinner) loadingSpinner.style.display = 'inline-block';
+            if (btnText) btnText.textContent = 'Loading...';
+            // loadMoreBtn.disabled = true; // Don't disable immediately so click feels registered, or do based on preference. User asked for "loading icon inside button"
+
+            // Simulated Network Request
+            setTimeout(() => {
+                isExpanded = true;
+                updateView(); // This will show all cards and update text to "All Loaded"
+            }, 1200);
+        });
+
+        // Initialize and listen for resize
+        updateView();
+        window.addEventListener('resize', updateView);
+    })();
 });
 
 // Smooth gradient progress bar

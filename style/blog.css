@@ -1,0 +1,217 @@
+/* Blog Section Styling */
+.blog-section {
+    padding: 80px 0;
+    background-color: var(--color-bg-light);
+}
+
+/* Image Container */
+.blog-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    position: relative;
+    border: 1px solid var(--color-border-light);
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-emerald-500);
+}
+
+/* Image Container */
+.blog-card-image {
+    position: relative;
+    overflow: hidden;
+    padding-top: 60%;
+    /* 16:9 Aspect Ratio approx */
+}
+
+.blog-card-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.blog-card:hover .blog-card-image img {
+    transform: scale(1.1);
+}
+
+/* Date Badge - Moved to Footer */
+.blog-date {
+    font-size: 0.8rem;
+    color: var(--color-gray-500);
+    font-weight: 500;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+
+
+/* Load More Button */
+.blog-load-more-container {
+    text-align: center;
+    margin-top: 40px;
+    display: none;
+    /* Hidden by default, JS will show it on mobile */
+}
+
+.blog-btn {
+    background-color: var(--color-emerald-500);
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.blog-btn:hover {
+    background-color: var(--color-emerald-600);
+    transform: translateY(-2px);
+}
+
+.blog-btn:disabled {
+    background-color: var(--color-gray-400);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.loading-spinner {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 2px solid #fff;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.blog-card-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.blog-meta-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.blog-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--color-gray-900);
+    line-height: 1.3;
+    transition: color 0.3s ease;
+}
+
+.blog-card:hover .blog-title {
+    color: var(--color-emerald-500);
+}
+
+.blog-excerpt {
+    font-size: 0.95rem;
+    color: var(--color-gray-600);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    /* Reduced since we have padding-top in footer */
+    flex-grow: 1;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Read More Link */
+.blog-read-more {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-gray-400);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.blog-card:hover .blog-read-more {
+    color: var(--color-emerald-500);
+    gap: 12px;
+}
+@media (max-width: 1200px) {
+    .blog-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 7px;
+    }
+    .blog-title{
+        font-size: 15px;
+    }
+    .blog-excerpt{
+        font-size: 12px;
+    }
+    .blog-meta-footer{
+        flex-direction: column-reverse;
+        padding-top: 1px;
+        gap: 10px;
+    }
+    .blog-card-content{
+        padding: 8px;
+    }
+    .blog-date{
+        font-size: 10px;
+    }
+    .blog-read-more{
+        font-size: 15px;
+        color: #000000b4;
+    }
+}
