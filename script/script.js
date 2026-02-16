@@ -568,6 +568,275 @@ window.addEventListener('load', function () {
 });
 
 // Video Modal - Stop video when modal is closed
+// document.addEventListener('DOMContentLoaded', function () {
+//     const videoModal = document.getElementById('VideoModal');
+//     const iframe = document.getElementById('youtubeVideo');
+
+//     if (!videoModal || !iframe) return;
+
+//     const VIDEO_URL = "https://www.youtube.com/embed/LgrDGUmQoVI?autoplay=1&mute=0&controls=1&rel=0&modestbranding=1";
+
+//     function stopVideo() {
+//         iframe.src = "about:blank"; // HARD stop (kills audio 100%)
+//     }
+
+//     function playVideo() {
+//         iframe.src = VIDEO_URL;
+//     }
+
+//     // Play when modal opens
+//     videoModal.addEventListener('shown.bs.modal', playVideo);
+
+//     // Stop instantly when modal closes
+//     videoModal.addEventListener('hide.bs.modal', stopVideo);
+
+//     // EXTRA SAFETY: stop video on page change / refresh / back
+//     window.addEventListener('beforeunload', stopVideo);
+//     window.addEventListener('pagehide', stopVideo); // Safari / iOS fix
+// });
+
+// (function () {
+//     const videoIds = [
+//         'VYYlVHE15II',
+//         'RzytFGrGDrc',
+//         'qGPQ8CRaWEE',
+//         'WeT2P1kFO94',
+//         '-Bi4pzA492I',
+//         'NjXpahXVHUw',
+//         's9hZEp0XBFE',
+//         'SHYRJ1XG_e0'
+//     ];
+
+//     let masterMuted = true;           // global state for "what should active videos be?"
+
+//     const track = document.getElementById('shortsSliderTrack');
+//     const pagination = document.getElementById('shortsPagination');
+//     const prevBtn = document.getElementById('shortsPrev');
+//     const nextBtn = document.getElementById('shortsNext');
+//     if (!track) return;
+
+//     let currentIndex = videoIds.length;
+//     let isTransitioning = false;
+//     const totalItems = videoIds.length;
+
+//     const fullVideoList = [...videoIds, ...videoIds, ...videoIds];
+
+//     function init() {
+//         renderCards();
+//         renderDots();
+//         updateSlider(false);
+//         setupIntersectionObserver();
+
+//         prevBtn.addEventListener('click', () => moveSlide(-1));
+//         nextBtn.addEventListener('click', () => moveSlide(1));
+//         window.addEventListener('resize', () => updateSlider(false));
+
+//         track.addEventListener('transitionend', () => {
+//             if (currentIndex >= totalItems * 2) {
+//                 currentIndex = totalItems;
+//                 updateSlider(false);
+//             } else if (currentIndex < totalItems) {
+//                 currentIndex = totalItems * 2 - 1;
+//                 updateSlider(false);
+//             }
+//             isTransitioning = false;
+//             manageAutoPlay();
+//         });
+
+//         // Set initial active
+//         setTimeout(applyMasterMuteToActive, 1200);
+//     }
+
+//     function renderCards() {
+//         track.innerHTML = '';
+//         fullVideoList.forEach((id, index) => {
+//             const card = document.createElement('div');
+//             card.className = 'short-card';
+//             card.dataset.id = id;
+//             card.dataset.index = index % totalItems;
+//             card.innerHTML = `
+//                 <div class="player-container"></div>
+//                 <div class="shorts-logo-overlay">
+//                     <img src="assets/shorts-icon.png" alt="Shorts Icon">
+//                 </div>
+//             `;
+//             card.addEventListener('click', () => {
+//                 if (!card.classList.contains('active')) {
+//                     const diff = index - currentIndex;
+//                     moveSlide(diff);
+//                 }
+//             });
+//             track.appendChild(card);
+//         });
+//     }
+
+//     function renderDots() {
+//         if (!pagination) return;
+//         pagination.innerHTML = '';
+//         videoIds.forEach((_, i) => {
+//             const dot = document.createElement('div');
+//             dot.className = 'dot';
+//             if (i === 0) dot.classList.add('active');
+//             dot.addEventListener('click', () => {
+//                 const targetIndex = totalItems + i;
+//                 const diff = targetIndex - currentIndex;
+//                 moveSlide(diff);
+//             });
+//             pagination.appendChild(dot);
+//         });
+//     }
+
+//     function updateSlider(animate = true) {
+//         if (animate) {
+//             track.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+//         } else {
+//             track.style.transition = 'none';
+//         }
+
+//         const cards = track.querySelectorAll('.short-card');
+//         if (cards.length === 0) return;
+
+//         const cardWidth = cards[0].offsetWidth;
+//         const gap = parseInt(window.getComputedStyle(track).gap) || 0;
+//         const viewportWidth = track.parentElement.offsetWidth;
+//         const offset = (viewportWidth / 2) - (cardWidth / 2) - (currentIndex * (cardWidth + gap));
+
+//         track.style.transform = `translateX(${offset}px)`;
+
+//         cards.forEach((card, i) => {
+//             const isActive = i === currentIndex;
+//             card.classList.toggle('active', isActive);
+
+//             // Force-mute non-active cards
+//             if (!isActive) {
+//                 const iframe = card.querySelector('iframe');
+//                 if (iframe?.contentWindow) {
+//                     iframe.contentWindow.postMessage(JSON.stringify({
+//                         event: 'command',
+//                         func: 'mute',
+//                         args: []
+//                     }), '*');
+//                 }
+//             }
+//         });
+
+//         // Update dots
+//         const dots = pagination?.querySelectorAll('.dot');
+//         if (dots) {
+//             dots.forEach((dot, i) => {
+//                 dot.classList.toggle('active', i === (currentIndex % totalItems));
+//             });
+//         }
+
+//         // Apply current desired state to the NEW active video
+//         setTimeout(applyMasterMuteToActive, 400);
+//     }
+
+//     function moveSlide(direction) {
+//         if (isTransitioning) return;
+//         isTransitioning = true;
+//         currentIndex += direction;
+//         updateSlider(true);
+//     }
+
+//     function manageAutoPlay() {
+//         const cards = track.querySelectorAll('.short-card');
+//         const viewport = track.parentElement.getBoundingClientRect();
+
+//         cards.forEach((card) => {
+//             const rect = card.getBoundingClientRect();
+//             const isNear = rect.right > viewport.left - 600 && rect.left < viewport.right + 600;
+//             const container = card.querySelector('.player-container');
+//             const id = card.dataset.id;
+
+//             if (isNear && !container.innerHTML) {
+//                 container.innerHTML = `
+//                     <iframe
+//                         src="https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=1&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&enablejsapi=1"
+//                         frameborder="0"
+//                         allow="autoplay; encrypted-media; picture-in-picture"
+//                         allowfullscreen>
+//                     </iframe>
+//                 `;
+//             }
+//         });
+//     }
+
+//     // ─── Main logic: detect user mute/unmute on ACTIVE card only ───
+//     window.addEventListener('message', (event) => {
+//         if (!event.origin.includes('youtube.com')) return;
+
+//         let data;
+//         try {
+//             data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+//         } catch {
+//             return;
+//         }
+
+//         if (!data || !data.info) return;
+
+//         const sourceWindow = event.source;
+//         const activeIframe = track.querySelector('.short-card.active iframe');
+
+//         // Only care about messages from the currently active player
+//         if (!activeIframe || activeIframe.contentWindow !== sourceWindow) {
+//             // Still mute others if someone tries to unmute in background
+//             if (data.info.muted === false || (data.info.volume > 0 && data.info.muted !== true)) {
+//                 document.querySelectorAll('.short-card iframe').forEach(iframe => {
+//                     if (iframe.contentWindow !== sourceWindow) {
+//                         iframe.contentWindow?.postMessage(JSON.stringify({
+//                             event: 'command',
+//                             func: 'mute',
+//                             args: []
+//                         }), '*');
+//                     }
+//                 });
+//             }
+//             return;
+//         }
+
+//         // ─── We are dealing with the ACTIVE player ───
+
+//         // User just unmuted
+//         if (data.info.muted === false || (data.info.volume > 0 && data.info.muted !== true)) {
+//             masterMuted = false;
+//             // No need to unmute again — player is already unmuted
+//         }
+
+//         // User just muted
+//         else if (data.info.muted === true) {
+//             masterMuted = true;
+//             // Player is already muted — no extra command needed
+//         }
+//     });
+
+//     function applyMasterMuteToActive() {
+//         const activeCard = track.querySelector('.short-card.active');
+//         if (!activeCard) return;
+
+//         const iframe = activeCard.querySelector('iframe');
+//         if (!iframe?.contentWindow) return;
+
+//         const command = masterMuted ? 'mute' : 'unMute';
+
+//         iframe.contentWindow.postMessage(JSON.stringify({
+//             event: 'command',
+//             func: command,
+//             args: []
+//         }), '*');
+//     }
+
+//     function setupIntersectionObserver() {
+//         const observer = new IntersectionObserver((entries) => {
+//             entries.forEach(entry => {
+//                 if (entry.isIntersecting) manageAutoPlay();
+//             });
+//         }, { threshold: 0.1 });
+//         observer.observe(track.parentElement);
+//     }
+
+//     setTimeout(init, 100);
+// })();
 document.addEventListener('DOMContentLoaded', function () {
     const videoModal = document.getElementById('VideoModal');
     const iframe = document.getElementById('youtubeVideo');
@@ -594,3 +863,248 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('beforeunload', stopVideo);
     window.addEventListener('pagehide', stopVideo); // Safari / iOS fix
 });
+
+(function () {
+    const videoIds = [
+        'VYYlVHE15II',
+        'RzytFGrGDrc',
+        'qGPQ8CRaWEE',
+        'WeT2P1kFO94',
+        '-Bi4pzA492I',
+        'NjXpahXVHUw',
+        's9hZEp0XBFE',
+        'SHYRJ1XG_e0'
+    ];
+
+    let masterMuted = true;           // global state for "what should active videos be?"
+
+    const track = document.getElementById('shortsSliderTrack');
+    const pagination = document.getElementById('shortsPagination');
+    const prevBtn = document.getElementById('shortsPrev');
+    const nextBtn = document.getElementById('shortsNext');
+    if (!track) return;
+
+    let currentIndex = videoIds.length;
+    let isTransitioning = false;
+    const totalItems = videoIds.length;
+
+    const fullVideoList = [...videoIds, ...videoIds, ...videoIds];
+
+    function init() {
+        renderCards();
+        renderDots();
+        updateSlider(false);
+        setupIntersectionObserver();
+
+        prevBtn.addEventListener('click', () => moveSlide(-1));
+        nextBtn.addEventListener('click', () => moveSlide(1));
+        window.addEventListener('resize', () => updateSlider(false));
+
+        track.addEventListener('transitionend', () => {
+            if (currentIndex >= totalItems * 2) {
+                currentIndex = totalItems;
+                updateSlider(false);
+            } else if (currentIndex < totalItems) {
+                currentIndex = totalItems * 2 - 1;
+                updateSlider(false);
+            }
+            isTransitioning = false;
+            manageAutoPlay();
+        });
+
+        // Set initial active
+        setTimeout(applyMasterMuteToActive, 1200);
+    }
+
+    function renderCards() {
+        track.innerHTML = '';
+        fullVideoList.forEach((id, index) => {
+            const card = document.createElement('div');
+            card.className = 'short-card';
+            card.dataset.id = id;
+            card.dataset.index = index % totalItems;
+            card.innerHTML = `
+                <div class="player-container"></div>
+                <div class="shorts-logo-overlay">
+                    <img src="assets/shorts-icon.png" alt="Shorts Icon">
+                </div>
+            `;
+            card.addEventListener('click', () => {
+                if (!card.classList.contains('active')) {
+                    const diff = index - currentIndex;
+                    moveSlide(diff);
+                }
+            });
+            track.appendChild(card);
+        });
+    }
+
+    function renderDots() {
+        if (!pagination) return;
+        pagination.innerHTML = '';
+        videoIds.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                const targetIndex = totalItems + i;
+                const diff = targetIndex - currentIndex;
+                moveSlide(diff);
+            });
+            pagination.appendChild(dot);
+        });
+    }
+
+    function updateSlider(animate = true) {
+        if (animate) {
+            track.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+        } else {
+            track.style.transition = 'none';
+        }
+
+        const cards = track.querySelectorAll('.short-card');
+        if (cards.length === 0) return;
+
+        const cardWidth = cards[0].offsetWidth;
+        const gap = parseInt(window.getComputedStyle(track).gap) || 0;
+        const viewportWidth = track.parentElement.offsetWidth;
+        const offset = (viewportWidth / 2) - (cardWidth / 2) - (currentIndex * (cardWidth + gap));
+
+        track.style.transform = `translateX(${offset}px)`;
+
+        cards.forEach((card, i) => {
+            const isActive = i === currentIndex;
+            card.classList.toggle('active', isActive);
+
+            // Force-mute non-active cards
+            if (!isActive) {
+                const iframe = card.querySelector('iframe');
+                if (iframe?.contentWindow) {
+                    iframe.contentWindow.postMessage(JSON.stringify({
+                        event: 'command',
+                        func: 'mute',
+                        args: []
+                    }), '*');
+                }
+            }
+        });
+
+        // Update dots
+        const dots = pagination?.querySelectorAll('.dot');
+        if (dots) {
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === (currentIndex % totalItems));
+            });
+        }
+
+        // Apply current desired state to the NEW active video
+        setTimeout(applyMasterMuteToActive, 400);
+    }
+
+    function moveSlide(direction) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        currentIndex += direction;
+        updateSlider(true);
+    }
+
+    function manageAutoPlay() {
+        const cards = track.querySelectorAll('.short-card');
+        const viewport = track.parentElement.getBoundingClientRect();
+
+        cards.forEach((card) => {
+            const rect = card.getBoundingClientRect();
+            const isNear = rect.right > viewport.left - 600 && rect.left < viewport.right + 600;
+            const container = card.querySelector('.player-container');
+            const id = card.dataset.id;
+
+            if (isNear && !container.innerHTML) {
+                const currentOrigin = window.location.origin;
+
+                container.innerHTML = `
+                    <iframe
+                        src="https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=1&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&enablejsapi=1&origin=${encodeURIComponent(currentOrigin)}"
+                        frameborder="0"
+                        allow="autoplay; encrypted-media; picture-in-picture"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                `;
+            }
+        });
+    }
+
+    // ─── Main logic: detect user mute/unmute on ACTIVE card only ───
+    window.addEventListener('message', (event) => {
+        if (!event.origin.includes('youtube.com')) return;
+
+        let data;
+        try {
+            data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+        } catch {
+            return;
+        }
+
+        if (!data || !data.info) return;
+
+        const sourceWindow = event.source;
+        const activeIframe = track.querySelector('.short-card.active iframe');
+
+        // Only care about messages from the currently active player
+        if (!activeIframe || activeIframe.contentWindow !== sourceWindow) {
+            // Still mute others if someone tries to unmute in background
+            if (data.info.muted === false || (data.info.volume > 0 && data.info.muted !== true)) {
+                document.querySelectorAll('.short-card iframe').forEach(iframe => {
+                    if (iframe.contentWindow !== sourceWindow) {
+                        iframe.contentWindow?.postMessage(JSON.stringify({
+                            event: 'command',
+                            func: 'mute',
+                            args: []
+                        }), '*');
+                    }
+                });
+            }
+            return;
+        }
+
+        // ─── We are dealing with the ACTIVE player ───
+
+        // User just unmuted
+        if (data.info.muted === false || (data.info.volume > 0 && data.info.muted !== true)) {
+            masterMuted = false;
+        }
+
+        // User just muted
+        else if (data.info.muted === true) {
+            masterMuted = true;
+        }
+    });
+
+    function applyMasterMuteToActive() {
+        const activeCard = track.querySelector('.short-card.active');
+        if (!activeCard) return;
+
+        const iframe = activeCard.querySelector('iframe');
+        if (!iframe?.contentWindow) return;
+
+        const command = masterMuted ? 'mute' : 'unMute';
+
+        iframe.contentWindow.postMessage(JSON.stringify({
+            event: 'command',
+            func: command,
+            args: []
+        }), '*');
+    }
+
+    function setupIntersectionObserver() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) manageAutoPlay();
+            });
+        }, { threshold: 0.1 });
+        observer.observe(track.parentElement);
+    }
+
+    setTimeout(init, 100);
+})();
+

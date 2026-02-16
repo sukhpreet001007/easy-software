@@ -1,5 +1,4 @@
-/* Main Container */
-.contact-us-container {
+/* .contact-us-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 3rem 2rem;
@@ -25,7 +24,6 @@
     animation: contact-us-fadeInUp 1s ease-out 0.5s forwards;
 }
 
-/* Contact Form and Info Layout */
 .contact-us-content {
     display: flex;
     flex-wrap: wrap;
@@ -60,7 +58,6 @@
     animation: contact-us-slideInLeft 1s ease-out 0.9s forwards;
 }
 
-/* Form Styling */
 .contact-us-form-group {
     margin-bottom: 1.8rem;
     position: relative;
@@ -154,7 +151,6 @@
     opacity: 1;
 }
 
-/* Info Box Styling */
 .contact-us-info-box {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
@@ -219,7 +215,6 @@
     left: 0;
 }
 
-/* Social Icons */
 .contact-us-social-icons {
     display: flex;
     gap: 1.2rem;
@@ -265,7 +260,7 @@
     transform: translateY(-3px) scale(1.1);
 }
 
-/* Map Styling */
+
 .contact-map-wrapper {
     margin: 1.5rem 0;
     width: 100%;
@@ -281,7 +276,7 @@
     height: 300px;
 }
 
-/* Animations */
+
 @keyframes contact-us-fadeIn {
     from {
         opacity: 0;
@@ -335,7 +330,6 @@
     }
 }
 
-/* Responsive Styles - Fixed for Mobile and Tablet */
 @media (max-width: 1200px) {
     .contact-us-container {
         max-width: 1000px;
@@ -362,7 +356,6 @@
         transform: none !important;
     }
     
-    /* Form comes first on tablet portrait */
     .contact-us-info-container {
         order: 2;
         margin-top: 0;
@@ -387,7 +380,6 @@
         gap: 2rem;
     }
     
-    /* Expand form width on tablet portrait */
     .contact-us-form-container {
         padding: 2rem;
         width: 100%;
@@ -423,7 +415,6 @@
         margin-bottom: 2rem;
     }
     
-    /* Expand form to full width on mobile */
     .contact-us-form-container {
         padding: 1.5rem;
         width: 100%;
@@ -484,7 +475,6 @@
     }
 }
 
-/* Extra small devices */
 @media (max-width: 360px) {
     .contact-us-form-input {
         padding: 0.8rem 0.8rem 0.8rem 2.5rem;
@@ -501,7 +491,6 @@
     }
 }
 
-/* Landscape tablets (768px to 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
     .contact-us-container {
         padding: 3rem 3rem;
@@ -522,11 +511,10 @@
     }
 }
 
-/* Form Validation Styling */
 .contact-us-form-input:invalid:not(:focus):not(:placeholder-shown) {
     border-color: #ff4757;
 }
 
 .contact-us-form-input:valid:not(:focus):not(:placeholder-shown) {
     border-color: #2ed573;
-}
+} */

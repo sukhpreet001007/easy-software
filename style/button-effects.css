@@ -1,6 +1,4 @@
-/* Advanced Button Hover Effects */
-
-/* Shimmer gradient animation for filled buttons */
+/* 
 @keyframes buttonShimmer {
     0% {
         background-position: -200% center;
@@ -11,7 +9,6 @@
     }
 }
 
-/* Flowing border gradient animation */
 @keyframes flowingBorder {
     0% {
         background-position: 0% 50%;
@@ -26,7 +23,7 @@
     }
 }
 
-/* Pulse glow effect */
+
 @keyframes pulseGlow {
 
     0%,
@@ -39,14 +36,14 @@
     }
 }
 
-/* Enhanced button base styles */
+
 .enhanced-btn {
     position: relative;
     overflow: hidden;
     z-index: 1;
 }
 
-/* Base styles for filled buttons with sliding effect */
+
 .enhanced-btn-fill,
 .navbar-btn-primary {
     background: linear-gradient(to right, var(--navbar-primary-green-hover) 50%, var(--navbar-primary-green) 50%) !important;
@@ -64,7 +61,7 @@
     background-position: left bottom !important;
 }
 
-/* Flowing border for outline buttons */
+
 .enhanced-btn-outline {
     background: linear-gradient(var(--color-white), var(--color-white)) padding-box,
         linear-gradient(90deg,
@@ -82,7 +79,7 @@
     box-shadow: 0 0 20px rgba(6, 171, 92, 0.4);
 }
 
-/* Ripple effect on click */
+
 .enhanced-btn::after {
     content: '';
     position: absolute;
@@ -103,7 +100,7 @@
     opacity: 0;
 }
 
-/* Magnetic hover effect */
+
 .enhanced-btn {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -112,21 +109,21 @@
     transform: translateY(-3px) scale(1.02);
 }
 
-/* Custom Hover effect for GREEN BUTTONS ONLY (Removes Zoom & Pulse) */
+
 .enhanced-btn-fill:hover,
 .navbar-btn-primary:hover {
     transform: translateY(-2px) !important;
-    /* Subtle lift without zoom */
+
     box-shadow: 0 14px 24px rgba(6, 171, 92, 0.4) !important;
-    /* Premium drop shadow */
+
     animation: none !important;
-    /* Removes the pulse/whitish play */
+ 
     filter: brightness(1.05);
-    /* Slight brightness boost for interaction */
+   
 }
 
-/* Text content needs higher z-index */
+
 .enhanced-btn>* {
     position: relative;
     z-index: 3;
-}
+} */

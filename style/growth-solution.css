@@ -12,6 +12,12 @@
     font-family: 'Inter', sans-serif;
 }
 
+.growth-card-link {
+    text-decoration: none !important;
+    display: block;
+    height: 100%;
+}
+
 .growth-card {
     background-color: #f0faf6;
     /* Light green tint */
@@ -84,6 +90,15 @@
     transition: filter 0.3s ease;
 }
 
+.growth-icon-box .med-svg {
+    width: 80px;
+    max-width: 60%;
+    max-height: 60%;
+    object-fit: contain;
+    transition: filter 0.3s ease;
+    color: #0B6E4F;
+}
+
 .growth-card-text {
     font-size: 20px;
     font-weight: 600;
@@ -96,4 +111,11 @@
 
 .growth-card:hover .growth-card-text {
     color: var(--color-emerald-600);
+}
+
+@media (min-width: 992px) {
+    .growth-solution .row>div {
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
 }

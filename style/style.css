@@ -3,6 +3,23 @@
 :root {
     --navbar-font: 'Outfit', sans-serif;
 }
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    box-sizing: border-box;
+}
 
 #progress-bar {
     position: fixed;
@@ -55,23 +72,6 @@
     }
 }
 
-html,
-body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-body {
-    font-family: "Inter", sans-serif;
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-    box-sizing: border-box;
-}
 
 a {
     text-decoration: none;
@@ -468,6 +468,96 @@ ul {
     margin-right: 1.5em;
 }
 
+
 .modal-divider:not(:empty)::after {
     margin-left: 1.5em;
+}
+
+/* Mobile Fixed Bottom Bar */
+.mobile-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 12px 16px min(30px, calc(12px + env(safe-area-inset-bottom)));
+    /* Safe area support */
+    z-index: 2000;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.08);
+    display: block;
+}
+
+@media (min-width: 992px) {
+    .mobile-bottom-bar {
+        display: none !important;
+    }
+}
+
+.mobile-bottom-bar-inner {
+    display: flex;
+    gap: 12px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.mobile-bar-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 52px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 15px;
+    color: #ffffff !important;
+    text-decoration: none;
+    border: none;
+    background-size: 300% 300%;
+    animation: ingredientFlow 4s linear infinite;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.mobile-bar-btn i {
+    font-size: 18px;
+}
+
+.mobile-bar-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.whatsapp-btn {
+    background: linear-gradient(45deg, #25D366, #128C7E, #075E54, #2ef137, #128C7E, #25D366);
+    background-size: 300% 300%;
+}
+
+.book-demo-btn {
+    background: linear-gradient(45deg, #06AB5C, #05914E, #047841, #08e47a, #05914E, #06AB5C);
+    background-size: 300% 300%;
+}
+
+@keyframes ingredientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+@media (max-width: 991px) {
+    body {
+        padding-bottom: 90px !important;
+    }
+
+    /* Ensure Tawk or other widgets don't overlap too much */
+    #tawk-chat-widget {
+        bottom: 100px !important;
+    }
 }
